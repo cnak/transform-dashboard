@@ -1,0 +1,8 @@
+.BirthdayWidget .Progress {
+    padding-top: 1rem;
+}
+
+.BirthdayDisplay .birthday-image img {
+    width: 300px;
+    border-radius: 30px;
+}

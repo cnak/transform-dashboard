@@ -1,0 +1,9 @@
+.BirthdayDisplay .value {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.BirthdayDisplay .max {
+    display: block;
+    clear: left;
+}

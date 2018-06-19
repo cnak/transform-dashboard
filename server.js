@@ -47,41 +47,67 @@ app.get('/tickets/*', function (req, res) {
     })
 });
 
-app.get('/stats/top', function (req, res) {
+app.get('/birthday/next', function (req, res) {
+    res.json({
+        name: 'Cedric',
+        date: '24th May',
+        imageUrl: 'images/ced.jpg'
+    })
+});
+
+app.get('/winning-behaviour/now', function (req, res) {
+    res.json({
+        name: 'Speak Up',
+        date: '',
+        imageUrl: 'images/winning-behaviour.jpg'
+    })
+});
+
+app.get('/holidays/all', function (req, res) {
     res.json([
         {
-            label: "Lauren",
-            value: Math.floor(Math.random() * 5) + 26
+            label: "Cedric",
+            value: "29/06"
         },
         {
-            label: "Dave",
-            value: Math.floor(Math.random() * 5) + 13
+            label: "Jem",
+            value: "13/08"
         },
         {
-            label: "John",
-            value: Math.floor(Math.random() * 5) + 18
+            label: "Carola",
+            value: "23/09"
+        }
+    ]);
+});
+
+app.get('/team-social/all', function (req, res) {
+    res.json([
+        {
+            label: "DI&DIT Hub Drinks",
+            value: "14/06"
         },
         {
-            label: "Gregg",
-            value: Math.floor(Math.random() * 5) + 19
+            label: "Karaoke",
+            value: "21/06"
         },
         {
-            label: "Matt",
-            value: Math.floor(Math.random() * 5) + 4
-        },
-        {
-            label: "Jaral",
-            value: Math.floor(Math.random() * 5) + 12
-        },
-        {
-            label: "Bridget",
-            value: Math.floor(Math.random() * 5) + 18
-        },
-        {
-            label: "Rob",
-            value: Math.floor(Math.random() * 5) + 7
+            label: "Major Event",
+            value: "O0/00"
         }
     ]);    
+});
+
+app.get('/team-news/all', function (req, res) {
+    res.json([
+        {
+            label: "Sita's Wedding",
+            value: "27/08"
+        },
+        {
+            label: "Baby Robyn Due",
+            value: "24/09"
+        },
+    ]);
 });
 
 app.get('/stats/*', function (req, res) {
