@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 // Import components
 import Loading from './Loading';
-import NumberDisplay from '../components/NumberDisplay';
 
 //Import styling
 import '../styles/Widget.css'

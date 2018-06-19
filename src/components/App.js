@@ -8,11 +8,15 @@ import ListWidgetContainer from '../components/ListWidgetContainer';
 
 // Add in styles
 import '../styles/App.css';
+import OpenWeather from './Weather/OpenWeather/OpenWeather';
 
 class App extends Component {
     render() {
         return (
             <div className="App">
+                <Widget heading="Weather">
+                    <OpenWeather city="City of London" country="GB" units="metric"/>
+                </Widget>
                 <Widget heading="Team Social">
                     <ListWidgetContainer
                         href="http://localhost:3001/team-social/all"
