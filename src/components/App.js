@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 
 // Import widgets being used in this component
 import Widget from './Widget';
-import NumberWidgetContainer from '../components/NumberWidgetContainer';
 import BirthdayWidgetContainer from '../components/BirthdayWidgetContainer';
 import ListWidgetContainer from '../components/ListWidgetContainer';
 
 // Add in styles
 import '../styles/App.css';
-import OpenWeather from './Weather/OpenWeather/OpenWeather';
+import WeatherWidgetContainer from './Weather/WeatherWidgetContainer';
 
 class App extends Component {
     render() {
         return (
             <div className="App">
                 <Widget heading="Weather">
-                    <OpenWeather city="City of London" country="GB" units="metric"/>
+                    <WeatherWidgetContainer
+                        href="http://localhost:3001/weather/current" />
                 </Widget>
                 <Widget heading="Team Social">
                     <ListWidgetContainer
