@@ -23,29 +23,8 @@ app.get('/weather/current', async (req, res) => {
         res.json(weatherResponse)
     }
     catch (e) {
-        // console.error(e, 'failed to retrieve weather data')
+        console.error(e, 'failed to retrieve weather data')
     }
-});
-
-app.get('/tickets/progression', function (req, res) {
-    let labels = ["Opened Tickets", "Closed Tickets"];
-    let colors = ["#e74c3c", "#27ae60"];
-    let values = [];
-
-    labels.forEach((label, index) => {
-        let data = [];
-        for (let i = 0; i < 7; i++) {
-            data.push(Math.floor(Math.random() * 10) + i);
-        }
-
-        values.push({
-            label,
-            data,
-            color: colors[index]
-        });
-    });
-
-    res.json(values);
 });
 
 app.get('/images/all', function (req, res) {
@@ -93,7 +72,7 @@ app.get('/images/latest', async (req, res) => {
 
 app.get('/birthday/next', function (req, res) {
     res.json({
-        name: 'Jem',
+        name: 'Carola',
         date: '21st June',
         imageUrl: 'images/ced.jpg'
     })

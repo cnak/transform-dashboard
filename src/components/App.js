@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-// Import widgets being used in this component
 import Widget from './Widget';
 import BirthdayWidgetContainer from '../components/BirthdayWidgetContainer';
 import ListWidgetContainer from '../components/ListWidgetContainer';
 
-// Add in styles
 import '../styles/App.css';
 import WeatherWidgetContainer from './Weather/WeatherWidgetContainer';
 import Banner from './Banner/Banner';
