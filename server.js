@@ -27,14 +27,6 @@ app.get('/weather/current', async (req, res) => {
     }
 });
 
-app.get('/tickets/urgent', function (req, res) {
-    res.json({
-        min: 0,
-        max: 24,
-        value: Math.floor(Math.random() * 5)
-    })
-});
-
 app.get('/tickets/progression', function (req, res) {
     let labels = ["Opened Tickets", "Closed Tickets"];
     let colors = ["#e74c3c", "#27ae60"];
@@ -54,12 +46,6 @@ app.get('/tickets/progression', function (req, res) {
     });
 
     res.json(values);
-});
-
-app.get('/tickets/*', function (req, res) {
-    res.json({
-        value: Math.floor(Math.random() * 10) + 1
-    })
 });
 
 app.get('/birthday/next', function (req, res) {
@@ -107,7 +93,7 @@ app.get('/team-social/all', function (req, res) {
         },
         {
             label: "Major Event",
-            value: "O0/00"
+            value: "20/09"
         }
     ]);
 });
@@ -125,13 +111,6 @@ app.get('/team-news/all', function (req, res) {
     ]);
 });
 
-app.get('/stats/*', function (req, res) {
-    res.json({
-        min: 0,
-        max: 100,
-        value: Math.floor(Math.random() * 25) + 50
-    });
-});
 
 app.listen(3001, function () {
     console.log('Data being served from http://localhost:3001');
