@@ -9,6 +9,7 @@ import ListWidgetContainer from '../components/ListWidgetContainer';
 import '../styles/App.css';
 import WeatherWidgetContainer from './Weather/WeatherWidgetContainer';
 import Banner from './Banner/Banner';
+import GalleryWidgetContainer from './GalleryWidget/GalleryWidgetContainer';
 
 class App extends Component {
     render() {
@@ -47,6 +48,9 @@ class App extends Component {
                     <BirthdayWidgetContainer
                         href="http://localhost:3001/winning-behaviour/now"
                         heading="This Month's Winning Behaviour" />
+                    <GalleryWidgetContainer
+                        href="http://localhost:3001/images/latest"
+                        heading="Life at Transform" />
                 </div>
             </div>
         );

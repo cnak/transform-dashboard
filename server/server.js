@@ -23,7 +23,7 @@ app.get('/weather/current', async (req, res) => {
         res.json(weatherResponse)
     }
     catch (e) {
-        console.error(e, 'failed to retrieve weather data')
+        // console.error(e, 'failed to retrieve weather data')
     }
 });
 
@@ -48,10 +48,53 @@ app.get('/tickets/progression', function (req, res) {
     res.json(values);
 });
 
+app.get('/images/all', function (req, res) {
+    let values = []
+
+    res.json(
+        [
+            {
+                imageUrl: 'gallery/1.jpg'
+            },
+            {
+                imageUrl: 'gallery/2.jpg'
+            },
+            {
+                imageUrl: 'gallery/3.jpg'
+            },
+            {
+                imageUrl: 'gallery/4.jpg'
+            },
+            {
+                imageUrl: 'gallery/5.jpg'
+            },
+        ]
+    )
+}
+);
+
+app.get('/images/latest', async (req, res) => {
+
+    try {
+        const imagesResponse = await fetch('http://localhost:3001/images/all')
+            .then(res => res.json());
+
+        const image = (imagesResponse[Math.floor((Math.random() * 5) + 1)])
+        if (image == undefined) {
+            res.json({imageUrl: 'gallery/1.jpg'});
+        }
+        res.json(image);
+    }
+    catch (e) {
+        console.error(e, 'failed to retrieve images data')
+    }
+}
+);
+
 app.get('/birthday/next', function (req, res) {
     res.json({
-        name: 'Cedric',
-        date: '24th May',
+        name: 'Jem',
+        date: '21st June',
         imageUrl: 'images/ced.jpg'
     })
 });
