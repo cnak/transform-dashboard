@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 import './OpenWeather.css';
 import axios from 'axios';
@@ -15,14 +15,8 @@ class OpenWeather extends React.Component {
   }
 
   componentDidMount() {
-    const { city, country, appid, units } = this.props;
 
-    axios.get('http://api.openweathermap.org/data/2.5/weather', {
-      params: {
-        q: `${city},${country}`,
-        APPID: appid,
-        units,
-      },
+    axios.get(this.props.apiLocation, {
     }).then((response) => {
       const { data } = response;
       this.setState({ name: data.name, temp: data.main.temp });
@@ -36,18 +30,8 @@ class OpenWeather extends React.Component {
   }
 }
 
-OpenWeather.propTypes = {
-  city: PropTypes.string.isRequired,
-  country: PropTypes.string,
-  appid: PropTypes.string.isRequired,
-  units: PropTypes.string,
-};
-
 OpenWeather.defaultProps = {
   city: 'London',
-  country: '',
-  appid: '',
-  units: 'metric',
 };
 
 export default OpenWeather;
