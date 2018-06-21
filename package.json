@@ -7,14 +7,15 @@
     "chart.js": "^2.5.0",
     "classnames": "^2.2.6",
     "express": "^4.15.2",
+    "node-fetch": "^2.1.2",
     "react": "^15.4.2",
     "react-chartjs-2": "^2.0.5",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
+    "node-sass": "^4.9.0",
     "react-scripts": "0.9.5",
-    "sass-loader": "^7.0.3",
-    "node-sass": "^4.9.0"
+    "sass-loader": "^7.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
