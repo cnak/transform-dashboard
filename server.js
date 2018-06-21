@@ -1,14 +1,29 @@
 var express = require('express');
+var fetch = require('node-fetch')
 var app = express();
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    if(process.argv.includes("delayresponse")) {
-        setTimeout(function(){
+    if (process.argv.includes("delayresponse")) {
+        setTimeout(function () {
             next();
         }, 2000);
     } else {
         next();
+    }
+});
+
+app.get('/weather/current', async (req, res) => {
+    const APPID = process.env.OPEN_WEATHER_API
+    const url = `https://api.openweathermap.org/data/2.5/weather?APPID=${APPID}&q=City of London, GB&units=metric`
+    try {
+        const weatherResponse = await fetch(url)
+            .then(res => res.json());
+
+        res.json(weatherResponse)
+    }
+    catch (e) {
+        console.error(e, 'failed to retrieve weather data')
     }
 });
 
@@ -27,7 +42,7 @@ app.get('/tickets/progression', function (req, res) {
 
     labels.forEach((label, index) => {
         let data = [];
-        for(let i = 0; i < 7; i++) {
+        for (let i = 0; i < 7; i++) {
             data.push(Math.floor(Math.random() * 10) + i);
         }
 
@@ -94,7 +109,7 @@ app.get('/team-social/all', function (req, res) {
             label: "Major Event",
             value: "O0/00"
         }
-    ]);    
+    ]);
 });
 
 app.get('/team-news/all', function (req, res) {
