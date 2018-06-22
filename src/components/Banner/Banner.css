@@ -7,12 +7,4 @@
   height: 40px;
   margin: 0 auto;
   animation: 6s ease-in-out infinite;
-  /* &:before { 
-   color: orange;
-  } */
-}
-
-@keyframes .title-logo img {
-  0%,100%{ transform:translate(10px, -10px) rotate(-8eg);}
-  /* 50%{ transform:translate(-15px, 10px) rotate(10deg); } */
 }
