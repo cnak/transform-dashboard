@@ -1,7 +1,10 @@
 {
-  "name": "react-dashboard",
+  "name": "Transform-Dashboard",
   "version": "0.1.0",
   "private": true,
+    "engines": {
+    "node": "8.9.4"
+  },
   "dependencies": {
     "axios": "^0.16.0",
     "chart.js": "^2.5.0",
