@@ -16,9 +16,10 @@ export const Isnt_Loading = () => {
     }
 }
 
-export const Update_Birthday_Name = (data) => {
+export const Update= (item, data) => {
     return {
-        type: UPDATE_BIRTHDAY_NAME,
+        type: Item,
         data
     }
 }
+

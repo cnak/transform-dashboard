@@ -3,7 +3,8 @@ import { IS_LOADING, ISNT_LOADING, UPDATE_BIRTHDAY_NAME } from '../actions/birth
 export const initialBirthdayState = {
     loading: false,
     imageUrl: undefined,
-    birthdayName: undefined
+    birthdayName: undefined,
+    date: undefined
 }
 
 export const birthdayReducer = (state = initialBirthdayState, action) => {
@@ -21,6 +22,16 @@ export const birthdayReducer = (state = initialBirthdayState, action) => {
         case UPDATE_BIRTHDAY_NAME: {
             return Object.assign({}, state, {
                 birthdayName: action.data
+            });
+        }
+        case UPDATE_DATE: {
+            return Object.assign({}, state, {
+                date: action.data
+            });
+        }
+        case UPDATE_IMAGE: {
+            return Object.assign({}, state, {
+                imageUrl: action.data
             });
         }
     }

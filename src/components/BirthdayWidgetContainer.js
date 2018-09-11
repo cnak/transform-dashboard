@@ -7,6 +7,7 @@ import axios from 'axios';
 
 // Import components
 import BirthdayWidget from './BirthdayWidget';
+import { UPDATE_BIRTHDAY_NAME } from '../actions/birthday-actions';
 
 class BirthdayWidgetContainer extends Component {
     constructor() {
@@ -31,12 +32,11 @@ class BirthdayWidgetContainer extends Component {
         onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {
-                this.setState({
-                    loading: false,
-                    birthdayName: resp.data.name,
-                    date: resp.data.date,
-                    imageUrl: resp.data.imageUrl
-                });
+                onIsntLoading()
+                OnUpdate(UPDATE_BIRTHDAY_NAME, resp.data.name)
+                OnUpdate(UPDATE_DATE, resp.data.date)
+                OnUpdate(UPDATE_IMAGE, resp.data.imageUrl)
+
             })
     }
 
@@ -74,9 +74,7 @@ mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         onIsLoading: Is_Loading,
         onIsntLoading: Isnt_Loading,
-        onUpdateBirthdayName: Update_Birthday_Name,
-        onUpdateDate: Update_Date,
-        onUpdateImage: Update_Image
+        OnUpdate: Update
 
     }, dispatch);
 }
