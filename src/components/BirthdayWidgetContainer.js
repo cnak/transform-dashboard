@@ -28,7 +28,6 @@ class BirthdayWidgetContainer extends Component {
     // Fetch new data
     getData() {
         // Tell the Widget component we're currently loading
-
         onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {

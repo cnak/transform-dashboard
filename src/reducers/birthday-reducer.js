@@ -1,4 +1,4 @@
-import { IS_LOADING, ISNT_LOADING, UPDATE_BIRTHDAY_NAME } from '../actions/birthday-actions';
+import { IS_LOADING, ISNT_LOADING, UPDATE_BIRTHDAY_NAME, UPDATE_DATE, UPDATE_IMAGE } from '../actions/birthday-actions';
 
 export const initialBirthdayState = {
     loading: false,
