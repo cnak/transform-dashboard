@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // Import request module
 import axios from 'axios';
@@ -9,13 +11,6 @@ import BirthdayWidget from './BirthdayWidget';
 class BirthdayWidgetContainer extends Component {
     constructor() {
         super();
-
-        // Set initial state
-        this.state = {
-            loading: false,
-            imageUrl: undefined,
-            birthdayName: undefined
-        }
 
         // Bind function to refer to component
         this.getData = this.getData.bind(this);
@@ -33,7 +28,7 @@ class BirthdayWidgetContainer extends Component {
     getData() {
         // Tell the Widget component we're currently loading
 
-        this.setState({ loading: true });
+        onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {
                 this.setState({
@@ -67,4 +62,23 @@ BirthdayWidgetContainer.propTypes = {
     href: React.PropTypes.string.isRequired
 }
 
-export default BirthdayWidgetContainer;
+const mapStateToProps = (state) => {
+    return {
+    loading: state.birthdayReducer.loading,
+    imageUrl: state.birthdayReducer.imageUrl,
+    birthdayName: state.birthdayReducer.birthdayName
+    }
+}
+
+mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        onIsLoading: Is_Loading,
+        onIsntLoading: Isnt_Loading,
+        onUpdateBirthday: Update_Birthday,
+        onUpdateDate: Update_Date,
+        onUpdateImage: Update_Image
+
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BirthdayWidgetContainer);
