@@ -74,7 +74,7 @@ mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         onIsLoading: Is_Loading,
         onIsntLoading: Isnt_Loading,
-        onUpdateBirthday: Update_Birthday,
+        onUpdateBirthdayName: Update_Birthday_Name,
         onUpdateDate: Update_Date,
         onUpdateImage: Update_Image
 
