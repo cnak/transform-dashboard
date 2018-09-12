@@ -46,10 +46,10 @@ class BirthdayWidgetContainer extends Component {
             <BirthdayWidget heading={this.props.heading}
                 colspan={this.props.colspan}
                 rowspan={this.props.rowspan}
-                imageUrl={this.state.imageUrl}
-                birthdayName={this.state.birthdayName}
-                date={this.state.date}
-                loading={this.state.loading} />
+                imageUrl={this.props.imageUrl}
+                birthdayName={this.props.birthdayName}
+                date={this.props.date}
+                loading={this.props.loading} />
         );
     }
 }
