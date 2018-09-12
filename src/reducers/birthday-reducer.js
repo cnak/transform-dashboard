@@ -11,12 +11,12 @@ export const birthdayReducer = (state = initialBirthdayState, action) => {
     switch (action.type) {
         case IS_LOADING: {
             return Object.assign({}, state, {
-                loading: action.true
+                loading: action.switch
             });
         }
         case ISNT_LOADING: {
             return Object.assign({}, state, {
-                loading: action.false
+                loading: action.switch
             });
         }
         case UPDATE_BIRTHDAY_NAME: {

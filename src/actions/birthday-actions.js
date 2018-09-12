@@ -7,20 +7,20 @@ export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 export const Is_Loading = () => {
     return {
         type: IS_LOADING,
-        true
+        switch: true
     }
 }
 
 export const Isnt_Loading = () => {
     return {
         type: ISNT_LOADING,
-        false
+        switch: false
     }
 }
 
-export const Update= (item, data) => {
+export const Update = (item, data) => {
     return {
-        type: Item,
+        type: item,
         data
     }
 }
