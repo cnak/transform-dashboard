@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { UPDATE_BIRTHDAY_NAME, UPDATE_DATE, UPDATE_IMAGE } from '../actions/birthday-actions';
+import { Is_Loading, Isnt_Loading, Update } from '../actions/birthday-actions';
 // Import request module
 import axios from 'axios';
 
 // Import components
 import BirthdayWidget from './BirthdayWidget';
-import { UPDATE_BIRTHDAY_NAME } from '../actions/birthday-actions';
+
 
 class BirthdayWidgetContainer extends Component {
     constructor() {
@@ -28,13 +29,13 @@ class BirthdayWidgetContainer extends Component {
     // Fetch new data
     getData() {
         // Tell the Widget component we're currently loading
-        onIsLoading()
+        this.props.onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {
-                onIsntLoading()
-                OnUpdate(UPDATE_BIRTHDAY_NAME, resp.data.name)
-                OnUpdate(UPDATE_DATE, resp.data.date)
-                OnUpdate(UPDATE_IMAGE, resp.data.imageUrl)
+                this.props.onIsntLoading()
+                this.props.OnUpdate(UPDATE_BIRTHDAY_NAME, resp.data.name)
+                this.props.OnUpdate(UPDATE_DATE, resp.data.date)
+                this.props.OnUpdate(UPDATE_IMAGE, resp.data.imageUrl)
 
             })
     }
@@ -69,7 +70,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         onIsLoading: Is_Loading,
         onIsntLoading: Isnt_Loading,

@@ -34,5 +34,7 @@ export const birthdayReducer = (state = initialBirthdayState, action) => {
                 imageUrl: action.data
             });
         }
+        default:
+        return state;
     }
 }
