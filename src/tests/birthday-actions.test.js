@@ -7,7 +7,7 @@ describe('birthday actions', () => {
                 type: birthdayActions.IS_LOADING,
                 switch: true
             }
-            expect(birthdayActions.Is_Loading()).toEqual(expectedAction)
+            expect(birthdayActions.is_loading()).toEqual(expectedAction)
         })
     })
         describe('Isnt_Loading', () => {
@@ -16,7 +16,7 @@ describe('birthday actions', () => {
                     type: birthdayActions.ISNT_LOADING,
                     switch: false
                 }
-                expect(birthdayActions.Isnt_Loading()).toEqual(expectedAction)
+                expect(birthdayActions.isnt_loading()).toEqual(expectedAction)
             })
         })
     describe('Update', ()=> {
@@ -27,7 +27,7 @@ describe('birthday actions', () => {
                 type: item,
                 data: data
             }
-            expect(birthdayActions.Update(item, data)).toEqual(expectedAction)
+            expect(birthdayActions.update(item, data)).toEqual(expectedAction)
         })
         it('updates the required item with data, such as UPDATE_DATE', ()=> {
             const item = birthdayActions.UPDATE_DATE
@@ -36,7 +36,7 @@ describe('birthday actions', () => {
                 type: item,
                 data: data
             }
-            expect(birthdayActions.Update(item, data)).toEqual(expectedAction)
+            expect(birthdayActions.update(item, data)).toEqual(expectedAction)
         })
         it('updates the required item with data, such as UPDATE_IMAGE', ()=> {
             const item = birthdayActions.UPDATE_IMAGE
@@ -45,7 +45,7 @@ describe('birthday actions', () => {
                 type: item,
                 data: data
             }
-            expect(birthdayActions.Update(item, data)).toEqual(expectedAction)
+            expect(birthdayActions.update(item, data)).toEqual(expectedAction)
         })
     })
 })
