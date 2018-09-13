@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { UPDATE_BIRTHDAY_NAME, UPDATE_DATE, UPDATE_IMAGE } from '../actions/birthday-actions';
-import { is_loading, isnt_loading, update } from '../actions/birthday-actions';
+import { update } from '../actions/birthday-actions';
+import { is_loading, isnt_loading } from '../actions/action-helper';
+
 // Import request module
 import axios from 'axios';
 

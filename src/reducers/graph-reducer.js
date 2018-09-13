@@ -1,4 +1,6 @@
-import { IS_LOADING, ISNT_LOADING, ADD_DATA } from '../actions/graph-actions';
+import { ADD_DATA } from '../actions/graph-actions';
+import { IS_LOADING, ISNT_LOADING } from '../actions/action-helper';
+
 
 export const initialGraphState = {
     loading: false,
