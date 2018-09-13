@@ -32,7 +32,6 @@ class BirthdayWidgetContainer extends Component {
         this.props.onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {
-                console.log('resp', resp.data.imageUrl)
                 this.props.onIsntLoading()
                 this.props.OnUpdate(UPDATE_BIRTHDAY_NAME, resp.data.name)
                 this.props.OnUpdate(UPDATE_DATE, resp.data.date)

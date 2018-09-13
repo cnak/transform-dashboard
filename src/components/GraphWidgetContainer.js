@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { is_loading, isnt_loading, data } from '../actions/graph-actions';
+import { is_loading, isnt_loading, add_data } from '../actions/graph-actions';
 
 // Import request module
 import axios from 'axios';
