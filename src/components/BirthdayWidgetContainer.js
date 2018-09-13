@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { UPDATE_BIRTHDAY_NAME, UPDATE_DATE, UPDATE_IMAGE } from '../actions/birthday-actions';
+import { is_loading, isnt_loading, update } from '../actions/birthday-actions';
 // Import request module
 import axios from 'axios';
 
 // Import components
 import BirthdayWidget from './BirthdayWidget';
 
+
 class BirthdayWidgetContainer extends Component {
     constructor() {
         super();
-
-        // Set initial state
-        this.state = {
-            loading: false,
-            imageUrl: undefined,
-            birthdayName: undefined
-        }
 
         // Bind function to refer to component
         this.getData = this.getData.bind(this);
@@ -32,16 +29,14 @@ class BirthdayWidgetContainer extends Component {
     // Fetch new data
     getData() {
         // Tell the Widget component we're currently loading
-
-        this.setState({ loading: true });
+        this.props.onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {
-                this.setState({
-                    loading: false,
-                    birthdayName: resp.data.name,
-                    date: resp.data.date,
-                    imageUrl: resp.data.imageUrl
-                });
+                this.props.onIsntLoading()
+                this.props.OnUpdate(UPDATE_BIRTHDAY_NAME, resp.data.name)
+                this.props.OnUpdate(UPDATE_DATE, resp.data.date)
+                this.props.OnUpdate(UPDATE_IMAGE, resp.data.imageUrl)
+
             })
     }
 
@@ -51,10 +46,10 @@ class BirthdayWidgetContainer extends Component {
             <BirthdayWidget heading={this.props.heading}
                 colspan={this.props.colspan}
                 rowspan={this.props.rowspan}
-                imageUrl={this.state.imageUrl}
-                birthdayName={this.state.birthdayName}
-                date={this.state.date}
-                loading={this.state.loading} />
+                imageUrl={this.props.imageUrl}
+                birthdayName={this.props.birthdayName}
+                date={this.props.date}
+                loading={this.props.loading} />
         );
     }
 }
@@ -67,4 +62,21 @@ BirthdayWidgetContainer.propTypes = {
     href: React.PropTypes.string.isRequired
 }
 
-export default BirthdayWidgetContainer;
+const mapStateToProps = (state) => {
+    return {
+    loading: state.birthdayReducer.loading,
+    imageUrl: state.birthdayReducer.imageUrl,
+    birthdayName: state.birthdayReducer.birthdayName
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        onIsLoading: is_loading,
+        onIsntLoading: isnt_loading,
+        OnUpdate: update
+
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BirthdayWidgetContainer);
