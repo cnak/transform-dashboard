@@ -32,6 +32,7 @@ class BirthdayWidgetContainer extends Component {
         this.props.onIsLoading()
         return axios.get(this.props.href)
             .then(resp => {
+                console.log('resp', resp.data.imageUrl)
                 this.props.onIsntLoading()
                 this.props.OnUpdate(UPDATE_BIRTHDAY_NAME, resp.data.name)
                 this.props.OnUpdate(UPDATE_DATE, resp.data.date)
@@ -66,7 +67,8 @@ const mapStateToProps = (state) => {
     return {
     loading: state.birthdayReducer.loading,
     imageUrl: state.birthdayReducer.imageUrl,
-    birthdayName: state.birthdayReducer.birthdayName
+    birthdayName: state.birthdayReducer.birthdayName,
+    date: state.birthdayReducer.date
     }
 }
 

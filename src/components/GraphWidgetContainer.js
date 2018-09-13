@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { is_loading, isnt_loading, data } from '../actions/graph-actions';
 
 // Import request module
 import axios from 'axios';
 
 // Import components
 import GraphWidget from '../components/GraphWidget';
+import { bindActionCreators } from '../../../../Library/Caches/typescript/3.0/node_modules/redux';
+import { is_loading, isnt_loading } from '../actions/birthday-actions';
+import { connect } from 'net';
 
 class GraphWidgetContainer extends Component {
     constructor() {
@@ -13,7 +19,7 @@ class GraphWidgetContainer extends Component {
         // Set initial state
         this.state = {
             loading: false,
-            values: []
+            data: []
         }
 
         // Bind function to refer to component
@@ -62,4 +68,19 @@ GraphWidgetContainer.propTypes = {
     href: React.PropTypes.string.isRequired
 }
 
-export default GraphWidgetContainer;
+const mapStateToProps = (state) => {
+    return {
+        loading: state.graphReducer.loading,
+        data: state.graphReducer.data
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        onIsLoading: is_loading,
+        onIsntLoading: isnt_loading,
+        onAddData: add_data
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GraphWidgetContainer);
