@@ -4,21 +4,21 @@ export const UPDATE_BIRTHDAY_NAME = 'UPDATE_BIRTHDAY_NAME';
 export const UPDATE_DATE = 'UPDATE_DATE';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 
-export const Is_Loading = () => {
+export const is_loading = () => {
     return {
         type: IS_LOADING,
         switch: true
     }
 }
 
-export const Isnt_Loading = () => {
+export const isnt_loading = () => {
     return {
         type: ISNT_LOADING,
         switch: false
     }
 }
 
-export const Update = (item, data) => {
+export const update = (item, data) => {
     return {
         type: item,
         data

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { UPDATE_BIRTHDAY_NAME, UPDATE_DATE, UPDATE_IMAGE } from '../actions/birthday-actions';
-import { Is_Loading, Isnt_Loading, Update } from '../actions/birthday-actions';
+import { is_loading, isnt_loading, update } from '../actions/birthday-actions';
 // Import request module
 import axios from 'axios';
 
@@ -72,9 +72,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        onIsLoading: Is_Loading,
-        onIsntLoading: Isnt_Loading,
-        OnUpdate: Update
+        onIsLoading: is_loading,
+        onIsntLoading: isnt_loading,
+        OnUpdate: update
 
     }, dispatch);
 }

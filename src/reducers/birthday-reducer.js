@@ -10,29 +10,34 @@ export const initialBirthdayState = {
 export const birthdayReducer = (state = initialBirthdayState, action) => {
     switch (action.type) {
         case IS_LOADING: {
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 loading: action.switch
-            });
+            };
         }
         case ISNT_LOADING: {
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 loading: action.switch
-            });
+            };
         }
         case UPDATE_BIRTHDAY_NAME: {
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 birthdayName: action.data
-            });
+            };
         }
         case UPDATE_DATE: {
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 date: action.data
-            });
+            };
         }
         case UPDATE_IMAGE: {
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 imageUrl: action.data
-            });
+            };
         }
         default:
         return state;
