@@ -66,7 +66,8 @@ const mapStateToProps = (state) => {
     return {
     loading: state.birthdayReducer.loading,
     imageUrl: state.birthdayReducer.imageUrl,
-    birthdayName: state.birthdayReducer.birthdayName
+    birthdayName: state.birthdayReducer.birthdayName,
+    date: state.birthdayReducer.date
     }
 }
 
