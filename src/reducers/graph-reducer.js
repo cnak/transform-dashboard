@@ -25,5 +25,7 @@ export const graphReducer = (state = initialGraphState, action) => {
                 data: action.newData
             }
         }
+        default:
+        return state;
     }
 }
