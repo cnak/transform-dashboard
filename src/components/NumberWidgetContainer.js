@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { is_loading, isnt_loading } from '../actions/action-helper';
+
 
 // Import request module
 import axios from 'axios';
