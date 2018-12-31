@@ -15,29 +15,21 @@ const TOKEN_PATH = 'token.json';
 const SPREADSHEET_ID = '1ctq6PE-K6OyEaIShFi3caCHErXA-Iiw1Q3ZRUjjSMVM'
 
 // Load client secrets from a local file.
-function start() {
-  return fs.readFile('./credentials.json', (err, content) => {
-    if (err) return console.log('Error loading client secret file:', err);
-    // Authorize a client with credentials, then call the Google Sheets API.
-    const holidays = authorize(JSON.parse(content), listHolidays);
-    console.log('test', holidays)
-    // return holidays
-  });
-}
+async function start() {
 
-// listHolidays.then(function (value) {
-//   console.log('THIS IS THE PROMISE => ', value);
-//   holidays = value;
-//   return holidays
-// });
+  const content = fs.readFileSync('./credentials.json')
+  return await authorize(JSON.parse(content), null)
+    .then(async function (value) {
+      return listHolidays(value);
+    })
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
  * @param {Object} credentials The authorization client credentials.
- * @param {function} callback The callback to call with the authorized client.
  */
-const authorize = (credentials, callback) => {
+const authorize = async (credentials, callback) => {
 
   const {
     client_secret,
@@ -47,13 +39,52 @@ const authorize = (credentials, callback) => {
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
   // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, (err, token) => {
-    if (err) return getNewToken(oAuth2Client, callback);
-    oAuth2Client.setCredentials(JSON.parse(token));
-    const holidays = callback(oAuth2Client);
-    console.log('callbalck, ', holidays)
+  return new Promise(function (resolve, reject) {
+    fs.readFile(TOKEN_PATH, (err, token) => {
+      if (err) return getNewToken(oAuth2Client, callback);
+      oAuth2Client.setCredentials(JSON.parse(token));
+      resolve(oAuth2Client)
+    });
+  })
+}
+
+/**
+ * Prints the names and majors of students in a sample spreadsheet:
+ * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
+ */
+const listHolidays = async (auth) => {
+
+  var holidays=[]
+  const SHEET_NAME = 'Holidays'
+  const sheets = google.sheets({
+    version: 'v4',
+    auth
   });
 
+  return new Promise(function (resolve, reject) {
+
+    sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: SHEET_NAME + '!A2:B19',
+    }, (err, res) => {
+      if (err) return console.log('The API returned an error: ' + err);
+
+      const rows = res.data.values;
+
+      if (rows.length) {
+        rows.map((row) => {
+          holidays.push({
+            name: row[0],
+            date: row[1]
+          })
+        });
+      } else {
+        console.log('No data found.');
+      }
+      resolve(holidays)
+    });
+  });
 }
 
 /**
@@ -83,48 +114,6 @@ function getNewToken(oAuth2Client, callback) {
         console.log('Token stored to', TOKEN_PATH);
       });
       callback(oAuth2Client);
-    });
-  });
-}
-
-/**
- * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
- */
-const listHolidays = async (auth) => {
-
-  var holidays = [{}]
-  const SHEET_NAME = 'Holidays'
-  const sheets = google.sheets({
-    version: 'v4',
-    auth
-  });
-
-  return new Promise(function (resolve, reject) {
-
-    sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: SHEET_NAME + '!A2:B19',
-    }, (err, res) => {
-      if (err) return console.log('The API returned an error: ' + err);
-
-      const rows = res.data.values;
-
-      if (rows.length) {
-        rows.map((row) => {
-          holidays.push({
-            name: row[0],
-            date: row[1]
-          })
-        });
-      } else {
-        console.log('No data found.');
-      }
-      resolve(holidays)
-
-      console.log('within  svg ', holidays)
-      return holidays;
     });
   });
 }

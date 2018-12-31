@@ -1,14 +1,12 @@
-
 var gsheets = require('./gsheets')
 var express = require('express');
 var fetch = require('node-fetch')
 var app = express();
 
 const listHolidays = gsheets.start()
-console.log('List of holidays: ',listHolidays)
-
-// gsheets.start()
-
+  .then(function (value) {
+    console.log('List of holidays => ', value);
+  })
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
