@@ -25,20 +25,26 @@ function start() {
   });
 }
 
+// listHolidays.then(function (value) {
+//   console.log('THIS IS THE PROMISE => ', value);
+//   holidays = value;
+//   return holidays
+// });
+
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
-function authorize(credentials, callback) {
+const authorize = (credentials, callback) => {
+
   const {
     client_secret,
     client_id,
     redirect_uris
   } = credentials.installed;
-  const oAuth2Client = new google.auth.OAuth2(
-    client_id, client_secret, redirect_uris[0]);
+  const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
   // Check if we have previously stored a token.
   fs.readFile(TOKEN_PATH, (err, token) => {
@@ -47,6 +53,7 @@ function authorize(credentials, callback) {
     const holidays = callback(oAuth2Client);
     console.log('callbalck, ', holidays)
   });
+
 }
 
 /**
@@ -85,39 +92,39 @@ function getNewToken(oAuth2Client, callback) {
  * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
-function listHolidays(auth) {
+const listHolidays = async (auth) => {
 
-  let holidays = [{}]
+  var holidays = [{}]
   const SHEET_NAME = 'Holidays'
   const sheets = google.sheets({
     version: 'v4',
     auth
   });
 
+  return new Promise(function (resolve, reject) {
 
-  const hols = sheets.spreadsheets.values.get({
-    spreadsheetId: SPREADSHEET_ID,
-    range: SHEET_NAME + '!A2:B19',
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-    const rows = res.data.values;
+    sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: SHEET_NAME + '!A2:B19',
+    }, (err, res) => {
+      if (err) return console.log('The API returned an error: ' + err);
 
-    if (rows.length) {
+      const rows = res.data.values;
 
-      rows.map((row) => {
-        holidays.push({
-          name: row[0],
-          date: row[1]
-        })
-      });
-    } else {
-      console.log('No data found.');
-    }
-    console.log('within  svg ', holidays)
-    return holidays;
+      if (rows.length) {
+        rows.map((row) => {
+          holidays.push({
+            name: row[0],
+            date: row[1]
+          })
+        });
+      } else {
+        console.log('No data found.');
+      }
+      resolve(holidays)
+
+      console.log('within  svg ', holidays)
+      return holidays;
+    });
   });
-
-  console.log('within  listH ', hols)
-
-  return holidays
 }
