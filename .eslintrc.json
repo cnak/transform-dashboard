@@ -29,6 +29,11 @@
     "react/jsx-uses-vars": 1,
     "no-unused-vars": "warn",
     "react/prop-types": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "for-direction": 0,
+    "no-buffer-constructor": 0,
+    "no-compare-neg-zero": 0,
+    "getter-return": 0,
+    "lines-between-class-members": 0
   }
 }

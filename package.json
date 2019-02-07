@@ -3,8 +3,8 @@
   "version": "1.9.4",
   "private": true,
   "engines": {
-    "node": "11.5.0",
-    "yarn": "1.12.3"
+    "node": "11.9.0",
+    "yarn": "1.13.0"
   },
   "dependencies": {
     "axios": "^0.16.0",
@@ -16,6 +16,7 @@
     "lebab": "^3.0.3",
     "node-fetch": "^2.1.2",
     "nodemon": "^1.17.5",
+    "prop-types": "^15.6.2",
     "react": "^15.4.2",
     "react-chartjs-2": "^2.0.5",
     "react-dom": "^15.4.2",

@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-
-// Import components
-import Loading from './Loading';
-
-// Import styling
+import PropTypes from 'prop-types';
+import Loading from '../elements/Loading';
 import '../styles/Widget.css';
 
 class Widget extends Component {
   constructor(props) {
     super(props);
 
-    // Create inline styles to make grid elements span multiple rows/columns
     this.spanStyles = {};
 
     if (props.colspan !== 1) {
@@ -22,19 +18,19 @@ class Widget extends Component {
   }
 
   render() {
+    const { heading, loading, children } = this.props;
     return (
       <div style={this.spanStyles} className="Widget">
         <div className="header">
-          <h2>{this.props.heading}</h2>
-          {this.props.loading ? <Loading /> : ''}
+          <h2>{heading}</h2>
+          {loading ? <Loading /> : ''}
         </div>
-        <div className="content">{this.props.children}</div>
+        <div className="content">{children}</div>
       </div>
     );
   }
 }
 
-// Provide default settings for when they aren't supplied
 Widget.defaultProps = {
   heading: 'Unnamed Widget',
   children: 'Widget children',
@@ -42,12 +38,11 @@ Widget.defaultProps = {
   rowspan: 1
 };
 
-// Enforce the type of props to send to this component
 Widget.propTypes = {
-  heading: React.PropTypes.string,
-  colspan: React.PropTypes.number,
-  rowspan: React.PropTypes.number,
-  children: React.PropTypes.element.isRequired
+  heading: PropTypes.string,
+  colspan: PropTypes.number,
+  rowspan: PropTypes.number,
+  children: PropTypes.string
 };
 
 export default Widget;
