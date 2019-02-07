@@ -11,37 +11,37 @@ class GalleryWidgetContainer extends Component {
       loading: false,
       imageUrl: undefined,
       images: undefined
-    }
+    };
 
     this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
     this.getData().then(_ => {
-      this.interval =
-        setInterval(this.getData, 60000);
+      this.interval = setInterval(this.getData, 60000);
     });
   }
 
   getData() {
     this.setState({ loading: true });
-    return axios.get(this.props.href)
-      .then(resp => {
-        this.setState({
-          loading: false,
-          imageUrl: resp.data.imageUrl
-        });
-      })
+    return axios.get(this.props.href).then(resp => {
+      this.setState({
+        loading: false,
+        imageUrl: resp.data.imageUrl
+      });
+    });
   }
 
   render() {
     return (
       // Render the number widget
-      <GalleryWidget heading={this.props.heading}
+      <GalleryWidget
+        heading={this.props.heading}
         colspan={this.props.colspan}
         rowspan={this.props.rowspan}
         imageUrl={this.state.imageUrl}
-        loading={this.state.loading} />
+        loading={this.state.loading}
+      />
     );
   }
 }
@@ -52,6 +52,6 @@ GalleryWidgetContainer.propTypes = {
   colspan: React.PropTypes.number,
   rowspan: React.PropTypes.number,
   href: React.PropTypes.string.isRequired
-}
+};
 
 export default GalleryWidgetContainer;

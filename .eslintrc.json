@@ -9,6 +9,13 @@
       "experimentalObjectRestSpread": true
     }
   },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
   "extends": [
     "airbnb",
     "plugin:prettier/recommended",

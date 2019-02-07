@@ -16,13 +16,13 @@ function GenericWeather({ city, temp, status }) {
 GenericWeather.propTypes = {
   city: PropTypes.string,
   temp: PropTypes.number,
-  status: PropTypes.string,
+  status: PropTypes.string
 };
 
 GenericWeather.defaultProps = {
   city: 'Jerusalem',
   temp: '25º',
-  status: 'sun',
+  status: 'sun'
 };
 
 export default GenericWeather;

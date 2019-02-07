@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 
-import OpenWeather from '../../components/Weather/OpenWeather'
+import OpenWeather from './OpenWeather';
 
 class WeatherWidgetContainer extends Component {
-
   render() {
     const { href } = this.props;
-    return (
-      <OpenWeather apiLocation={href} />
-    )
+    return <OpenWeather apiLocation={href} />;
   }
 }
 

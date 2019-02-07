@@ -9,6 +9,6 @@ const Banner = () => (
   </div>
 );
 
-Banner.propTypes = { };
+Banner.propTypes = {};
 
 export default Banner;

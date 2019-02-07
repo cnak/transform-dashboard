@@ -1,15 +1,19 @@
 import { combineReducers, createStore } from 'redux';
-import { initialBirthdayState,  birthdayReducer } from './reducers/birthday-reducer';
+import { initialBirthdayState, birthdayReducer } from './reducers/birthday-reducer';
 import { initialGraphState, graphReducer } from './reducers/graph-reducer';
 
 const rootReducer = combineReducers({
-    birthdayReducer,
-    graphReducer
+  birthdayReducer,
+  graphReducer
 });
 
 const initialState = {
-    initialBirthdayState,
-    initialGraphState
-}
+  initialBirthdayState,
+  initialGraphState
+};
 
-export default createStore(rootReducer, initialState, window.devToolsExtension && window.devToolsExtension());
+export default createStore(
+  rootReducer,
+  initialState,
+  window.devToolsExtension && window.devToolsExtension()
+);
