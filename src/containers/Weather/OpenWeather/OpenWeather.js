@@ -1,12 +1,10 @@
 import React from 'react';
-
-import './OpenWeather.css';
 import axios from 'axios';
 import GenericWeather from '../GenericWeather';
 
 class OpenWeather extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: null,
       temp: null
@@ -14,7 +12,9 @@ class OpenWeather extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(this.props.apiLocation, {}).then(response => {
+    const { apiLocation } = this.props;
+
+    axios.get(apiLocation, {}).then(response => {
       const { data } = response;
       this.setState({ name: data.name, temp: data.main.temp });
     });

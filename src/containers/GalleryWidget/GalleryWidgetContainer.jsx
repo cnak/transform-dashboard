@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
-import NumberWidget from './NumberWidget';
+import axios from 'axios';
+import GalleryWidget from './GalleryWidget';
 
-class NumberWidgetContainer extends Component {
+class GalleryWidgetContainer extends Component {
   constructor() {
     super();
 
     this.state = {
       loading: false,
-      min: undefined,
-      max: undefined,
-      value: undefined
+      imageUrl: undefined
     };
 
     this.getData = this.getData.bind(this);
@@ -25,46 +23,41 @@ class NumberWidgetContainer extends Component {
 
   async getData() {
     const { href } = this.props;
+
     this.setState({ loading: true });
-    return axios.get(href).then(resp => {
-      this.setState({
-        loading: false,
-        min: resp.data.min,
-        max: resp.data.max,
-        value: resp.data.value
-      });
+
+    const resp = await axios.get(href);
+    this.setState({
+      loading: false,
+      imageUrl: resp.data.imageUrl
     });
   }
 
   render() {
     const { heading, colspan, rowspan } = this.props;
-    const { min, max, value, loading } = this.state;
-
+    const { loading, imageUrl } = this.state;
     return (
-      <NumberWidget
+      <GalleryWidget
         heading={heading}
         colspan={colspan}
         rowspan={rowspan}
-        min={min}
-        max={max}
-        value={value}
+        imageUrl={imageUrl}
         loading={loading}
       />
     );
   }
 }
 
-NumberWidgetContainer.propTypes = {
-  heading: PropTypes.string,
+GalleryWidgetContainer.propTypes = {
+  heading: PropTypes.string.isRequired,
   colspan: PropTypes.number,
   rowspan: PropTypes.number,
   href: PropTypes.string.isRequired
 };
 
-NumberWidgetContainer.defaultProps = {
-  heading: '',
-  colspan: 10,
-  rowspan: 10
+GalleryWidgetContainer.defaultProps = {
+  colspan: 0,
+  rowspan: 0
 };
 
-export default NumberWidgetContainer;
+export default GalleryWidgetContainer;

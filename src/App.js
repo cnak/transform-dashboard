@@ -8,31 +8,28 @@ import Banner from './containers/Banner/Banner';
 import GalleryWidgetContainer from './containers/GalleryWidget/GalleryWidgetContainer';
 
 const App = () => {
+  const BASE_API_URL = 'http://localhost:3001';
   return (
     <div>
       <Banner />
       <div className="App">
         <Widget heading="Weather">
-          <WeatherWidgetContainer href="http://localhost:3001/weather/current" />
+          <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
         </Widget>
         <Widget heading="Team Social">
-          <ListWidgetContainer
-            href="http://localhost:3001/team-social/all"
-            heading=""
-            rowspan={3}
-          />
+          <ListWidgetContainer href={`${BASE_API_URL}/team-social/all`} heading="" rowspan={3} />
         </Widget>
         <Widget heading="Team News">
-          <ListWidgetContainer href="http://localhost:3001/team-news/all" heading="" rowspan={3} />
+          <ListWidgetContainer href={`${BASE_API_URL}/team-news/all`} heading="" rowspan={3} />
         </Widget>
         <Widget heading="Holidays">
-          <ListWidgetContainer href="http://localhost:3001/holidays/all" heading="" rowspan={3} />
+          <ListWidgetContainer href={`${BASE_API_URL}/holidays/all`} heading="" rowspan={3} />
         </Widget>
-        <Widget heading="Overheard at transform">
-          <h1> Tara: "It's a snack. You know, like cake- but chicken." </h1>
+        <Widget heading="Overheard at ET">
+          <h1> like cake- but chicken.`</h1>
         </Widget>
         <GalleryWidgetContainer
-          href="http://localhost:3001/images/latest"
+          href={`${BASE_API_URL}/images/latest`}
           heading="Life at Transform"
         />
       </div>

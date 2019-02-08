@@ -29,7 +29,6 @@ class ListWidgetContainer extends Component {
       const response = await axios.get(href);
       this.setState({ loading: false, values: response.data });
     } catch (error) {
-      console.log(error);
       this.setState({ loading: false });
     }
   }
