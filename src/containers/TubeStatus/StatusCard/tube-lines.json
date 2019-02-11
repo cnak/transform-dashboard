@@ -1,0 +1,35 @@
+{
+  "bakerloo": {
+    "backgroundColor": "#894e23",
+    "textColor": "#FFFF"
+  },
+  "central": {
+    "backgroundColor": "#dc231e",
+    "textColor": "#FFFF"
+  },
+  "circle": {
+    "backgroundColor": "#ffce00",
+    "textColor": "#FFFF"
+  },
+  "hammersmith & city": {
+    "backgroundColor": "#d799af",
+    "textColor": "#FFFF"
+  },
+  "jubilee": {
+    "backgroundColor": "#6b7278",
+    "textColor": "#ffffff"
+  },
+  "metropolitan": {
+    "backgroundColor": "#751056",
+    "textColor": "#ffffff"
+  },
+
+  "northern": {
+    "backgroundColor": "#000000",
+    "textColor": "#ffffff"
+  },
+  "victoria": {
+    "backgroundColor": "#00a0e2",
+    "textColor": "#ffffff"
+  }
+}
