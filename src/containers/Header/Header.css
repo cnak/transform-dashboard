@@ -10,7 +10,14 @@ img.left-logo {
   border-radius: 0 0px 20px;
 }
 
-img.right-logo {
-  height: 100%;
+.right-logo {
+  display: flex;
+  height: 100px;
+  width: 100px;
+}
+
+.right-logo img {
+  height: 40px;
+  align-self: center;
   width: 100px;
 }

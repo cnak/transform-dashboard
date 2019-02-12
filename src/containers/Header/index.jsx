@@ -6,8 +6,10 @@ import etDashLogo from '../../assets/et-dash-logo.png';
 const Header = () => {
   return (
     <header className="app-header">
-      <img className="left-logo" src={etDashLogo} alt="" />
-      <img className="right-logo" src={engineLogo} alt="" />
+      <img className="left-logo" src={etDashLogo} alt="ET Dash" />
+      <div className="right-logo">
+        <img className="right-logo" src={engineLogo} alt="Engine" />
+      </div>
     </header>
   );
 };
