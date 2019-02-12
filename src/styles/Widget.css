@@ -1,6 +1,15 @@
 .Widget {
   background-color: #34495e;
   padding: 1rem;
+  border-radius: 0 25px 0px;
+}
+
+.Widget-short-height {
+  height: 10em;
+}
+
+.Widget-tall-height {
+  height: 25em;
 }
 
 /* autoprefixer: off */

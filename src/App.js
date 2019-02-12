@@ -14,6 +14,10 @@ const App = () => {
     <div>
       <Header />
       <div className="App">
+        <GalleryWidgetContainer
+          href={`${BASE_API_URL}/images/latest`}
+          heading="Life at Transform"
+        />
         <Widget heading="Weather">
           <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
         </Widget>
@@ -29,10 +33,9 @@ const App = () => {
         <Widget heading="Overheard at ET">
           <h1> like cake- but chicken.`</h1>
         </Widget>
-        <GalleryWidgetContainer
-          href={`${BASE_API_URL}/images/latest`}
-          heading="Life at Transform"
-        />
+        <Widget heading="Wifi Password" size="1">
+          <h1> W1nt3rT1m3`</h1>
+        </Widget>
       </div>
       <Footer />
     </div>
