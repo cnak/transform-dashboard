@@ -1,0 +1,17 @@
+footer {
+  height: 5vh;
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer .dateTime {
+  display: inline-flex;
+  width: 15em;
+  font-size: 1.5em;
+}
+
+footer .dateTime .time {
+  margin: 0 .5em 0;
+}

@@ -4,14 +4,14 @@ const gsheets = require('./gsheets');
 
 const app = express();
 
-const listHolidays = gsheets.start().then(function(value) {
-  console.log('List of holidays => ', value);
-});
+// const listHolidays = gsheets.start().then(function(value) {
+//   console.log('List of holidays => ', value);
+// });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   if (process.argv.includes('delayresponse')) {
-    setTimeout(function() {
+    setTimeout(function () {
       next();
     }, 2000);
   } else {
@@ -31,11 +31,10 @@ app.get('/weather/current', async (req, res) => {
   }
 });
 
-app.get('/images/all', function(req, res) {
+app.get('/images/all', function (req, res) {
   const values = [];
 
-  res.json([
-    {
+  res.json([{
       imageUrl: 'gallery/1.jpg'
     },
     {
@@ -69,7 +68,7 @@ app.get('/images/latest', async (req, res) => {
   }
 });
 
-app.get('/birthday/next', function(req, res) {
+app.get('/birthday/next', function (req, res) {
   res.json({
     name: 'Carola',
     date: '21st June',
@@ -77,7 +76,7 @@ app.get('/birthday/next', function(req, res) {
   });
 });
 
-app.get('/winning-behaviour/now', function(req, res) {
+app.get('/winning-behaviour/now', function (req, res) {
   res.json({
     name: 'Speak Up',
     date: '',
@@ -85,9 +84,8 @@ app.get('/winning-behaviour/now', function(req, res) {
   });
 });
 
-app.get('/holidays/all', function(req, res) {
-  res.json([
-    {
+app.get('/holidays/all', function (req, res) {
+  res.json([{
       label: 'Cedric',
       value: '29/06'
     },
@@ -102,9 +100,8 @@ app.get('/holidays/all', function(req, res) {
   ]);
 });
 
-app.get('/team-social/all', function(req, res) {
-  res.json([
-    {
+app.get('/team-social/all', function (req, res) {
+  res.json([{
       label: 'DI&DIT Hub Drinks',
       value: '14/06'
     },
@@ -119,9 +116,8 @@ app.get('/team-social/all', function(req, res) {
   ]);
 });
 
-app.get('/team-news/all', function(req, res) {
-  res.json([
-    {
+app.get('/team-news/all', function (req, res) {
+  res.json([{
       label: "Sita's Wedding",
       value: '27/08'
     },
@@ -132,6 +128,6 @@ app.get('/team-news/all', function(req, res) {
   ]);
 });
 
-app.listen(3001, function() {
+app.listen(3001, function () {
   console.log('Data being served from http://localhost:3001');
 });

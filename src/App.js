@@ -4,14 +4,15 @@ import ListWidgetContainer from './containers/List/ListWidgetContainer';
 
 import './styles/App.css';
 import WeatherWidgetContainer from './containers/Weather/WeatherWidgetContainer';
-import Banner from './containers/Banner/Banner';
+import Header from './containers/Header';
+import Footer from './containers/Footer';
 import GalleryWidgetContainer from './containers/GalleryWidget/GalleryWidgetContainer';
 
 const App = () => {
   const BASE_API_URL = 'http://localhost:3001';
   return (
     <div>
-      <Banner />
+      <Header />
       <div className="App">
         <Widget heading="Weather">
           <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
@@ -33,6 +34,7 @@ const App = () => {
           heading="Life at Transform"
         />
       </div>
+      <Footer />
     </div>
   );
 };

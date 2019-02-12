@@ -16,10 +16,7 @@ const nearbyLines = [
 ];
 
 class Tube extends Component {
-  state = {
-    loading: true,
-    apiData: []
-  };
+  state = { loading: true, apiData: [] };
 
   componentDidMount() {
     axios.get(API_URL).then(response => {
