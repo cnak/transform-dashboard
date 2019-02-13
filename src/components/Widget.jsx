@@ -19,25 +19,48 @@ class Widget extends Component {
   }
 
   render() {
-    const { heading, loading, children, size } = this.props;
+    const { heading, loading, children, heightSize, bkColor } = this.props;
 
-    const widgetHeight = heightSize => {
-      if (heightSize === '1') {
+    const colors = () => {
+      if (bkColor === 'black') {
         return classNames({
-          Widget: true,
-          'Widget-short-height': true
+          Widget,
+          blackBackground: true
+        });
+      }
+      if (bkColor === 'white') {
+        return classNames({
+          Widget,
+          whiteBackground: true
         });
       }
       return classNames({
-        Widget: true,
-        'Widget-tall-height': true
+        Widget
       });
     };
 
+    const displayHeading = headingText => {
+      if (headingText) {
+        return <h2>{headingText}</h2>;
+      }
+      return <div />;
+    };
+
+    const getHeight = () => {
+      if (heightSize === 'half') {
+        return '8em';
+      }
+      return '16em';
+    };
+
+    const styles = {
+      height: getHeight()
+    };
+
     return (
-      <div style={this.spanStyles} className={widgetHeight(size)}>
+      <div style={Object.assign({}, styles)} className={colors()}>
         <div className="header">
-          <h2>{heading}</h2>
+          {displayHeading(heading)}
           {loading ? <Loading /> : ''}
         </div>
         <div className="content">{children}</div>
@@ -47,7 +70,7 @@ class Widget extends Component {
 }
 
 Widget.defaultProps = {
-  heading: 'Unnamed Widget',
+  heading: '',
   children: 'Widget children',
   colspan: 1,
   rowspan: 1

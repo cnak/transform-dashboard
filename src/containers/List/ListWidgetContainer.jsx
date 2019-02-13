@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import ListWidget from './ListWidget';
+import './ListWidget.css';
 
 class ListWidgetContainer extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class ListWidgetContainer extends Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
       this.interval = setInterval(this.getData, 60000);
     });
@@ -34,8 +36,9 @@ class ListWidgetContainer extends Component {
   }
 
   render() {
-    const { heading, colspan, rowspan } = this.props;
+    const { heading, colspan, rowspan, bkColor } = this.props;
     const { values, loading } = this.state;
+
     return (
       <ListWidget
         heading={heading}
@@ -43,6 +46,7 @@ class ListWidgetContainer extends Component {
         rowspan={rowspan}
         listItems={values}
         loading={loading}
+        bkColor={bkColor}
       />
     );
   }

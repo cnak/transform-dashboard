@@ -16,6 +16,7 @@ class GalleryWidgetContainer extends Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
       this.interval = setInterval(this.getData, 60000);
     });
@@ -49,7 +50,7 @@ class GalleryWidgetContainer extends Component {
 }
 
 GalleryWidgetContainer.propTypes = {
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   colspan: PropTypes.number,
   rowspan: PropTypes.number,
   href: PropTypes.string.isRequired
@@ -57,7 +58,8 @@ GalleryWidgetContainer.propTypes = {
 
 GalleryWidgetContainer.defaultProps = {
   colspan: 0,
-  rowspan: 0
+  rowspan: 0,
+  heading: ''
 };
 
 export default GalleryWidgetContainer;

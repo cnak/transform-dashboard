@@ -1,13 +1,8 @@
 import { combineReducers, createStore } from 'redux';
-import { initialGraphState, graphReducer } from './reducers/graph-reducer';
 
-const rootReducer = combineReducers({
-  graphReducer
-});
+const rootReducer = combineReducers({});
 
-const initialState = {
-  initialGraphState
-};
+const initialState = {};
 
 export default createStore(
   rootReducer,

@@ -7,9 +7,7 @@ function GenericWeather({ city, temp, status }) {
   const cls = cx('weather-icon', status);
   return (
     <div className="weather-card">
-      <div className={cls} />
-      <h1>{Math.floor(temp)}º</h1>
-      <p>{city}</p>
+      <div className={cls} /> <h1> {Math.floor(temp)}º </h1> <p> {city} </p>
     </div>
   );
 }
@@ -21,8 +19,8 @@ GenericWeather.propTypes = {
 };
 
 GenericWeather.defaultProps = {
-  city: 'Jerusalem',
-  temp: '25º',
+  city: 'London',
+  temp: 'º',
   status: 'sun'
 };
 

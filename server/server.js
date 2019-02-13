@@ -32,8 +32,6 @@ app.get('/weather/current', async (req, res) => {
 });
 
 app.get('/images/all', function (req, res) {
-  const values = [];
-
   res.json([{
       imageUrl: 'gallery/1.jpg'
     },
@@ -47,8 +45,20 @@ app.get('/images/all', function (req, res) {
       imageUrl: 'gallery/4.jpg'
     },
     {
-      imageUrl: 'gallery/5.jpg'
-    }
+      imageurl: 'gallery/5.jpg'
+    },
+    {
+      imageUrl: 'gallery/6.jpg'
+    },
+    {
+      imageUrl: 'gallery/7.jpg'
+    },
+    {
+      imageUrl: 'gallery/8.jpg'
+    },
+    {
+      imageUrl: 'gallery/9.jpg'
+    },
   ]);
 });
 

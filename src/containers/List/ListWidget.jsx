@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import Widget from '../../components/Widget';
 import ListDisplay from './ListDisplay';
 import ListItem from './ListItem';
 import './ListWidget.css';
@@ -33,28 +33,29 @@ class ListWidget extends Component {
   }
 
   render() {
-    const { heading, loading, colspan, rowspan } = this.props;
-    return (
-      <Widget heading={heading} colspan={colspan} rowspan={rowspan} loading={loading}>
-        <div className="ListWidget">{this.showWidget()}</div>
-      </Widget>
-    );
+    const { bkColor } = this.props;
+    const colors = () => {
+      if (bkColor === 'pink') {
+        return classNames({
+          ListWidget: true,
+          Widget: true,
+          pinkBackground: true
+        });
+      }
+      return classNames({
+        ListWidget: true
+      });
+    };
+    return <div className={colors()}>{this.showWidget()}</div>;
   }
 }
 
 ListWidget.propTypes = {
-  heading: PropTypes.string,
-  colspan: PropTypes.number,
-  rowspan: PropTypes.number,
-  loading: PropTypes.bool.isRequired,
   listItems: PropTypes.arrayOf(PropTypes.object)
 };
 
 ListWidget.defaultProps = {
-  heading: '',
-  listItems: {},
-  colspan: 1,
-  rowspan: 1
+  listItems: {}
 };
 
 export default ListWidget;
