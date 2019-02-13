@@ -66,13 +66,16 @@ app.get('/images/latest', async (req, res) => {
   try {
     const imagesResponse = await fetch('http://localhost:3001/images/all').then(res => res.json());
 
-    const image = imagesResponse[Math.floor(Math.random() * 5 + 1)];
+    const image = imagesResponse[Math.floor(Math.random() * 6 + 1)];
+    console.log(image);
+
     if (image == undefined) {
       res.json({
         imageUrl: 'gallery/1.jpg'
       });
+    } else {
+      res.json(image);
     }
-    res.json(image);
   } catch (e) {
     console.error(e, 'failed to retrieve images data');
   }

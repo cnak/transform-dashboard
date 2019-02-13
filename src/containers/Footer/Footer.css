@@ -1,8 +1,10 @@
 footer {
   height: 5vh;
   color: white;
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  margin: 1em;
+  right: 1em;
 }
 
 footer .dateTime {
