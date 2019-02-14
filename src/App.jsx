@@ -7,6 +7,8 @@ import WeatherWidgetContainer from './containers/Weather/WeatherWidgetContainer'
 import Header from './containers/Header';
 import Footer from './containers/Footer';
 import GalleryWidgetContainer from './containers/GalleryWidget/GalleryWidgetContainer';
+import Tube from './containers/TubeStatus/Tube/Tube';
+import OverheardWidgetContainer from './containers/Overheard';
 
 const App = () => {
   const BASE_API_URL = 'http://localhost:3001';
@@ -25,10 +27,17 @@ const App = () => {
             bkColor="pink"
           />
         </Widget>
-        <ListWidgetContainer href={`${BASE_API_URL}/holidays/all`} heading="Holidays" rowspan={3} />
+        <Widget heading="transport">
+          <Tube />
+        </Widget>
         <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />
-        <Widget heading="Wifi Password" heightSize="half" bkColor="black">
-          <h1> W1nterTim3</h1>
+        <Widget>
+          <Widget heading="Wifi Password" heightSize="half" bkColor="blue">
+            <h1> W1nterTim3</h1>
+          </Widget>
+        </Widget>
+        <Widget>
+          <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/all`} />
         </Widget>
       </div>
       <Footer />

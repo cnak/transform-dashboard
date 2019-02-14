@@ -12,6 +12,12 @@
   height: 25em;
 }
 
+.blueBackground {
+  background-color: #79b1f1;
+  color: white;
+  padding: 2em;
+}
+
 .blackBackground {
   background-color: black;
   color: white;

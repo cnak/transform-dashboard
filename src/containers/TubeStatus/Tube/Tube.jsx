@@ -8,17 +8,22 @@ const API_URL = `https://api.tfl.gov.uk/line/mode/tube/status?app_id=37b3cb3e&ap
 const nearbyLines = [
   'bakerloo',
   'central',
-  'northern',
-  'circle',
+  // 'northern',
+  // 'circle',
   'hammersmith & city',
-  'victoria',
-  'jubilee'
+  'victoria'
+  // 'jubilee'
 ];
 
 class Tube extends Component {
   state = { loading: true, apiData: [] };
 
   componentDidMount() {
+    this.getData();
+    this.interval = setInterval(this.getData, 600000);
+  }
+
+  async getData() {
     axios.get(API_URL).then(response => {
       this.setState({ loading: false });
       this.setState({ apiData: response.data });
@@ -45,11 +50,7 @@ class Tube extends Component {
     if (loading === true) {
       return <div style={{ fontSize: '50px' }}>Loading</div>;
     }
-    return (
-      <div>
-        <div className="tube-wrapper">{this.showStatusCard(apiData)}</div>
-      </div>
-    );
+    return <div className="tube-wrapper">{this.showStatusCard(apiData)}</div>;
   }
 }
 

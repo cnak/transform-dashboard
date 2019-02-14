@@ -34,6 +34,12 @@ class Widget extends Component {
           whiteBackground: true
         });
       }
+      if (bkColor === 'blue') {
+        return classNames({
+          Widget,
+          blueBackground: true
+        });
+      }
       return classNames({
         Widget
       });
@@ -71,7 +77,6 @@ class Widget extends Component {
 
 Widget.defaultProps = {
   heading: '',
-  children: 'Widget children',
   colspan: 1,
   rowspan: 1
 };
@@ -79,8 +84,7 @@ Widget.defaultProps = {
 Widget.propTypes = {
   heading: PropTypes.string,
   colspan: PropTypes.number,
-  rowspan: PropTypes.number,
-  children: PropTypes.string
+  rowspan: PropTypes.number
 };
 
 export default Widget;

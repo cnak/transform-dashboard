@@ -23,11 +23,17 @@ class ListWidget extends Component {
     const min = 0;
     const max = sortedItems[0].value;
 
+    const item = sortedItems[0];
     return (
       <ListDisplay>
-        {sortedItems.map(item => (
-          <ListItem key={item.label} label={item.label} value={item.value} min={min} max={max} />
-        ))}
+        <ListItem
+          key={item.label}
+          label={item.label}
+          value={item.value}
+          min={min}
+          max={max}
+          imageUrl={item.imageUrl}
+        />
       </ListDisplay>
     );
   }

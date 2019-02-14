@@ -45,9 +45,6 @@ app.get('/images/all', function (req, res) {
       imageUrl: 'gallery/4.jpg'
     },
     {
-      imageurl: 'gallery/5.jpg'
-    },
-    {
       imageUrl: 'gallery/6.jpg'
     },
     {
@@ -67,7 +64,6 @@ app.get('/images/latest', async (req, res) => {
     const imagesResponse = await fetch('http://localhost:3001/images/all').then(res => res.json());
 
     const image = imagesResponse[Math.floor(Math.random() * 6 + 1)];
-    console.log(image);
 
     if (image == undefined) {
       res.json({
@@ -131,15 +127,37 @@ app.get('/team-social/all', function (req, res) {
 
 app.get('/team-news/all', function (req, res) {
   res.json([{
-      label: "Sita's Wedding",
-      value: '27/08'
+      label: "New Joiner",
+      value: 'Ferhat - Talen Specialist, please extend him a warm Engine Transformation welcome!',
+      imageUrl: 'team-news/ferhat.jpg'
     },
     {
-      label: 'Baby Robyn Due',
-      value: '24/09'
+      label: 'ET team afternoon',
+      value: 'On February 28th we will be getting together as a team to have some fun offsite.',
+      imageUrl: ''
     }
   ]);
 });
+
+app.get('/overheard/all', function (req, res) {
+  res.json([{
+      text: "I need to get some KFC today for lunch. I’m losing weight.",
+    },
+    {
+      text: 'Is Johan’s birthday on Christmas? No, cuz he’s not Jesus”',
+    },
+    {
+      text: "What part of Columbia are you from?   ......I'm from Spain"
+    },
+    {
+      text: "While smelling wine– : “I don’ t want to smell it.I just want to down it"
+    },
+    {
+      text: "'You're going to send them by e - mail, that 's so old school - you may as well send them by post.... or carrier pigeon!"
+    },
+  ]);
+});
+
 
 app.listen(3001, function () {
   console.log('Data being served from http://localhost:3001');
