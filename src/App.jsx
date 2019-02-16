@@ -27,7 +27,7 @@ const App = () => {
             bkColor="pink"
           />
         </Widget>
-        <Widget heading="transport">
+        <Widget heading="Transport">
           <Tube />
         </Widget>
         <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />

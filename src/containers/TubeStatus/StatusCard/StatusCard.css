@@ -12,9 +12,11 @@
 
 .status-card p.line-name {
   width: 10em;
+  height: 2em;
+  text-align: center;
 }
 
-.status-card-reason {
+p.status-card-reason {
   font-size: 14px;
   color: black;
 }
