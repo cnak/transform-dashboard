@@ -56,7 +56,7 @@ class Widget extends Component {
       if (heightSize === 'half') {
         return '8em';
       }
-      return '16em';
+      return '21em';
     };
 
     const styles = {
