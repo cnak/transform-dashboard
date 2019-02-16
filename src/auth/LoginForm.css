@@ -1,0 +1,28 @@
+.login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-form form {
+  display: inline-grid;
+  width: 25em;
+  text-align: center;
+}
+
+.login-form form input {
+  width: 19em;
+  padding: 1em;
+  margin: 1em;
+}
+
+.login-form form.username {
+  flex-grow: 1;
+}
+
+.login-form form button {
+  width: 10em;
+  text-align: center;
+  margin: 2em auto
+}
