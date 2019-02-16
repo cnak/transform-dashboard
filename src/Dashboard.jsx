@@ -30,7 +30,9 @@ const Dashboard = () => {
         <Widget heading="Transport">
           <Tube />
         </Widget>
-        <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />
+        <Widget>
+          <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />
+        </Widget>
         <Widget>
           <Widget heading="Wifi Password" heightSize="half" bkColor="blue">
             <h1> W1nterTim3</h1>
