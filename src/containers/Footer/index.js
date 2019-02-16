@@ -1,44 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Footer.css';
 
-const Footer = () => {
-  const currentDate = new Date();
-  const date = currentDate.getDate();
-  const month = currentDate.getMonth();
+class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentDateState: 0,
+      weekday: '',
+      dateWithFullMonthName: ''
+    };
 
-  const pad = n => {
-    return n < 10 ? `0${n}` : n;
-  };
+    this.getCurrentFullDate = this.getCurrentFullDate.bind(this);
+  }
 
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July',
-    'Aug',
-    'Sept',
-    'Oct',
-    'Nov',
-    'Dec'
-  ];
+  componentDidMount() {
+    this.getCurrentFullDate().then(_ => {
+      this.interval = setInterval(this.getCurrentFullDate, 1000);
+    });
+  }
 
-  const dateWithFullMonthName = `${monthNames[month]} ${pad(date)}`;
-  const weekday = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
-  const currentTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+  async getCurrentFullDate() {
+    const currentDate = new Date();
 
-  return (
-    <footer className="footer">
-      <div className="dateTime">
-        <div className="time">{currentTime}</div>
-        <div className="date">
-          {weekday} {dateWithFullMonthName}
-        </div>
+    const currentTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+
+    const pad = n => {
+      return n < 10 ? `0${n}` : n;
+    };
+    const date = currentDate.getDate();
+    const month = currentDate.getMonth();
+
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'July',
+      'Aug',
+      'Sept',
+      'Oct',
+      'Nov',
+      'Dec'
+    ];
+    const dateWithFullMonthName = `${monthNames[month]} ${pad(date)}`;
+    const weekday = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+
+    this.setState({
+      currentDateState: currentTime,
+      weekday,
+      dateWithFullMonthName
+    });
+  }
+
+  render() {
+    const { currentDateState, weekday, dateWithFullMonthName } = this.state;
+
+    const currentFullDate = (
+      <div className="date">
+        {weekday} {dateWithFullMonthName}
       </div>
-    </footer>
-  );
-};
+    );
+
+    return (
+      <footer className="footer">
+        <div className="dateTime">
+          {currentFullDate} . {currentDateState}
+        </div>
+      </footer>
+    );
+  }
+}
 
 export default Footer;

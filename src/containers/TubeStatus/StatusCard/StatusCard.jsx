@@ -17,7 +17,10 @@ const getTextColor = name => {
 };
 
 const StatusCard = ({ name, status, reason }) => {
-  const style = { backgroundColor: getBackgroundColor(name.toLowerCase()) };
+  const style = {
+    backgroundColor: getBackgroundColor(name.toLowerCase()),
+    color: getTextColor(name.toLowerCase())
+  };
 
   return (
     <div className="status-card">

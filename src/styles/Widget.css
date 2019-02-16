@@ -64,6 +64,7 @@
 .Widget .content {
   grid-area: content;
   height: 100%;
+  margin-top: 1em
 }
 
 @media(max-width: 600px) {

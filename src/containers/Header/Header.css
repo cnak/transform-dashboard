@@ -7,8 +7,8 @@ header.app-header {
 }
 
 img.left-logo {
-  height: 4em;
-  border-radius: 0 0px 20px;
+  height: 3em;
+  border-radius: 0 0px 4em;
   animation: pulse 2s infinite;
 
 }
@@ -28,7 +28,7 @@ img.left-logo {
   }
 
   70% {
-    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    -webkit-box-shadow: 0 0 0 40em rgba(204, 169, 44, 0);
   }
 
   100% {
