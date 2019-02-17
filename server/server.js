@@ -77,37 +77,6 @@ app.get('/images/latest', async (req, res) => {
   }
 });
 
-app.get('/birthday/next', function (req, res) {
-  res.json({
-    name: 'Carola',
-    date: '21st June',
-    imageUrl: 'images/ced.jpg'
-  });
-});
-
-app.get('/winning-behaviour/now', function (req, res) {
-  res.json({
-    name: 'Speak Up',
-    date: '',
-    imageUrl: 'images/winning-behaviour.jpg'
-  });
-});
-
-app.get('/holidays/all', function (req, res) {
-  res.json([{
-      label: 'Cedric',
-      value: '29/06'
-    },
-    {
-      label: 'Jem',
-      value: '13/08'
-    },
-    {
-      label: 'Carola',
-      value: '23/09'
-    }
-  ]);
-});
 
 app.get('/team-social/all', function (req, res) {
   res.json([{

@@ -35,7 +35,7 @@ const Dashboard = () => {
         </Widget>
         <Widget>
           <Widget heading="Wifi Password" heightSize="half" bkColor="blue">
-            <h1> W1nterTim3</h1>
+            <h1 style={{ fontWeight: '300' }}> W1nterTim3</h1>
           </Widget>
         </Widget>
         <Widget>
