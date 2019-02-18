@@ -17,7 +17,7 @@ class OverheardWidgetContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
-      this.interval = setInterval(this.getData, 1000);
+      this.interval = setInterval(this.getData, 5000);
     });
   }
 
@@ -26,20 +26,15 @@ class OverheardWidgetContainer extends Component {
 
     const resp = await axios.get(href);
     this.setState({
-      text: resp.data
+      text: resp.data.text
     });
   }
 
-  showQuote = () => {
-    const { text } = this.state;
-    return <p>What part of Colombia are you from? ......I'm from Spain</p>;
-  };
-
   render() {
-    const { heading, colspan, rowspan } = this.props;
+    const { text } = this.state;
     return (
-      <Widget heading="Overheard at ET" bkColor="blue" heightSize="half">
-        <p> {this.showQuote()} </p>
+      <Widget heading="Overheard at ET" bkColor="blue">
+        <p> {text} </p>
       </Widget>
     );
   }

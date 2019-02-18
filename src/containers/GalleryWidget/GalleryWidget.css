@@ -1,5 +1,5 @@
 .image-gallery {
-  width: 100%;
+  min-width: 20em;
   background: none;
   height: 100%;
 

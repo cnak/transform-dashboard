@@ -7,15 +7,55 @@ import ListItem from './ListItem';
 import './ListWidget.css';
 
 class ListWidget extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentNewsItem: 0
+    };
+
+    this.rotateNewsItem = this.rotateNewsItem.bind(this);
+  }
+
+  componentWillMount() {
+    this.rotateNewsItem();
+  }
+
+  componentDidMount() {
+    this.rotateNewsItem().then(_ => {
+      this.interval = setInterval(this.rotateNewsItem, 30000);
+    });
+  }
+
   sortListItems() {
     const { listItems } = this.props;
     const sortedItems = listItems.slice();
     return sortedItems;
   }
 
-  showWidget() {
-    const sortedItems = this.sortListItems();
+  async rotateNewsItem() {
+    const { currentNewsItem } = this.state;
     const { listItems } = this.props;
+
+    let newNewsItem = currentNewsItem;
+
+    if (currentNewsItem < listItems.length - 1) {
+      newNewsItem += 1;
+    } else {
+      newNewsItem = 0;
+    }
+
+    this.setState({
+      currentNewsItem: newNewsItem
+    });
+  }
+
+  showWidget() {
+    const { currentNewsItem } = this.state;
+    const { listItems } = this.props;
+
+    const sortedItems = this.sortListItems();
+
     if (listItems.length === 0) {
       return null;
     }
@@ -23,7 +63,8 @@ class ListWidget extends Component {
     const min = 0;
     const max = sortedItems[0].value;
 
-    const item = sortedItems[0];
+    const item = listItems[currentNewsItem];
+
     return (
       <ListDisplay>
         <ListItem

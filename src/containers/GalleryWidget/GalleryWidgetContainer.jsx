@@ -18,7 +18,7 @@ class GalleryWidgetContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
-      this.interval = setInterval(this.getData, 10000);
+      this.interval = setInterval(this.getData, 30000);
     });
   }
 

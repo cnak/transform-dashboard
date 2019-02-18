@@ -106,6 +106,13 @@ const mfaPage = () => (
   </div>
 );
 
+// margin: 0;
+// position: absolute;
+// top: 50 %;
+// left: 50 %;
+// -ms - transform: translate(-50 %, -50 %);
+// transform: translate(-50 %, -50 %);
+
 const BaseDashboard = ({ state, user, attributes }) => {
   switch (state) {
     case CognitoState.LOGGED_IN:
@@ -113,7 +120,7 @@ const BaseDashboard = ({ state, user, attributes }) => {
     case CognitoState.AUTHENTICATED:
     case CognitoState.LOGGING_IN:
       return (
-        <div>
+        <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
           <img src="ajax-loader.gif" alt="" />
         </div>
       );

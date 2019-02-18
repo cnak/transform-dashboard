@@ -39,7 +39,7 @@ const Dashboard = () => {
           </Widget>
         </Widget>
         <Widget>
-          <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/all`} />
+          <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/current`} />
         </Widget>
       </div>
       <Footer />

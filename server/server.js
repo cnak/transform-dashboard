@@ -2,6 +2,8 @@ const express = require('express');
 const fetch = require('node-fetch');
 const gsheets = require('./gsheets');
 
+const API_URL = 'http://localhost:3001'
+
 const app = express();
 
 // const listHolidays = gsheets.start().then(function(value) {
@@ -63,7 +65,7 @@ app.get('/images/latest', async (req, res) => {
   try {
     const imagesResponse = await fetch('http://localhost:3001/images/all').then(res => res.json());
 
-    const image = imagesResponse[Math.floor(Math.random() * 6 + 1)];
+    const image = imagesResponse[Math.floor(Math.random() * imagesResponse.length + 1)];
 
     if (image == undefined) {
       res.json({
@@ -119,7 +121,7 @@ app.get('/overheard/all', function (req, res) {
       text: "What part of Columbia are you from?   ......I'm from Spain"
     },
     {
-      text: "While smelling wine– : “I don’ t want to smell it.I just want to down it"
+      text: "While smelling wine– : “I don’ t want to smell it. I just want to down it"
     },
     {
       text: "'You're going to send them by e - mail, that 's so old school - you may as well send them by post.... or carrier pigeon!"
@@ -127,6 +129,22 @@ app.get('/overheard/all', function (req, res) {
   ]);
 });
 
+app.get('/overheard/current', async (req, res) => {
+  try {
+    const listOfQuotes = await fetch(`${API_URL}/overheard/all`).then(res => res.json());
+    const quote = listOfQuotes[Math.floor(Math.random() * listOfQuotes.length + 1)];
+
+    if (quote == undefined) {
+      res.json({
+        text: 'The various quotes overheard within ET'
+      });
+    } else {
+      res.json(quote);
+    }
+  } catch (e) {
+    console.error(e, 'failed to retrieve quote');
+  }
+});
 
 app.listen(3001, function () {
   console.log('Data being served from http://localhost:3001');
