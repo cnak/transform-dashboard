@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import Widget from '../../components/Widget';
+import './Overheard.css';
 
 class OverheardWidgetContainer extends Component {
   constructor() {
@@ -17,7 +17,7 @@ class OverheardWidgetContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
-      this.interval = setInterval(this.getData, 5000);
+      this.interval = setInterval(this.getData, 50000);
     });
   }
 
@@ -34,7 +34,7 @@ class OverheardWidgetContainer extends Component {
     const { text } = this.state;
     return (
       <Widget heading="Overheard at ET" bkColor="blue">
-        <p> {text} </p>
+        <p className="overheard-text"> {text} </p>
       </Widget>
     );
   }
