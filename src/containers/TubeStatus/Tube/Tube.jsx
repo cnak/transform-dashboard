@@ -37,11 +37,13 @@ class Tube extends Component {
   async getData() {
     axios.get(API_URL).then(response => {
       const tubeLines = response.data.filter(item => nearbyLines.includes(item.name.toLowerCase()));
-      this.setState({
-        loading: false,
-        tubeLines,
-        currentTubeLines: tubeLines.slice(0, tubeLines.length / 2)
-      });
+      if (tubeLines) {
+        this.setState({
+          loading: false,
+          tubeLines,
+          currentTubeLines: tubeLines.slice(0, tubeLines.length / 2)
+        });
+      }
     });
   }
 
@@ -74,15 +76,15 @@ class Tube extends Component {
     const firstGroup = tubeLines.slice(0, upTo);
     const secondGroup = tubeLines.slice(upTo, tubeLines.length);
 
-    if (this.tubeLinesCompare(firstGroup, currentTubeLines)) {
-      this.setState({
-        currentTubeLines: secondGroup
-      });
-    } else {
-      this.setState({
-        currentTubeLines: firstGroup
-      });
-    }
+    // if (this.tubeLinesCompare(firstGroup, currentTubeLines)) {
+    this.setState({
+      currentTubeLines: secondGroup
+    });
+    // } else {
+    //   this.setState({
+    //     currentTubeLines: firstGroup
+    //   });
+    // }
   }
 
   render() {

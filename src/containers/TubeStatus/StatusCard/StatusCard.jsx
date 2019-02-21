@@ -30,7 +30,6 @@ const StatusCard = ({ name, status, reason }) => {
       <p className="status" style={{ color: 'black' }}>
         {status}
       </p>
-      {reason ? <p className="status-card-reason">{reason}</p> : null}
     </div>
   );
 };

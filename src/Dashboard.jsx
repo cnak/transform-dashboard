@@ -9,6 +9,7 @@ import Footer from './containers/Footer';
 import GalleryWidgetContainer from './containers/GalleryWidget/GalleryWidgetContainer';
 import Tube from './containers/TubeStatus/Tube/Tube';
 import OverheardWidgetContainer from './containers/Overheard';
+import RemindersWidgetContainer from './containers/Reminders';
 
 const Dashboard = () => {
   const BASE_API_URL = 'http://localhost:3001';
@@ -29,6 +30,9 @@ const Dashboard = () => {
         </Widget>
         <Widget heading="Transport">
           <Tube />
+        </Widget>
+        <Widget heading="Reminders">
+          <RemindersWidgetContainer />
         </Widget>
         <Widget>
           <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />

@@ -11,13 +11,8 @@
 @supports(display:grid) {
   .App {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: repeat(1, 1fr);  */
-
-    /* grid-template-rows: 50vh;
-    grid-auto-rows: 200px; */
-    grid-gap: 1rem;
-    width: 93%;
+    grid-template-columns: repeat(4, 1fr);
+    width: 98%;
     margin: 0 auto;
   }
 
