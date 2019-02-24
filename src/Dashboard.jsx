@@ -18,7 +18,7 @@ const Dashboard = () => {
       <Header />
       <div className="App">
         <Widget>
-          <GalleryWidgetContainer href={`${BASE_API_URL}/images/latest`} />
+          <GalleryWidgetContainer href={`${BASE_API_URL}/gallery/latest`} />
         </Widget>
         <Widget heading="Team news">
           <ListWidgetContainer

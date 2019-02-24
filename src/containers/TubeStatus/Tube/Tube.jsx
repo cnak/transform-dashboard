@@ -76,15 +76,15 @@ class Tube extends Component {
     const firstGroup = tubeLines.slice(0, upTo);
     const secondGroup = tubeLines.slice(upTo, tubeLines.length);
 
-    // if (this.tubeLinesCompare(firstGroup, currentTubeLines)) {
-    this.setState({
-      currentTubeLines: secondGroup
-    });
-    // } else {
-    //   this.setState({
-    //     currentTubeLines: firstGroup
-    //   });
-    // }
+    if (this.tubeLinesCompare(firstGroup, currentTubeLines)) {
+      this.setState({
+        currentTubeLines: secondGroup
+      });
+    } else {
+      this.setState({
+        currentTubeLines: firstGroup
+      });
+    }
   }
 
   render() {

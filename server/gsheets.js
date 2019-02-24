@@ -1,22 +1,36 @@
 const fs = require('fs');
 const readline = require('readline');
-const { google } = require('googleapis');
+const {
+  google
+} = require('googleapis');
 
-exports.start = start;
+exports.getAllReminders = getAllReminders;
+exports.getAllOverheard = getAllOverheard;
+exports.getAllTeamNews = getAllTeamNews;
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const CREDENTIALS = 'server/credentials.json'
+const TOKEN_PATH = 'server/token.json';
+const SPREADSHEET_ID = '1scieI0CU5Suyze7cg8pV8kzYHJXUKzieUtJhAdOLyIc';
 
-// The file token.json stores the user's access and refresh tokens, and is
-// created automatically when the authorization flow completes for the first
-// time.
-const TOKEN_PATH = 'token.json';
-const SPREADSHEET_ID = '1ctq6PE-K6OyEaIShFi3caCHErXA-Iiw1Q3ZRUjjSMVM';
+async function getAllReminders() {
+  const content = fs.readFileSync(CREDENTIALS);
+  return await authorize(JSON.parse(content), null).then(async function (value) {
+    return retrieveAllReminders(value);
+  });
+}
 
-// Load client secrets from a local file.
-async function start() {
-  const content = fs.readFileSync('./credentials.json');
-  return await authorize(JSON.parse(content), null).then(async function(value) {
-    return listHolidays(value);
+async function getAllOverheard() {
+  const content = fs.readFileSync(CREDENTIALS);
+  return await authorize(JSON.parse(content), null).then(async function (value) {
+    return retrieveAllOverheard(value);
+  });
+}
+
+async function getAllTeamNews() {
+  const content = fs.readFileSync(CREDENTIALS);
+  return await authorize(JSON.parse(content), null).then(async function (value) {
+    return retrieveAllTeamNews(value);
   });
 }
 
@@ -26,11 +40,15 @@ async function start() {
  * @param {Object} credentials The authorization client credentials.
  */
 const authorize = async (credentials, callback) => {
-  const { client_secret, client_id, redirect_uris } = credentials.installed;
+  const {
+    client_secret,
+    client_id,
+    redirect_uris
+  } = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
   // Check if we have previously stored a token.
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     fs.readFile(TOKEN_PATH, (err, token) => {
       if (err) return getNewToken(oAuth2Client, callback);
       oAuth2Client.setCredentials(JSON.parse(token));
@@ -39,24 +57,19 @@ const authorize = async (credentials, callback) => {
   });
 };
 
-/**
- * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
- */
-const listHolidays = async auth => {
-  const holidays = [];
-  const SHEET_NAME = 'Holidays';
+const retrieveAllOverheard = async auth => {
+  const overheard = [];
+  const SHEET_NAME = 'overheard';
   const sheets = google.sheets({
     version: 'v4',
     auth
   });
 
-  return new Promise(function(resolve, reject) {
-    sheets.spreadsheets.values.get(
-      {
+  return new Promise(function (resolve, reject) {
+
+    sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEET_NAME}!A2:B19`
+        range: `${SHEET_NAME}`
       },
       (err, res) => {
         if (err) return console.log(`The API returned an error: ${err}`);
@@ -65,15 +78,94 @@ const listHolidays = async auth => {
 
         if (rows.length) {
           rows.map(row => {
-            holidays.push({
-              name: row[0],
-              date: row[1]
+            overheard.push({
+              quote: row[0],
             });
           });
         } else {
           console.log('No data found.');
         }
-        resolve(holidays);
+        resolve(overheard);
+      }
+    );
+  });
+};
+
+const retrieveAllTeamNews = async auth => {
+  const teamNews = [];
+  const SHEET_NAME = 'team-news';
+  const sheets = google.sheets({
+    version: 'v4',
+    auth
+  });
+
+  return new Promise(function (resolve, reject) {
+    sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `${SHEET_NAME}`
+      },
+      (err, res) => {
+        if (err) return console.log(`The API returned an error: ${err}`);
+
+        const rows = res.data.values;
+
+        if (rows.length) {
+          rows.map(row => {
+            if (row[0] !== 'heading') {
+              teamNews.push({
+                heading: row[0],
+                content: row[1],
+                startDate: row[2],
+                startTime: row[3],
+                endDate: row[4],
+                endTime: row[5]
+              });
+            }
+          });
+        } else {
+          console.log('No data found.');
+        }
+        resolve(teamNews);
+      }
+    );
+  });
+};
+
+const retrieveAllReminders = async auth => {
+  const reminders = [];
+  const SHEET_NAME = 'reminders';
+  const sheets = google.sheets({
+    version: 'v4',
+    auth
+  });
+
+  return new Promise(function (resolve, reject) {
+    sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `${SHEET_NAME}`
+      },
+      (err, res) => {
+        if (err) return console.log(`The API returned an error: ${err}`);
+
+        const rows = res.data.values;
+
+        if (rows.length) {
+          rows.map(row => {
+            if (row[0] !== 'heading') {
+              reminders.push({
+                heading: row[0],
+                content: row[1],
+                startDate: row[2],
+                startTime: row[3],
+                endDate: row[4],
+                endTime: row[5]
+              });
+            }
+          });
+        } else {
+          console.log('No data found.');
+        }
+        resolve(reminders);
       }
     );
   });
