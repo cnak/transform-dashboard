@@ -1,4 +1,5 @@
 const fs = require('fs');
+const moment = require('moment');
 const readline = require('readline');
 const {
   google
@@ -7,6 +8,7 @@ const {
 exports.getAllReminders = getAllReminders;
 exports.getAllOverheard = getAllOverheard;
 exports.getAllTeamNews = getAllTeamNews;
+exports.getLatestWifiPassword = getLatestWifiPassword;
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const CREDENTIALS = 'server/credentials.json'
@@ -34,28 +36,78 @@ async function getAllTeamNews() {
   });
 }
 
-/**
- * Create an OAuth2 client with the given credentials, and then execute the
- * given callback function.
- * @param {Object} credentials The authorization client credentials.
- */
-const authorize = async (credentials, callback) => {
-  const {
-    client_secret,
-    client_id,
-    redirect_uris
-  } = credentials.installed;
-  const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
+async function getLatestWifiPassword() {
+  const content = fs.readFileSync(CREDENTIALS);
+  return await authorize(JSON.parse(content), null).then(async function (value) {
+    return retrieveLatestWifiPassword(value);
+  });
+}
 
-  // Check if we have previously stored a token.
+const retrieveLatestWifiPassword = async auth => {
+  let latestWifiPassword = [];
+  const SHEET_NAME = 'wifi-passwords';
+  const sheets = google.sheets({
+    version: 'v4',
+    auth
+  });
+
   return new Promise(function (resolve, reject) {
-    fs.readFile(TOKEN_PATH, (err, token) => {
-      if (err) return getNewToken(oAuth2Client, callback);
-      oAuth2Client.setCredentials(JSON.parse(token));
-      resolve(oAuth2Client);
-    });
+
+    sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `${SHEET_NAME}`
+      },
+      (err, res) => {
+        if (err) return console.log(`The API returned an error: ${err}`);
+
+        const rows = res.data.values;
+        let allWifiPasswords = []
+
+        if (rows.length) {
+          rows.map(row => {
+            if (row[0] !== 'content') {
+              allWifiPasswords.push({
+                wifiPassword: row[0],
+                startDate: row[1],
+              });
+            }
+          });
+
+          const todaysDate = new Date();
+
+          latestWifiPassword = allWifiPasswords.filter((wifiPassword) => {
+            const myDate = moment(wifiPassword.startDate, "DD-MM-YYYY").toDate();
+
+            if (todaysDate > myDate) {
+              return myDate;
+            }
+          })
+
+        } else {
+          console.log('No data found.');
+        }
+        resolve(latestWifiPassword);
+      }
+    );
   });
 };
+
+const getLatestValidWifiPassword = (wifiPasswords) => {
+
+  let latestValidDate = dates[0]
+  const dateNow = new Date();
+
+  for (let index = 0; index < dates.length; index++) {
+
+    if (dateNow > dates[i]) {
+      latestValidDate = dates[i]
+    } else {
+      break;
+    }
+  }
+
+  return latestValidDate
+}
 
 const retrieveAllOverheard = async auth => {
   const overheard = [];
@@ -168,6 +220,29 @@ const retrieveAllReminders = async auth => {
         resolve(reminders);
       }
     );
+  });
+};
+
+/**
+ * Create an OAuth2 client with the given credentials, and then execute the
+ * given callback function.
+ * @param {Object} credentials The authorization client credentials.
+ */
+const authorize = async (credentials, callback) => {
+  const {
+    client_secret,
+    client_id,
+    redirect_uris
+  } = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
+
+  // Check if we have previously stored a token.
+  return new Promise(function (resolve, reject) {
+    fs.readFile(TOKEN_PATH, (err, token) => {
+      if (err) return getNewToken(oAuth2Client, callback);
+      oAuth2Client.setCredentials(JSON.parse(token));
+      resolve(oAuth2Client);
+    });
   });
 };
 

@@ -11,12 +11,13 @@
     "axios": "^0.16.0",
     "chart.js": "^2.5.0",
     "classnames": "^2.2.6",
+    "cors": "^2.8.5",
     "event-stream": "^3.3.4",
     "express": "^4.16.4",
     "googleapis": "27",
     "lebab": "^3.0.3",
+    "moment": "^2.24.0",
     "node-fetch": "^2.1.2",
-    "nodemon": "^1.17.5",
     "prop-types": "^15.6.2",
     "react": "^15.4.2",
     "react-chartjs-2": "^2.0.5",
@@ -41,6 +42,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
     "react-scripts": "0.9.5",
     "sass-loader": "^7.1.0"
@@ -51,6 +53,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "serve": "node server/server.js",
+    "dev-serve": "nodemon server/server.js",
     "serve-delayed": "node server.js delayresponse"
   }
 }

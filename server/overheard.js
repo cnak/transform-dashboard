@@ -20,7 +20,7 @@ router.get('/current', async (req, res) => {
         text: 'The various quotes overheard within ET'
       });
     } else {
-      res.json(quote);
+      res.json(quote[0]);
     }
   })
 });

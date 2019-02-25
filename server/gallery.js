@@ -1,7 +1,9 @@
 const express = require('express'),
   router = express.Router()
 
-router.get('/all', function (req, res) {
+const fetch = require('node-fetch')
+
+router.get('/all', async (req, res) => {
   res.json([{
       imageUrl: 'gallery/1.jpg'
     },
@@ -32,7 +34,7 @@ router.get('/all', function (req, res) {
 router.get('/latest', async (req, res) => {
   try {
     const imagesResponse = await fetch('http://localhost:3001/gallery/all').then(res => res.json());
-
+    debugger
     const image = imagesResponse[Math.floor(Math.random() * imagesResponse.length + 1)];
 
     if (image == undefined) {
