@@ -92,23 +92,6 @@ const retrieveLatestWifiPassword = async auth => {
   });
 };
 
-const getLatestValidWifiPassword = (wifiPasswords) => {
-
-  let latestValidDate = dates[0]
-  const dateNow = new Date();
-
-  for (let index = 0; index < dates.length; index++) {
-
-    if (dateNow > dates[i]) {
-      latestValidDate = dates[i]
-    } else {
-      break;
-    }
-  }
-
-  return latestValidDate
-}
-
 const retrieveAllOverheard = async auth => {
   const overheard = [];
   const SHEET_NAME = 'overheard';

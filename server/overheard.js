@@ -15,12 +15,15 @@ router.get('/current', async (req, res) => {
 
     const quote = listOfQuotes[Math.floor(Math.random() * listOfQuotes.length)];
 
+    console.log(quote);
+
+
     if (quote == undefined) {
       res.json({
         text: 'The various quotes overheard within ET'
       });
     } else {
-      res.json(quote[0]);
+      res.json(quote);
     }
   })
 });

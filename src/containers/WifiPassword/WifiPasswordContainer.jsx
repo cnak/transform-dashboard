@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Widget from '../../components/Widget';
-import './Overheard.css';
+import './WifiPassword.css';
 
-class OverheardWidgetContainer extends Component {
+class WifiPasswordContainer extends Component {
   constructor() {
     super();
 
     this.state = {
-      quote: ''
+      wifiPassword: ''
     };
 
     this.getData = this.getData.bind(this);
@@ -17,7 +17,7 @@ class OverheardWidgetContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
-      this.interval = setInterval(this.getData, 50000);
+      this.interval = setInterval(this.getData, 86400000);
     });
   }
 
@@ -25,20 +25,19 @@ class OverheardWidgetContainer extends Component {
     const { href } = this.props;
 
     const resp = await axios.get(href);
-
     this.setState({
-      quote: resp.data.quote
+      wifiPassword: resp.data[0].wifiPassword
     });
   }
 
   render() {
-    const { quote } = this.state;
+    const { wifiPassword } = this.state;
     return (
-      <Widget heading="Overheard at ET" bkColor="blue">
-        <p className="overheard-text"> {quote} </p>
+      <Widget heading="Wifi Guest Password" bkColor="blue">
+        <p className="wifi-password-text"> {wifiPassword} </p>
       </Widget>
     );
   }
 }
 
-export default OverheardWidgetContainer;
+export default WifiPasswordContainer;

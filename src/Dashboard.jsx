@@ -10,6 +10,7 @@ import GalleryWidgetContainer from './containers/GalleryWidget/GalleryWidgetCont
 import Tube from './containers/TubeStatus/Tube/Tube';
 import OverheardWidgetContainer from './containers/Overheard';
 import RemindersWidgetContainer from './containers/Reminders';
+import WifiPasswordContainer from './containers/WifiPassword';
 
 const Dashboard = () => {
   const BASE_API_URL = 'http://localhost:3001';
@@ -38,9 +39,7 @@ const Dashboard = () => {
           <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />
         </Widget>
         <Widget>
-          <Widget heading="Wifi Password" heightSize="half" bkColor="blue">
-            <h1 style={{ fontWeight: '300' }}> W1nterTim3</h1>
-          </Widget>
+          <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
         </Widget>
         <Widget>
           <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/current`} />
