@@ -33,7 +33,7 @@ const Dashboard = () => {
           <Tube />
         </Widget>
         <Widget heading="Reminders">
-          <RemindersWidgetContainer />
+          <RemindersWidgetContainer href={`${BASE_API_URL}/reminders/all`} />
         </Widget>
         <Widget>
           <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />

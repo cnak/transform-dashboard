@@ -69,8 +69,8 @@ class ListWidget extends Component {
       <ListDisplay>
         <ListItem
           key={item.label}
-          label={item.label}
-          value={item.value}
+          label={item.heading}
+          value={item.content}
           min={min}
           max={max}
           imageUrl={item.imageUrl}

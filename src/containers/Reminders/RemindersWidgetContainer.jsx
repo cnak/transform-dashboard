@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import moment from 'moment';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './Reminders.css';
@@ -27,13 +28,25 @@ export class RemindersWidgetContainer extends Component {
 
     try {
       const response = await axios.get(href);
+
       this.setState({ reminders: response.data });
     } catch (error) {
       console.log('failed to get  reminder');
     }
   }
 
-  displayToast = reminders => {
+  getDuration = (startDate, startTime, endDate, endTime) => {
+    /* eslint-disable prefer-template */
+    const startDateTime = moment(startDate + ' ' + startTime, 'DD/MM/YYYY HH:mm');
+    const endDateTime = moment(endDate + ' ' + endTime, 'DD/MM/YYYY HH:mm');
+
+    const diff = endDateTime.toDate() - startDateTime.toDate();
+    return diff;
+  };
+
+  displayToast = () => {
+    const { reminders } = this.state;
+
     return reminders.forEach(element => {
       toast(
         () => (
@@ -42,7 +55,14 @@ export class RemindersWidgetContainer extends Component {
             <p>{element.content}</p>
           </div>
         ),
-        { autoClose: element.duration }
+        {
+          autoClose: this.getDuration(
+            element.startDate,
+            element.startTime,
+            element.endDate,
+            element.endTime
+          )
+        }
       );
     });
   };
@@ -50,27 +70,9 @@ export class RemindersWidgetContainer extends Component {
   dismiss = () => toast.dismiss(this.toastId);
 
   render() {
-    const toasts = [
-      {
-        heading: 'Timesheets reminder',
-        content: 'Submit timesheets(s) for the following weeks(s) by 10am, Monday 25th ',
-        duration: 15000
-      },
-      {
-        heading: 'Lift broken',
-        content: 'FyI one lift is broken, but is being fixed',
-        duration: 19000
-      },
-      {
-        heading: 'Who wants cake',
-        content: "There's lemon cake in the usual place",
-        duration: 18000
-      }
-    ];
-
     return (
       <div>
-        <ToastContainer autoClose={false}>{this.displayToast(toasts)}</ToastContainer>
+        <ToastContainer autoClose={false}>{this.displayToast()}</ToastContainer>
       </div>
     );
   }
