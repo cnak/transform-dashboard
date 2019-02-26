@@ -49,6 +49,7 @@
   },
   "scripts": {
     "start": "react-scripts start | npm run serve",
+    "docker-start": "npm run serve",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
