@@ -9,12 +9,22 @@ class OpenWeather extends React.Component {
       name: null,
       temp: null
     };
+
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
-    const { apiLocation } = this.props;
+    const interval = 60 * 100 * 60;
 
-    axios.get(apiLocation, {}).then(response => {
+    // eslint-disable-next-line no-unused-vars
+    this.getData().then(_ => {
+      this.interval = setInterval(this.getData, interval);
+    });
+  }
+
+  async getData() {
+    const { apiLocation } = this.props;
+    axios.get(apiLocation).then(response => {
       const { data } = response;
       this.setState({ name: data.name, temp: data.main.temp });
     });

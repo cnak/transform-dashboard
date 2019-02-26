@@ -31,7 +31,18 @@ class Tube extends Component {
   componentDidMount() {
     this.getData();
     this.interval = setInterval(this.rotateTubeLines, 10000);
-    this.interval = setInterval(this.getData, 600000);
+    this.interval = setInterval(this.getData, 60 * 100 * 30);
+  }
+
+  setGetDataInterval() {
+    const now = new Date();
+    const fiveMinutes = 60 * 100 * 5;
+    const thirtyMinutes = 60 * 100 * 30;
+    if (now.getHours() >= 16 && now.getHours() < 19) {
+      this.interval = setInterval(this.getData, fiveMinutes);
+    } else {
+      this.interval = setInterval(this.getData, thirtyMinutes);
+    }
   }
 
   async getData() {
@@ -45,6 +56,7 @@ class Tube extends Component {
         });
       }
     });
+    this.setGetDataInterval();
   }
 
   showStatusCard = data => {
