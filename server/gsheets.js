@@ -76,10 +76,10 @@ const retrieveLatestWifiPassword = async auth => {
           const todaysDate = new Date();
 
           latestWifiPassword = allWifiPasswords.filter((wifiPassword) => {
-            const myDate = moment(wifiPassword.startDate, "DD-MM-YYYY").toDate();
+            const startDate = moment(wifiPassword.startDate, "DD-MM-YYYY").toDate();
 
-            if (todaysDate > myDate) {
-              return myDate;
+            if (todaysDate > startDate) {
+              return startDate;
             }
           })
 
@@ -166,6 +166,17 @@ const retrieveAllTeamNews = async auth => {
   });
 };
 
+const isInThePastOrCurrentDate = date => {
+
+  const todaysDate = new Date();
+  return (date <= todaysDate);
+}
+
+const isPassEndDateOrCurrentDate = date => {
+  const todaysDate = new Date();
+  return date >= todaysDate
+}
+
 const retrieveAllReminders = async auth => {
   const reminders = [];
   const SHEET_NAME = 'reminders';
@@ -187,22 +198,29 @@ const retrieveAllReminders = async auth => {
         if (rows.length) {
           rows.map(row => {
             if (row[0] !== 'heading') {
-              reminders.push({
-                heading: row[0],
-                content: row[1],
-                startDate: row[2],
-                startTime: row[3],
-                endDate: row[4],
-                endTime: row[5]
-              });
+
+              const startDateTime = moment((row[2] + row[3]), "DD-MM-YYYY HH:mm").toDate();
+              const endDateTime = moment((row[4] + row[5]), "DD-MM-YYYY HH:mm").toDate();
+
+              if (isPassEndDateOrCurrentDate(endDateTime) &&
+                isInThePastOrCurrentDate(startDateTime)) {
+
+                reminders.push({
+                  heading: row[0],
+                  content: row[1],
+                  startDate: row[2],
+                  startTime: row[3],
+                  endDate: row[4],
+                  endTime: row[5]
+                });
+              }
             }
           });
         } else {
           console.log('No data found.');
         }
         resolve(reminders);
-      }
-    );
+      });
   });
 };
 
