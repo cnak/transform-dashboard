@@ -147,14 +147,21 @@ const retrieveAllTeamNews = async auth => {
         if (rows.length) {
           rows.map(row => {
             if (row[0] !== 'heading') {
-              teamNews.push({
-                heading: row[0],
-                content: row[1],
-                startDate: row[2],
-                startTime: row[3],
-                endDate: row[4],
-                endTime: row[5]
-              });
+
+              const startDateTime = moment((row[2] + row[3]), "DD-MM-YYYY HH:mm").toDate();
+              const endDateTime = moment((row[4] + row[5]), "DD-MM-YYYY HH:mm").toDate();
+
+              if (isPassEndDateOrCurrentDate(endDateTime) &&
+                isInThePastOrCurrentDate(startDateTime)) {
+                teamNews.push({
+                  heading: row[0],
+                  content: row[1],
+                  startDate: row[2],
+                  startTime: row[3],
+                  endDate: row[4],
+                  endTime: row[5]
+                });
+              }
             }
           });
         } else {
