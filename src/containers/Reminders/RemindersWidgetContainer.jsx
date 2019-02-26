@@ -19,17 +19,21 @@ export class RemindersWidgetContainer extends Component {
 
   componentDidMount() {
     this.getData().then(_ => {
-      this.interval = setInterval(this.getData, 60000);
+      this.interval = setInterval(this.getData, 4000);
     });
   }
 
   async getData() {
     const { href } = this.props;
+    const { reminders } = this.state;
 
     try {
       const response = await axios.get(href);
 
-      this.setState({ reminders: response.data });
+      if (JSON.stringify(response.data) !== JSON.stringify(reminders)) {
+        toast.dismiss();
+        this.setState({ reminders: response.data });
+      }
     } catch (error) {
       console.log('failed to get  reminder');
     }
@@ -37,10 +41,10 @@ export class RemindersWidgetContainer extends Component {
 
   getDuration = (startDate, startTime, endDate, endTime) => {
     /* eslint-disable prefer-template */
-    const startDateTime = moment(startDate + ' ' + startTime, 'DD/MM/YYYY HH:mm');
+    const nowDateTime = new Date();
     const endDateTime = moment(endDate + ' ' + endTime, 'DD/MM/YYYY HH:mm');
 
-    const diff = endDateTime.toDate() - startDateTime.toDate();
+    const diff = endDateTime.toDate() - nowDateTime;
     return diff;
   };
 
@@ -67,12 +71,18 @@ export class RemindersWidgetContainer extends Component {
     });
   };
 
-  dismiss = () => toast.dismiss(this.toastId);
-
   render() {
+    const { reminders } = this.state;
+    if (reminders) {
+      return (
+        <div>
+          <ToastContainer autoClose={false}>{this.displayToast()}</ToastContainer>
+        </div>
+      );
+    }
     return (
       <div>
-        <ToastContainer autoClose={false}>{this.displayToast()}</ToastContainer>
+        <h1>No Reminders</h1>
       </div>
     );
   }

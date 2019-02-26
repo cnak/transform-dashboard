@@ -10,9 +10,8 @@ const ListItem = ({ value, max, min, label, imageUrl }) => {
         {label}
         <Progress min={min} max={max} value={value} />
       </div>
-      <div className="value">{value}</div>
-      <div className="news-image">
-        <img src={imageUrl} alt="" />
+      <div className="value">
+        <p>{value}</p>
       </div>
     </li>
   );
