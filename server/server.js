@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 
-const PORT = '3001'
+const PORT = '8081'
 const API_URL = `http://localhost:${PORT}`
 
 app.use(cors())
