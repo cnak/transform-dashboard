@@ -15,32 +15,27 @@ const CREDENTIALS = 'server/credentials.json'
 const TOKEN_PATH = 'server/token.json';
 const SPREADSHEET_ID = '1scieI0CU5Suyze7cg8pV8kzYHJXUKzieUtJhAdOLyIc';
 
-async function getAllReminders() {
+async function getAllContent(func) {
   const content = fs.readFileSync(CREDENTIALS);
   return await authorize(JSON.parse(content), null).then(async function (value) {
-    return retrieveAllReminders(value);
+    return func(value);
   });
+}
+
+async function getAllReminders() {
+  return getAllContent(retrieveAllReminders);
 }
 
 async function getAllOverheard() {
-  const content = fs.readFileSync(CREDENTIALS);
-  return await authorize(JSON.parse(content), null).then(async function (value) {
-    return retrieveAllOverheard(value);
-  });
+  return getAllContent(retrieveAllOverheard)
 }
 
 async function getAllTeamNews() {
-  const content = fs.readFileSync(CREDENTIALS);
-  return await authorize(JSON.parse(content), null).then(async function (value) {
-    return retrieveAllTeamNews(value);
-  });
+  return getAllContent(retrieveAllTeamNews)
 }
 
 async function getLatestWifiPassword() {
-  const content = fs.readFileSync(CREDENTIALS);
-  return await authorize(JSON.parse(content), null).then(async function (value) {
-    return retrieveLatestWifiPassword(value);
-  });
+  return getAllContent(retrieveLatestWifiPassword)
 }
 
 const retrieveLatestWifiPassword = async auth => {
