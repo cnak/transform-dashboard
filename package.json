@@ -48,7 +48,8 @@
     "sass-loader": "^7.1.0"
   },
   "scripts": {
-    "start": "react-scripts start | npm run serve",
+    "start": "PORT=8081 react-scripts start | npm run serve",
+    "react-start": "PORT=3001 react-scripts start",
     "docker-start": "npm run serve",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
