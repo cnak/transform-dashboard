@@ -14,6 +14,6 @@ RUN npm install
 
 COPY --chown=node:node . .
 
-EXPOSE 8080
+EXPOSE 8081
 
-CMD [ "npm", "docker-start" ]
+CMD [ "npm", "start" ]
