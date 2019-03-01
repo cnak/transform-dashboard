@@ -13,7 +13,7 @@ import RemindersWidgetContainer from './containers/Reminders';
 import WifiPasswordContainer from './containers/WifiPassword';
 
 const Dashboard = () => {
-  const { BASE_API_URL } = process.env;
+  const BASE_API_URL = 'http://et-dash-dev.eu-west-2.elasticbeanstalk.com';
   return (
     <div>
       <Header />
