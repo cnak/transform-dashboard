@@ -48,14 +48,14 @@
     "sass-loader": "^7.1.0"
   },
   "scripts": {
-    "start": "react-scripts start | npm run serve",
-    "react-start": "PORT=3001 react-scripts start",
+    "start": "BASE_API_URL=http://et-dash-dev.eu-west-2.elasticbeanstalk.com react-scripts start | npm run serve",
+    "react-start": "react-scripts start",
     "docker-start": "npm run serve",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "serve": "node server/server.js",
-    "dev-serve": "nodemon server/server.js",
+    "dev-start": "BASE_API_URL=http://localhost:8081 npm run react-start | nodemon server/server.js",
     "serve-delayed": "node server.js delayresponse"
   }
 }
