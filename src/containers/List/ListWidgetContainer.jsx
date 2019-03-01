@@ -27,11 +27,15 @@ class ListWidgetContainer extends Component {
     this.setState({ loading: true });
     const { href } = this.props;
 
-    try {
-      const response = await axios.get(href);
-      this.setState({ loading: false, values: response.data });
-    } catch (error) {
-      this.setState({ loading: false });
+    const now = new Date();
+
+    if (now.getHours() >= 8 && now.getHours() < 19) {
+      try {
+        const response = await axios.get(href);
+        this.setState({ loading: false, values: response.data });
+      } catch (error) {
+        this.setState({ loading: false });
+      }
     }
   }
 
