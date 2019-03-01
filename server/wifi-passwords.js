@@ -8,4 +8,10 @@ router.get('/latest', function (req, res) {
   });
 });
 
+router.get('/', function (req, res) {
+  gsheets.getLatestWifiPassword().then(function (value) {
+    res.json(value);
+  });
+});
+
 module.exports = router;

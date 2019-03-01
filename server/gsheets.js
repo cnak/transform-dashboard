@@ -56,32 +56,28 @@ const retrieveLatestWifiPassword = async auth => {
         if (err) return console.log(`The API returned an error: ${err}`);
 
         const rows = res.data.values;
-        let allWifiPasswords = []
+
+        const todaysDate = new Date();
 
         if (rows.length) {
           rows.map(row => {
+
             if (row[0] !== 'content') {
-              allWifiPasswords.push({
-                wifiPassword: row[0],
-                startDate: row[1],
-              });
+              const startDate = moment(row[1], "DD-MM-YYYY").toDate();
+
+              if (todaysDate >= startDate) {
+                latestWifiPassword.push({
+                  wifiPassword: row[0],
+                  startDate: row[1],
+                });
+              }
             }
           });
-
-          const todaysDate = new Date();
-
-          latestWifiPassword = allWifiPasswords.filter((wifiPassword) => {
-            const startDate = moment(wifiPassword.startDate, "DD-MM-YYYY").toDate();
-
-            if (todaysDate > startDate) {
-              return startDate;
-            }
-          })
-
+          console.log(latestWifiPassword);
         } else {
           console.log('No data found.');
         }
-        resolve(latestWifiPassword);
+        resolve(latestWifiPassword.slice(latestWifiPassword.length - 1));
       }
     );
   });
