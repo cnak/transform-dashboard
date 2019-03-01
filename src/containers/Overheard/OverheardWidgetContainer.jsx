@@ -26,9 +26,8 @@ class OverheardWidgetContainer extends Component {
 
     const now = new Date();
 
-    if (now.getHours() > 9 && now.getHours() < 18) {
+    if (now.getHours() >= 8 && now.getHours() < 18) {
       const resp = await axios.get(href);
-
       this.setState({
         quote: resp.data.quote
       });
