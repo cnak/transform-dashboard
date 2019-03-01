@@ -73,9 +73,8 @@ const retrieveLatestWifiPassword = async auth => {
               }
             }
           });
-          console.log(latestWifiPassword);
         } else {
-          console.log('No data found.');
+          console.log('No Wifi data found.');
         }
         resolve(latestWifiPassword.slice(latestWifiPassword.length - 1));
       }
@@ -109,7 +108,7 @@ const retrieveAllOverheard = async auth => {
             });
           });
         } else {
-          console.log('No data found.');
+          console.log('No overheard found.');
         }
         resolve(overheard);
       }
@@ -156,7 +155,7 @@ const retrieveAllTeamNews = async auth => {
             }
           });
         } else {
-          console.log('No data found.');
+          console.log('No team news found.');
         }
         resolve(teamNews);
       }

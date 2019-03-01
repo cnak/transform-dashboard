@@ -3,49 +3,41 @@ const express = require('express'),
 
 const fetch = require('node-fetch')
 
+const imageFolder = './public/gallery/';
+const fs = require('fs');
+
 router.get('/all', async (req, res) => {
-  res.json([{
-      imageUrl: 'gallery/1.jpg'
-    },
-    {
-      imageUrl: 'gallery/2.jpg'
-    },
-    {
-      imageUrl: 'gallery/3.jpg'
-    },
-    {
-      imageUrl: 'gallery/4.jpg'
-    },
-    {
-      imageUrl: 'gallery/6.jpg'
-    },
-    {
-      imageUrl: 'gallery/7.jpg'
-    },
-    {
-      imageUrl: 'gallery/8.jpg'
-    },
-    {
-      imageUrl: 'gallery/9.jpg'
-    },
-  ]);
+
+  let galleryImages = []
+  fs.readdirSync(imageFolder).forEach(file => {
+    galleryImages.push(file)
+  });
+
+  res.json(galleryImages);
 });
 
 router.get('/latest', async (req, res) => {
   try {
-    const imagesResponse = await fetch('http://localhost:3001/gallery/all').then(res => res.json());
-    debugger
-    const image = imagesResponse[Math.floor(Math.random() * imagesResponse.length + 1)];
+    let galleryImages = []
+    fs.readdirSync(imageFolder).forEach(file => {
+      galleryImages.push(file)
+    });
+
+    const image = galleryImages[Math.floor(Math.random() * galleryImages.length + 1)];
 
     if (image == undefined) {
       res.json({
         imageUrl: 'gallery/1.jpg'
       });
     } else {
-      res.json(image);
+      res.json({
+        imageUrl: `gallery/${image}`
+      })
     }
   } catch (e) {
     console.error(e, 'failed to retrieve images data');
+    res.status(404)
+      .send('Not found');
   }
 });
 

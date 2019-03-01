@@ -2,8 +2,7 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 
-const PORT = '8081'
-
+const PORT = '8081';
 app.use(cors())
 app.use(require('./controller'))
 
