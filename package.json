@@ -3,7 +3,7 @@
   "version": "1.9.4",
   "private": true,
   "engines": {
-    "node": "11.9.0",
+    "node": "11.10.1",
     "yarn": "1.13.0"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.7.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
