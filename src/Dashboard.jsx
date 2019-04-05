@@ -21,7 +21,7 @@ const Dashboard = () => {
         <Widget>
           <GalleryWidgetContainer href={`${BASE_API_URL}/gallery/latest`} />
         </Widget>
-        <Widget heading="Team news">
+        <Widget heading="">
           <ListWidgetContainer
             href={`${BASE_API_URL}/team-news/all`}
             heading="Team news"
@@ -29,14 +29,14 @@ const Dashboard = () => {
             bkColor="pink"
           />
         </Widget>
-        <Widget heading="Transport">
+        <Widget heading="">
           <Tube />
         </Widget>
-        <Widget heading="Reminders">
+        <Widget heading="">
           <RemindersWidgetContainer href={`${BASE_API_URL}/reminders/all`} />
         </Widget>
         <Widget>
-          <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="half" />
+          <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="full" />
         </Widget>
         <Widget>
           <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />

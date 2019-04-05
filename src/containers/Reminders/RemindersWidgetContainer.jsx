@@ -72,17 +72,19 @@ export class RemindersWidgetContainer extends Component {
   };
 
   render() {
+    const reminderGap = {
+      marginTop: '44%',
+      marginLeft: '12%'
+    };
     const { reminders } = this.state;
-    if (reminders) {
+    if (reminders.length !== 0) {
       return (
-        <div>
           <ToastContainer autoClose={false}>{this.displayToast()}</ToastContainer>
-        </div>
       );
     }
     return (
-      <div>
-        <h1>No Reminders</h1>
+      <div style={reminderGap}>
+        <h2>No Reminders at the moment..</h2>
       </div>
     );
   }

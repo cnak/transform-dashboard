@@ -32,7 +32,11 @@ class ListWidgetContainer extends Component {
     if (now.getHours() >= 8 && now.getHours() < 19) {
       try {
         const response = await axios.get(href);
-        this.setState({ loading: false, values: response.data });
+        if (response.data.length === 0) {
+          this.setState({ loading: false, values: [{ content: 'No Team News at the moment' }] });
+        } else {
+          this.setState({ loading: false, values: response.data });
+        }
       } catch (error) {
         this.setState({ loading: false });
       }
