@@ -17,7 +17,7 @@ class OverheardWidgetContainer extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-unused-vars
     this.getData().then(_ => {
-      this.interval = setInterval(this.getData, 600000);
+      this.interval = setInterval(this.getData, 60000);
     });
   }
 
@@ -26,7 +26,7 @@ class OverheardWidgetContainer extends Component {
 
     const now = new Date();
 
-    if (now.getHours() >= 8 && now.getHours() < 18) {
+    if (now.getHours() >= 8 && now.getHours() < 19) {
       const resp = await axios.get(href);
       this.setState({
         quote: resp.data.quote
