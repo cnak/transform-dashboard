@@ -22,11 +22,11 @@ class Footer extends Component {
   async getCurrentFullDate() {
     const currentDate = new Date();
 
-    const currentTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
-
     const pad = n => {
       return n < 10 ? `0${n}` : n;
     };
+    const currentTime = `${currentDate.getHours()}:${pad(currentDate.getMinutes())}`;
+
     const date = currentDate.getDate();
     const month = currentDate.getMonth();
 
