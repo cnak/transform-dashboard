@@ -56,7 +56,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "serve": "node server/server.js",
-    "dev-start": "BASE_API_URL=http://localhost:8081 npm run react-start | nodemon server/server.js",
-    "serve-delayed": "node server.js delayresponse"
+    "dev-start": "BASE_API_URL=http://localhost:8081 npm run react-start | nodemon server/server.js"
   }
 }
