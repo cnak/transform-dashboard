@@ -1,6 +1,6 @@
 {
   "name": "transform-dashboard",
-  "version": "1.9.4",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": "11.10.1",
