@@ -1,11 +1,11 @@
 .image-gallery {
   min-width: 10em;
   background: none;
-  height: 13em;
+  height: 100%;
 
 }
 
 .image-gallery img {
-  max-height: 15em;
+  max-height: 19em;
   border-radius: 0 25px 0px;
 }

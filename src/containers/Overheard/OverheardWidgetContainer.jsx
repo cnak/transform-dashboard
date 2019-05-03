@@ -34,11 +34,37 @@ class OverheardWidgetContainer extends Component {
     }
   }
 
+  quoteText = quote => {
+    const smallFontSize = {
+      fontSize: '2em'
+    };
+    const largeFontSize = {
+      fontSize: '4.5em'
+    };
+
+    if (quote.length < 30) {
+      return (
+        <p style={largeFontSize} className="overheard-text">
+          {quote}
+        </p>
+      );
+    }
+    if (quote.length > 50) {
+      return (
+        <p style={smallFontSize} className="overheard-text">
+          {quote}
+        </p>
+      );
+    }
+    return <p className="overheard-text">{quote}</p>;
+  };
+
   render() {
     const { quote } = this.state;
+
     return (
       <Widget heading="Overheard at ET" bkColor="blue">
-        <p className="overheard-text"> {quote} </p>
+        <div className="overheard">{this.quoteText(quote)}</div>
       </Widget>
     );
   }

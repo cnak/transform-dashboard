@@ -3,6 +3,7 @@
   border-radius: 0 25px 0px;
   transition: height 2s;
   transition: max-height 0.8s;
+  min-height: 18em;
 
 }
 
@@ -66,7 +67,8 @@
 
 .Widget .content {
   grid-area: content;
-  margin-top: 1em
+  margin-top: 1em;
+  height: 100%;
 }
 
 @media(max-width: 600px) {

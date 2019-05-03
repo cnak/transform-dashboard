@@ -36,10 +36,10 @@ const Dashboard = () => {
           <RemindersWidgetContainer href={`${BASE_API_URL}/reminders/all`} />
         </Widget>
         <Widget>
-          <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} heightSize="full" />
-        </Widget>
-        <Widget>
-          <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
+          <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
+          <Widget>
+            <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
+          </Widget>
         </Widget>
         <Widget>
           <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/current`} />
