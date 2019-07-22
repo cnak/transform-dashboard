@@ -1,0 +1,14 @@
+.last-updated-status {
+    position: relative;
+    top: -4em;
+	left:16em;
+	right:0;
+    width: 8em;
+    padding: .1em;
+    border-radius: 4em;
+}
+
+.last-updated-status p { 
+    font-size: .7em;
+    margin-left: 1em;
+}
