@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Widget from '../../components/Widget';
 import './WifiPassword.css';
+import WifiLogo from '../../components/WifiLogo';
 
 class WifiPasswordContainer extends Component {
   constructor() {
@@ -37,6 +38,7 @@ class WifiPasswordContainer extends Component {
     const { wifiPassword } = this.state;
     return (
       <Widget heading="Wifi Guest Password" bkColor="blue">
+          <WifiLogo />
         <p className="wifi-password-text"> {wifiPassword} </p>
       </Widget>
     );
