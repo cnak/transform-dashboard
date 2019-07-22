@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import StatusCard from '../StatusCard/StatusCard';
 import './Tube.css';
+import LastUpdatedStatus from '../../../components/LastUpdatedStatus';
+import Widget from '../../../components/Widget';
 
 const API_URL = `https://api.tfl.gov.uk/line/mode/tube/status?app_id=37b3cb3e&app_key=2e35b8e85289633355f76896fcbe68a2`;
 
@@ -22,7 +24,8 @@ class Tube extends Component {
     this.state = {
       loading: true,
       tubeLines: [],
-      currentTubeLines: []
+      currentTubeLines: [],
+      lastUpdatedTime: ''
     };
 
     this.rotateTubeLines = this.rotateTubeLines.bind(this);
@@ -46,13 +49,15 @@ class Tube extends Component {
   }
 
   async getData() {
+    const now = new Date();
     axios.get(API_URL).then(response => {
       const tubeLines = response.data.filter(item => nearbyLines.includes(item.name.toLowerCase()));
       if (tubeLines) {
         this.setState({
           loading: false,
           tubeLines,
-          currentTubeLines: tubeLines.slice(0, tubeLines.length / 2)
+          currentTubeLines: tubeLines.slice(0, tubeLines.length / 2),
+          lastUpdatedTime: `${now.getHours()}:${now.getMinutes()}`
         });
       }
     });
@@ -100,12 +105,17 @@ class Tube extends Component {
   }
 
   render() {
-    const { loading, currentTubeLines } = this.state;
+    const { loading, currentTubeLines, lastUpdatedTime } = this.state;
 
     if (loading === true) {
       return <div style={{ fontSize: '50px' }}>Loading</div>;
     }
-    return <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>;
+    return (
+      <Widget heading="Nearby Tube Stations" bkColor="blue">
+        <LastUpdatedStatus backgroundColor="#168475" time={lastUpdatedTime} />
+        <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>
+      </Widget>
+    );
   }
 }
 
