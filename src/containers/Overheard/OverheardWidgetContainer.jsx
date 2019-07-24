@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Widget from '../../components/Widget';
 import './Overheard.css';
-import LastUpdatedStatus from '../../components/LastUpdatedStatus';
 
 class OverheardWidgetContainer extends Component {
   constructor() {
     super();
 
     this.state = {
-      quote: '',
-      lastUpdatedTime: ''
+      quote: ''
     };
 
     this.getData = this.getData.bind(this);
@@ -31,43 +29,20 @@ class OverheardWidgetContainer extends Component {
     if (now.getHours() >= 8 && now.getHours() < 19) {
       const resp = await axios.get(href);
       this.setState({
-        quote: resp.data.quote,
-        lastUpdatedTime: `${now.getHours()}:${now.getMinutes()}`
+        quote: resp.data.quote
       });
     }
   }
 
   quoteText = quote => {
-    const smallFontSize = {
-      fontSize: '2em'
-    };
-    const largeFontSize = {
-      fontSize: '4.5em'
-    };
-
-    if (quote.length < 30) {
-      return (
-        <p style={largeFontSize} className="overheard-text">
-          {quote}
-        </p>
-      );
-    }
-    if (quote.length > 50) {
-      return (
-        <p style={smallFontSize} className="overheard-text">
-          {quote}
-        </p>
-      );
-    }
     return <p className="overheard-text">{quote}</p>;
   };
 
   render() {
-    const { quote, lastUpdatedTime } = this.state;
+    const { quote } = this.state;
 
     return (
-      <Widget heading="Overheard at ET" bkColor="blue">
-        <LastUpdatedStatus backgroundColor="black" time={lastUpdatedTime} />
+      <Widget bkColor="white" lastUpdatedStatusTime="OVERHEARD AT ET">
         <div className="overheard">{this.quoteText(quote)}</div>
       </Widget>
     );

@@ -3,20 +3,21 @@ import './WifiLogo.css';
 
 export default function WifiLogo() {
   return (
-    <div>
-      <div id="circle">
-        <div className="circle one">
-          <div className="circle two">
-            <div className="circle three">
-              <div className="circle four">
-                <div className="circle five">
-                  <div className="circle six" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="internet">
+      <svg className="u-hidden" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="wifi" viewBox="0 0 633 633">
+          <path
+            className="wifi__path"
+            d="M316.785 348.784c52.934 0 100.934 21.533 135.7 56.299l-45.232 45.234c-23.178-23.178-55.18-37.533-90.467-37.533-35.29 0-67.29 14.355-90.467 37.533l-45.234-45.234c34.764-34.766 82.764-56.299 135.7-56.299zm-226.275-34.274c60.44-60.44 140.799-93.726 226.274-93.726s165.834 33.286 226.274 93.726l-45.254 45.254c-48.354-48.353-112.641-74.98-181.02-74.98-68.381 0-132.667 26.628-181.02 74.98l-45.254-45.254zm400.666-186.507c53.352 22.566 101.26 54.864 142.393 95.998l-45.254 45.254c-72.529-72.528-168.961-112.471-271.53-112.471-102.57 0-199 39.943-271.529 112.471l-45.256-45.255c41.134-41.133 89.041-73.431 142.392-95.997 55.252-23.369 113.926-35.219 174.393-35.219 60.465 0 119.139 11.85 174.391 35.219zm-206.392 380.781c0 17.673 14.327 32 32 32 17.672 0 32-14.327 32-32s-14.328-32-32-32c-17.673 0-32 14.327-32 32z"
+          />
+        </symbol>
+      </svg>
+      <svg className="wifi wifi--01">
+        <use xlinkHref="#wifi" />
+      </svg>
+      <svg className="wifi wifi--02">
+        <use xlinkHref="#wifi" />
+      </svg>
     </div>
   );
 }

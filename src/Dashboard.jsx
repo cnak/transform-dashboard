@@ -29,7 +29,7 @@ const Dashboard = () => {
             bkColor="pink"
           />
         </Widget>
-        <Widget heading="">
+        <Widget>
           <Tube />
         </Widget>
         <Widget heading="">
