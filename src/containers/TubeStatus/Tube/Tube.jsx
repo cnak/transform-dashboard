@@ -35,33 +35,39 @@ class Tube extends Component {
   componentDidMount() {
     this.getData();
     this.interval = setInterval(this.rotateTubeLines, 10000);
-    this.interval = setInterval(this.getData, 60 * 100 * 30);
   }
 
   setGetDataInterval() {
     const now = new Date();
-    const fiveMinutes = 60 * 100 * 5;
+    const tenMinutes = 60 * 100 * 10;
     const thirtyMinutes = 60 * 100 * 30;
     if (now.getHours() >= 16 && now.getHours() < 19) {
-      this.interval = setInterval(this.getData, fiveMinutes);
+      this.interval = setInterval(this.getData, tenMinutes);
     } else {
       this.interval = setInterval(this.getData, thirtyMinutes);
     }
   }
 
   async getData() {
-    axios.get(API_URL).then(response => {
-      const tubeLines = response.data.filter(item => nearbyLines.includes(item.name.toLowerCase()));
-      const lastUpdateTime = currentTime(new Date());
-      if (tubeLines) {
-        this.setState({
-          loading: false,
-          tubeLines,
-          currentTubeLines: tubeLines.slice(0, tubeLines.length / 2),
-          lastUpdatedTime: `TUBE STATUS @ ${lastUpdateTime}`
-        });
-      }
-    });
+    axios
+      .get(API_URL)
+      .then(response => {
+        const tubeLines = response.data.filter(item =>
+          nearbyLines.includes(item.name.toLowerCase())
+        );
+        const lastUpdateTime = currentTime(new Date());
+        if (tubeLines) {
+          this.setState({
+            loading: false,
+            tubeLines,
+            currentTubeLines: tubeLines.slice(0, tubeLines.length / 2),
+            lastUpdatedTime: `TUBE STATUS @ ${lastUpdateTime}`
+          });
+        }
+      })
+      .catch(err => {
+        console.log('Error fetching Tube status data', err);
+      });
     this.setGetDataInterval();
   }
 
