@@ -7,8 +7,7 @@
 }
 
 .weather-card {
-  margin: 20px 5px;
-  border-radius: 20px;
+  margin:.5em 5px;
   position: relative;
   overflow: hidden;
   background-color: white;
@@ -16,27 +15,28 @@
   animation: appear 500ms ease-out forwards;
 }
 
+.weather-content { 
+    margin: 1em;
+}
+
 .weather-card h1 {
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
   font-size: 4em;
   text-align: center;
-  color: #b8b8b8;
-  bottom: 0;
-  opacity: 0;
-  transform: translateX(150px);
+  color: #a7a7a7;
   animation: title-appear 500ms ease-out 500ms forwards;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .weather-card p {
-  position: absolute;
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1em;
-  color: #d2d2d2;
+  color: grey;
   bottom: 0;
-  left: 35px;
-  animation: title-appear 1s ease-out 500ms forwards;
+  text-align: center;
+  text-transform: capitalize
 }
 
 .weather-icon {
@@ -49,14 +49,7 @@
   animation: weather-icon-move 2s ease-in-out infinite;
 }
 
-.sun {
-  background: #ffcd41;
-  border-radius: 50%;
-  box-shadow: rgba(255, 255, 0, 0.1) 0 0 0 4px;
-  animation: light 800ms ease-in-out infinite alternate, weather-icon-move 2s ease-in-out infinite;
-}
-
-.cloud {
+.clear {
   margin-right: 60px;
   background: #b6cede;
   border-radius: 20px;
@@ -65,7 +58,32 @@
   box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
 
-.cloud:after {
+.sun {
+  background: #ffcd41;
+  border-radius: 50%;
+  box-shadow: rgba(255, 255, 0, 0.1) 0 0 0 4px;
+  animation: light 800ms ease-in-out infinite alternate, weather-icon-move 2s ease-in-out infinite;
+}
+
+.clouds {
+  margin-right: 60px;
+  background: #b6cede;
+  border-radius: 20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+}
+
+.rain {
+  margin-right: 60px;
+  background: #b6cede;
+  border-radius: 20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+}
+
+.rainy:after {
   content: "";
   position: absolute;
   border-radius: 10px;
@@ -133,3 +151,4 @@
     transform: translateX(0px);
   }
 }
+

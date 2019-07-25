@@ -21,16 +21,7 @@ class Widget extends Component {
   }
 
   render() {
-    const {
-      heading,
-      headingBackgroundColor,
-      headingTitleColor,
-      loading,
-      children,
-      heightSize,
-      bkColor,
-      lastUpdatedStatusTime
-    } = this.props;
+    const { loading, children, heightSize, bkColor, heading } = this.props;
 
     const colors = () => {
       if (bkColor === 'black') {
@@ -70,15 +61,21 @@ class Widget extends Component {
       height: getHeight()
     };
 
-    if (!lastUpdatedStatusTime) {
+    if (!heading) {
       return <div className="content">{children}</div>;
     }
+    const {
+      headingTitle,
+      headingTitleColor,
+      headingBackgroundColor,
+      lastUpdatedStatusTime
+    } = heading;
 
     return (
       <div style={Object.assign({}, styles)} className={colors()}>
         <div className="header">
           <Heading
-            headingTitle={heading}
+            headingTitle={headingTitle}
             headingTitleColor={headingTitleColor}
             backgroundColor={headingBackgroundColor}
             lastUpdatedStatusTime={lastUpdatedStatusTime}
@@ -92,15 +89,11 @@ class Widget extends Component {
 }
 
 Widget.defaultProps = {
-  heading: '',
-  headingBackgroundColor: '',
   colspan: 1,
   rowspan: 1
 };
 
 Widget.propTypes = {
-  heading: PropTypes.string,
-  headingBackgroundColor: PropTypes.string,
   colspan: PropTypes.number,
   rowspan: PropTypes.number
 };

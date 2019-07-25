@@ -26,7 +26,6 @@ const Dashboard = () => {
             href={`${BASE_API_URL}/team-news/all`}
             heading="Team news"
             rowspan={3}
-            bkColor="pink"
           />
         </Widget>
         <Widget>

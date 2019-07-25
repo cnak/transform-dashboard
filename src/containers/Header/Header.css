@@ -19,7 +19,6 @@ img.left-logo {
 
 .right-logo img {
   height: 3em;
-  align-self: center;
 }
 
 @-webkit-keyframes pulse {

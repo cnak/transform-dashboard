@@ -29,18 +29,16 @@ class Tube extends Component {
     };
 
     this.rotateTubeLines = this.rotateTubeLines.bind(this);
-    this.getData = this.getData.bind(this);
-  }
-
-  componentDidMount() {
-    this.getData();
     this.interval = setInterval(this.rotateTubeLines, 10000);
+    this.getData = this.getData.bind(this);
+    this.getData();
+    this.setGetDataInterval();
   }
 
   setGetDataInterval() {
     const now = new Date();
-    const tenMinutes = 60 * 100 * 10;
-    const thirtyMinutes = 60 * 100 * 30;
+    const tenMinutes = 60000 * 10;
+    const thirtyMinutes = 60000 * 30;
     if (now.getHours() >= 16 && now.getHours() < 19) {
       this.interval = setInterval(this.getData, tenMinutes);
     } else {
@@ -66,9 +64,8 @@ class Tube extends Component {
         }
       })
       .catch(err => {
-        console.log('Error fetching Tube status data', err);
+        console.error('Error fetching Tube status data', err);
       });
-    this.setGetDataInterval();
   }
 
   showStatusCard = data => {
@@ -114,16 +111,18 @@ class Tube extends Component {
   render() {
     const { loading, currentTubeLines, lastUpdatedTime } = this.state;
 
+    const headingProps = {
+      headingTitle: '',
+      headingTitleColor: '#6dc5e8',
+      headingBackgroundColor: 'white',
+      lastUpdatedStatusTime: lastUpdatedTime
+    };
+
     if (loading === true) {
       return <div style={{ fontSize: '50px' }}>Loading</div>;
     }
     return (
-      <Widget
-        heading=" "
-        headingBackgroundColor="43ab9b"
-        bkColor="blue"
-        lastUpdatedStatusTime={lastUpdatedTime}
-      >
+      <Widget heading={headingProps}>
         <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>
       </Widget>
     );

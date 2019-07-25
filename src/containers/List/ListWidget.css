@@ -1,8 +1,5 @@
 .ListWidget {
   min-height: 19em;
-}
-
-.pinkBackground {
   background-color: white;
-  color: black;
+  margin-top: .5em
 }

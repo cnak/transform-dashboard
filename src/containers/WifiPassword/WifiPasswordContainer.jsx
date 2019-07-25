@@ -36,8 +36,15 @@ class WifiPasswordContainer extends Component {
 
   render() {
     const { wifiPassword } = this.state;
+
+    const headingProps = {
+      headingTitle: 'WIFI GUEST PASSWORD',
+      headingTitleColor: '#f89633',
+      headingBackgroundColor: 'white'
+    };
+
     return (
-      <Widget heading="" bkColor="blue" lastUpdatedStatusTime="WIFI GUEST PASSWORD">
+      <Widget heading={headingProps}>
         <div className="wifi-password">
           <p className="wifi-password-text"> {wifiPassword} </p>
           <WifiLogo />

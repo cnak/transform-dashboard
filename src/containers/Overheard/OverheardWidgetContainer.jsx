@@ -40,9 +40,14 @@ class OverheardWidgetContainer extends Component {
 
   render() {
     const { quote } = this.state;
+    const headingProps = {
+      headingTitle: 'OVERHEARD AT ET',
+      headingTitleColor: '#43ab9b',
+      headingBackgroundColor: 'white'
+    };
 
     return (
-      <Widget bkColor="white" lastUpdatedStatusTime="OVERHEARD AT ET">
+      <Widget heading={headingProps}>
         <div className="overheard">{this.quoteText(quote)}</div>
       </Widget>
     );
