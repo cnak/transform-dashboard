@@ -22,6 +22,11 @@ class WifiPasswordContainer extends Component {
     });
   }
 
+  shouldComponentUpdate(_, nextState) {
+    const { wifiPassword } = this.state;
+    return wifiPassword !== nextState.wifiPassword;
+  }
+
   async getData() {
     const now = new Date();
 
