@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Loading from '../elements/Loading';
+import Heading from './Heading';
+
 import '../styles/Widget.css';
 
 class Widget extends Component {
@@ -19,7 +21,7 @@ class Widget extends Component {
   }
 
   render() {
-    const { heading, loading, children, heightSize, bkColor } = this.props;
+    const { loading, children, heightSize, bkColor, heading } = this.props;
 
     const colors = () => {
       if (bkColor === 'black') {
@@ -45,13 +47,6 @@ class Widget extends Component {
       });
     };
 
-    const displayHeading = headingText => {
-      if (headingText) {
-        return <h2>{headingText}</h2>;
-      }
-      return <div />;
-    };
-
     const getHeight = () => {
       if (heightSize === 'half') {
         return '8em';
@@ -66,10 +61,25 @@ class Widget extends Component {
       height: getHeight()
     };
 
+    if (!heading) {
+      return <div className="content">{children}</div>;
+    }
+    const {
+      headingTitle,
+      headingTitleColor,
+      headingBackgroundColor,
+      lastUpdatedStatusTime
+    } = heading;
+
     return (
       <div style={Object.assign({}, styles)} className={colors()}>
         <div className="header">
-          {displayHeading(heading)}
+          <Heading
+            headingTitle={headingTitle}
+            headingTitleColor={headingTitleColor}
+            backgroundColor={headingBackgroundColor}
+            lastUpdatedStatusTime={lastUpdatedStatusTime}
+          />
           {loading ? <Loading /> : ''}
         </div>
         <div className="content">{children}</div>
@@ -79,13 +89,11 @@ class Widget extends Component {
 }
 
 Widget.defaultProps = {
-  heading: '',
   colspan: 1,
   rowspan: 1
 };
 
 Widget.propTypes = {
-  heading: PropTypes.string,
   colspan: PropTypes.number,
   rowspan: PropTypes.number
 };

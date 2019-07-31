@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import ListDisplay from './ListDisplay';
 import ListItem from './ListItem';
 import './ListWidget.css';
+import Heading from '../../components/Heading';
 
 class ListWidget extends Component {
   constructor(props) {
@@ -66,8 +67,19 @@ class ListWidget extends Component {
 
     const item = listItems[currentNewsItem];
 
+    const headingProps = {
+      headingTitle: 'Team News',
+      headingTitleColor: '#202944',
+      headingBackgroundColor: 'white'
+    };
+
     return (
       <ListDisplay>
+        <Heading
+          headingTitle={headingProps.headingTitle}
+          headingTitleColor={headingProps.headingTitleColor}
+          backgroundColor={headingProps.headingBackgroundColor}
+        />
         <ListItem
           key={item.label}
           label={item.heading}

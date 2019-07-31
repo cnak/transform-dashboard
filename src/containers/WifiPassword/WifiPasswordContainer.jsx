@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Widget from '../../components/Widget';
 import './WifiPassword.css';
+import WifiLogo from '../../components/WifiLogo';
 
 class WifiPasswordContainer extends Component {
   constructor() {
@@ -21,6 +22,11 @@ class WifiPasswordContainer extends Component {
     });
   }
 
+  shouldComponentUpdate(_, nextState) {
+    const { wifiPassword } = this.state;
+    return wifiPassword !== nextState.wifiPassword;
+  }
+
   async getData() {
     const now = new Date();
 
@@ -35,9 +41,19 @@ class WifiPasswordContainer extends Component {
 
   render() {
     const { wifiPassword } = this.state;
+
+    const headingProps = {
+      headingTitle: 'WIFI GUEST PASSWORD',
+      headingTitleColor: '#f89633',
+      headingBackgroundColor: 'white'
+    };
+
     return (
-      <Widget heading="Wifi Guest Password" bkColor="blue">
-        <p className="wifi-password-text"> {wifiPassword} </p>
+      <Widget heading={headingProps}>
+        <div className="wifi-password">
+          <p className="wifi-password-text"> {wifiPassword} </p>
+          <WifiLogo />
+        </div>
       </Widget>
     );
   }

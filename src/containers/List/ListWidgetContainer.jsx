@@ -44,7 +44,7 @@ class ListWidgetContainer extends Component {
   }
 
   render() {
-    const { heading, colspan, rowspan, bkColor } = this.props;
+    const { heading, colspan, rowspan } = this.props;
     const { values, loading } = this.state;
 
     return (
@@ -54,7 +54,6 @@ class ListWidgetContainer extends Component {
         rowspan={rowspan}
         listItems={values}
         loading={loading}
-        bkColor={bkColor}
       />
     );
   }

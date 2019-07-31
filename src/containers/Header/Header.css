@@ -8,7 +8,7 @@ header.app-header {
 
 img.left-logo {
   height: 3em;
-  border-radius: 0 0px 4em;
+  border-radius: 0 0px .5em;
   animation: pulse 2s infinite;
 
 }
@@ -18,8 +18,7 @@ img.left-logo {
 }
 
 .right-logo img {
-  height: 1em;
-  align-self: center;
+  height: 3em;
 }
 
 @-webkit-keyframes pulse {

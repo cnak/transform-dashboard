@@ -1,0 +1,10 @@
+.widget-heading {
+  height: 3em;
+}
+
+.widget-heading .heading-title {
+  font-size: 1em;
+  margin-left: 1em;
+  font-weight: 900;
+  text-transform: uppercase;
+}

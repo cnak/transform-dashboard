@@ -1,0 +1,9 @@
+.last-updated-status {
+  float: left;
+}
+
+.last-updated-status p {
+  font-size: 1em;
+  margin-left: 1em;
+  font-weight: 900;
+}

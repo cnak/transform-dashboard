@@ -1,0 +1,76 @@
+:root {
+  --color_wifi: white;
+}
+
+.internet {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.wifi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.wifi__path {
+  fill: var(--color_wifi);
+}
+.wifi--01 {
+  fill-opacity: 0.3;
+}
+.wifi--02 {
+  -webkit-animation: connect 2.3s 4s 3000 ease-in-out alternate;
+  animation: connect 3.3s 2s 3000 ease-in-out alternate;
+  -webkit-clip-path: circle(0 at 50% 99%);
+  clip-path: circle(0 at 50% 99%);
+}
+
+@-webkit-keyframes connect {
+  0% {
+    -webkit-clip-path: circle(0 at 50% 99%);
+    /* clip-path: circle(0 at 50% 99%); */
+  }
+  25% {
+    -webkit-clip-path: circle(20% at 50% 99%);
+    clip-path: circle(20% at 50% 99%);
+  }
+  50% {
+    -webkit-clip-path: circle(35% at 50% 99%);
+    clip-path: circle(35% at 50% 99%);
+  }
+  75% {
+    -webkit-clip-path: circle(60% at 50% 99%);
+    clip-path: circle(60% at 50% 99%);
+  }
+  100% {
+    -webkit-clip-path: circle(90% at 50% 99%);
+    clip-path: circle(90% at 50% 99%);
+  }
+}
+
+@keyframes connect {
+  0% {
+    -webkit-clip-path: circle(0 at 50% 99%);
+    clip-path: circle(0% at 50% 99%);
+  }
+  25% {
+    -webkit-clip-path: circle(20% at 50% 99%);
+    clip-path: circle(20% at 50% 99%);
+  }
+  50% {
+    -webkit-clip-path: circle(35% at 50% 99%);
+    clip-path: circle(35% at 50% 99%);
+  }
+  75% {
+    -webkit-clip-path: circle(60% at 50% 99%);
+    clip-path: circle(60% at 50% 99%);
+  }
+  100% {
+    -webkit-clip-path: circle(90% at 50% 99%);
+    clip-path: circle(90% at 50% 99%);
+  }
+}

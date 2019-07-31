@@ -27,9 +27,7 @@ const StatusCard = ({ name, status, reason }) => {
       <p className="line-name" style={style}>
         {name}
       </p>
-      <p className="status" style={{ color: 'black' }}>
-        {status}
-      </p>
+      <p className="status">{status}</p>
     </div>
   );
 };

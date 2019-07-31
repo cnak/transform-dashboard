@@ -26,14 +26,19 @@ class OpenWeather extends React.Component {
     const { apiLocation } = this.props;
     axios.get(apiLocation).then(response => {
       const { data } = response;
-      this.setState({ name: data.name, temp: data.main.temp });
+      this.setState({
+        name: data.name,
+        temp: data.main.temp,
+        description: data.weather[0].description,
+        status: data.weather[0].main
+      });
     });
   }
 
   render() {
-    const { name, temp } = this.state;
+    const { name, temp, description, status } = this.state;
 
-    return <GenericWeather city={name} temp={temp} />;
+    return <GenericWeather city={name} temp={temp} description={description} status={status} />;
   }
 }
 

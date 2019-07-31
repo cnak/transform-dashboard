@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import StatusCard from '../StatusCard/StatusCard';
 import './Tube.css';
+import Widget from '../../../components/Widget';
+import { currentTime } from '../../../helper/DateUtils';
 
 const API_URL = `https://api.tfl.gov.uk/line/mode/tube/status?app_id=37b3cb3e&app_key=2e35b8e85289633355f76896fcbe68a2`;
 
@@ -22,41 +24,48 @@ class Tube extends Component {
     this.state = {
       loading: true,
       tubeLines: [],
-      currentTubeLines: []
+      currentTubeLines: [],
+      lastUpdatedTime: ''
     };
 
     this.rotateTubeLines = this.rotateTubeLines.bind(this);
-  }
-
-  componentDidMount() {
-    this.getData();
     this.interval = setInterval(this.rotateTubeLines, 10000);
-    this.interval = setInterval(this.getData, 60 * 100 * 30);
+    this.getData = this.getData.bind(this);
+    this.getData();
+    this.setGetDataInterval();
   }
 
   setGetDataInterval() {
     const now = new Date();
-    const fiveMinutes = 60 * 100 * 5;
-    const thirtyMinutes = 60 * 100 * 30;
+    const tenMinutes = 60000 * 10;
+    const thirtyMinutes = 60000 * 30;
     if (now.getHours() >= 16 && now.getHours() < 19) {
-      this.interval = setInterval(this.getData, fiveMinutes);
+      this.interval = setInterval(this.getData, tenMinutes);
     } else {
       this.interval = setInterval(this.getData, thirtyMinutes);
     }
   }
 
   async getData() {
-    axios.get(API_URL).then(response => {
-      const tubeLines = response.data.filter(item => nearbyLines.includes(item.name.toLowerCase()));
-      if (tubeLines) {
-        this.setState({
-          loading: false,
-          tubeLines,
-          currentTubeLines: tubeLines.slice(0, tubeLines.length / 2)
-        });
-      }
-    });
-    this.setGetDataInterval();
+    axios
+      .get(API_URL)
+      .then(response => {
+        const tubeLines = response.data.filter(item =>
+          nearbyLines.includes(item.name.toLowerCase())
+        );
+        const lastUpdateTime = currentTime(new Date());
+        if (tubeLines) {
+          this.setState({
+            loading: false,
+            tubeLines,
+            currentTubeLines: tubeLines.slice(0, tubeLines.length / 2),
+            lastUpdatedTime: `TUBE STATUS @ ${lastUpdateTime}`
+          });
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching Tube status data', err);
+      });
   }
 
   showStatusCard = data => {
@@ -100,12 +109,23 @@ class Tube extends Component {
   }
 
   render() {
-    const { loading, currentTubeLines } = this.state;
+    const { loading, currentTubeLines, lastUpdatedTime } = this.state;
+
+    const headingProps = {
+      headingTitle: '',
+      headingTitleColor: '#6dc5e8',
+      headingBackgroundColor: 'white',
+      lastUpdatedStatusTime: lastUpdatedTime
+    };
 
     if (loading === true) {
       return <div style={{ fontSize: '50px' }}>Loading</div>;
     }
-    return <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>;
+    return (
+      <Widget heading={headingProps}>
+        <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>
+      </Widget>
+    );
   }
 }
 
