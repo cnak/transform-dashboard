@@ -7,6 +7,11 @@ import ChangePasswordForm from './auth/ChangePasswordForm';
 import UpdateEmailForm from './auth/UpdateEmailForm';
 import PasswordResetForm from './auth/PasswordResetForm';
 import AuthPage from './auth/AuthPage';
+import { withAdalLoginApi } from './adalConfig';
+import Loading from './elements/Loading';
+import Admin from './auth/Admin';
+
+const ProtectedPage = withAdalLoginApi(Admin);
 
 const changePassword = () => (
   <div>
@@ -45,6 +50,7 @@ const App = () => {
         <Route exact path="/reset" component={passwordReset} />
         <Route exact path="/change_password" component={changePassword} />
         <Route exact path="/change_email" component={updateEmail} />
+        <Route path="/admin" component={ProtectedPage} />
       </div>
     </Router>
   );

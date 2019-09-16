@@ -1,19 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { setupCognito } from 'react-cognito';
+/* eslint-disable global-require */
+import { runWithAdal } from 'react-adal';
+import { authContext } from './adalConfig';
 
-import './index.css';
-import store from './store';
-import App from './App';
-import config from './config.json';
+const DO_NOT_LOGIN = true;
 
-setupCognito(store, config);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  // eslint-disable-next-line no-undef
-  document.getElementById('root')
+runWithAdal(
+  authContext,
+  () => {
+    require('./wrappedIndex.js');
+  },
+  DO_NOT_LOGIN
 );
