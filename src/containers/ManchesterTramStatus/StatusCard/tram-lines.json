@@ -1,0 +1,34 @@
+{
+  "altrincham": {
+    "backgroundColor": "#7A137C",
+    "textColor": "#FFFF"
+  },
+  "ashton-under-lyne": {
+    "backgroundColor": "#4FBFF0",
+    "textColor": "#FFFF"
+  },
+  "bury": {
+    "backgroundColor": "#2B8127",
+    "textColor": "#FFFF"
+  },
+  "east didsbury": {
+    "backgroundColor": "#776854",
+    "textColor": "#FFFF"
+  },
+  "eccles via mediacityuk": {
+    "backgroundColor": "#EF7C01",
+    "textColor": "#FFFF"
+  },
+  "manchester airport": {
+    "backgroundColor": "#005EAB",
+    "textColor": "#FFFF"
+  },
+  "mediacityuk": {
+    "backgroundColor": "#EF7C01",
+    "textColor": "#FFFF"
+  },
+  "rochdale via oldham": {
+    "backgroundColor": "#FE6DA7",
+    "textColor": "#FFFF"
+  }
+}

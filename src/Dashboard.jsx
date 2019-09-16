@@ -8,12 +8,14 @@ import Header from './containers/Header';
 import Footer from './containers/Footer';
 import GalleryWidgetContainer from './containers/GalleryWidget/GalleryWidgetContainer';
 import Tube from './containers/TubeStatus/Tube/Tube';
+import Tram from './containers/ManchesterTramStatus/Tram/Tram';
 import OverheardWidgetContainer from './containers/Overheard';
 import RemindersWidgetContainer from './containers/Reminders';
 import WifiPasswordContainer from './containers/WifiPassword';
 
 const Dashboard = () => {
   const BASE_API_URL = 'http://etdash-env.stujddpjmb.eu-west-2.elasticbeanstalk.com';
+
   return (
     <div>
       <Header />
@@ -31,14 +33,17 @@ const Dashboard = () => {
         <Widget>
           <Tube />
         </Widget>
+        <Widget>
+          <Tram href={`${BASE_API_URL}/transport-manchester/status`} />
+        </Widget>
         <Widget heading="">
           <RemindersWidgetContainer href={`${BASE_API_URL}/reminders/all`} />
         </Widget>
         <Widget>
           <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
-          <Widget>
-            <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
-          </Widget>
+        </Widget>
+        <Widget>
+          <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
         </Widget>
         <Widget>
           <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/current`} />
