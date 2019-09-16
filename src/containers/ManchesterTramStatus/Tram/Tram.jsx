@@ -47,21 +47,17 @@ class Tram extends Component {
       statuses: [],
       lastUpdatedTime: ''
     };
-
     this.getData = this.getData.bind(this);
+  }
+
+  componentDidMount() {
     this.getData();
     this.setGetDataInterval();
   }
 
-  setGetDataInterval() {
-    const now = new Date();
-    const tenMinutes = 60000 * 10;
-    const thirtyMinutes = 60000 * 30;
-    if (now.getHours() >= 16 && now.getHours() < 19) {
-      this.interval = setInterval(this.getData, tenMinutes);
-    } else {
-      this.interval = setInterval(this.getData, thirtyMinutes);
-    }
+  componentDidUpdate() {
+    clearInterval(this.interval);
+    this.setGetDataInterval();
   }
 
   async getData() {
@@ -100,6 +96,16 @@ class Tram extends Component {
     }
   }
 
+  setGetDataInterval() {
+    const now = new Date();
+    const tenMinutes = 60000 * 10;
+    const thirtyMinutes = 60000 * 30;
+    if (now.getHours() >= 16 && now.getHours() < 19) {
+      this.interval = setInterval(this.getData, tenMinutes);
+    } else {
+      this.interval = setInterval(this.getData, thirtyMinutes);
+    }
+  }
   showStatusCard = data => {
     return data.map(item => (
       <StatusCard
@@ -112,7 +118,6 @@ class Tram extends Component {
       />
     ));
   };
-
   render() {
     const { loading, statuses, lastUpdatedTime } = this.state;
 

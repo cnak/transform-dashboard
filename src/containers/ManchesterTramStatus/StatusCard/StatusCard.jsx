@@ -20,7 +20,7 @@ const StatusCard = ({ id, name, status, reason }) => {
   const style = {
     backgroundColor: getBackgroundColor(id.toLowerCase()),
     color: getTextColor(id.toLowerCase()),
-    'border-radius': '5px'
+    borderRadius: '5px'
   };
   return (
     <div className="container">
