@@ -15,7 +15,7 @@
   animation: appear 500ms ease-out forwards;
 }
 
-.weather-content { 
+.weather-content {
     margin: 1em;
 }
 
@@ -173,4 +173,3 @@
     transform: translateX(0px);
   }
 }
-

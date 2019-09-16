@@ -11,9 +11,9 @@ import config from './config.json';
 setupCognito(store, config);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  // eslint-disable-next-line no-undef
-  document.getElementById('root')
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    // eslint-disable-next-line no-undef
+    document.getElementById('root')
 );
