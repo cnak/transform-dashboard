@@ -6,6 +6,8 @@ node_modules/
 /src/config.json
 /public/gallery
 
+.terraform/
+terraform.tfstate.backup
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
