@@ -38,6 +38,7 @@ action "Push" {
 
 action "Deploy to Fargate" {
   uses = "jessfraz/aws-fargate-action@master"
+  needs = ["Push"]
   env = {
     AWS_REGION = "eu-west-1"
     IMAGE = "445220836204.dkr.ecr.eu-west-1.amazonaws.com/etdashboard"
