@@ -6,9 +6,7 @@ import { authContext } from './adalConfig';
 import './index.css';
 import App from './App';
 
-require('dotenv').config();
-
-const DO_NOT_LOGIN = true;
+const DO_NOT_LOGIN = false;
 
 runWithAdal(
   authContext,

@@ -1,9 +1,11 @@
 import { AuthenticationContext, adalFetch, withAdalLogin } from 'react-adal';
 
+require('dotenv').config({ path: '../.env' });
+
 export const adalConfig = {
-  tenant: process.env.ADAL_TENANT,
-  clientId: process.env.ADAL_CLIENT_ID,
-  redirectUri: process.env.ADAL_REDIRECT_URI,
+  tenant: process.env.REACT_APP_ADAL_TENANT,
+  clientId: process.env.REACT_APP_ADAL_CLIENT_ID,
+  redirectUri: process.env.REACT_APP_ADAL_REDIRECT_URI,
   endpoints: {
     api: 'https://graph.microsoft.com'
   },
