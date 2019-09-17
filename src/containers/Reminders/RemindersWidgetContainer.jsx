@@ -6,7 +6,7 @@ import moment from 'moment';
 import 'react-toastify/dist/ReactToastify.css';
 import './Reminders.css';
 
-export class RemindersWidgetContainer extends Component {
+class RemindersWidgetContainer extends Component {
   constructor(props) {
     super(props);
 
