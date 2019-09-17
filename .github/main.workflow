@@ -4,7 +4,7 @@ workflow "Deploy to ECR" {
 }
 
 action "Build" {
-  uses = "actions/docker/cli@master
+  uses = "actions/docker/cli@master"
   runs = ["/bin/sh", "-c", "docker build -t $IMAGE ."]
   env = {
     IMAGE = "445220836204.dkr.ecr.eu-west-1.amazonaws.com/etdashboard"
