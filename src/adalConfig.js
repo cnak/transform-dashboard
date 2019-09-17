@@ -5,9 +5,9 @@ export const adalConfig = {
   clientId: process.env.ADAL_CLIENT_ID,
   redirectUri: process.env.ADAL_REDIRECT_URI,
   endpoints: {
-    api: process.env.ADAL_API
+    api: 'https://graph.microsoft.com'
   },
-  cacheLocation: process.env.ADAL_CACHE_LOCATION
+  cacheLocation: 'sessionStorage'
 };
 
 export const authContext = new AuthenticationContext(adalConfig);
