@@ -5,7 +5,7 @@ node_modules/
 .vscode
 /src/config.json
 /public/gallery
-
+.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
