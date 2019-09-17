@@ -14,7 +14,7 @@ class Footer extends Component {
     }
 
     componentDidMount() {
-        this.getCurrentFullDate().then(_ => {
+        this.getCurrentFullDate().then(() => {
             this.interval = setInterval(this.getCurrentFullDate, 1000);
         });
     }
