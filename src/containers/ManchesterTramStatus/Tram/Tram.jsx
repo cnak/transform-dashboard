@@ -54,13 +54,12 @@ class Tram extends Component {
 
     componentDidMount() {
         this.getData();
-        this.interval = setInterval(this.rotateTramStatuses, 1000);
+        this.timer = setInterval(() => this.rotateTramStatuses(), 10000);
         this.setGetDataInterval();
     }
 
     componentDidUpdate() {
         clearInterval(this.interval);
-        this.interval = setInterval(this.rotateTramStatuses, 1000);
         this.setGetDataInterval();
     }
 
@@ -126,16 +125,7 @@ class Tram extends Component {
     };
 
     tramStatusesCompare = (tramStatus, tramStatusToCompare) => {
-        if (tramStatus.length !== tramStatusToCompare.length) {
-            return false;
-        }
-        for (let i = tramStatus.length; i--; ) {
-            if (tramStatus[i].name !== tramStatusToCompare[i].name) {
-                return false;
-            }
-        }
-
-        return true;
+        return JSON.stringify(tramStatus) === JSON.stringify(tramStatusToCompare);
     };
 
     async rotateTramStatuses() {
