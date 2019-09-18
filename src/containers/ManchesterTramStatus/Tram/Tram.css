@@ -4,6 +4,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: #FFDD43;
-  background-image: url("../../../../public/images/tram.jpg");
+  background-image: url("../assets/tram.png");
   min-height: 16em;
 }

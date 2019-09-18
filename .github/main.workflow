@@ -46,7 +46,7 @@ action "Deploy to Fargate" {
     COUNT = "2"
     CPU = "256"
     MEMORY = "512"
-    BUCKET = "et-dash-action"
+    BUCKET = "et-dash-actions"
   }
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 }
