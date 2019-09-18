@@ -1,18 +1,20 @@
-variable "access_key" {
-  description = "aws access key"
+variable "aws_access_key_id" {
+  type = string
 }
 
-variable "secret_key" {
-  description = "aws secret key"
+variable "aws_secret_access_key" {
+  type = string
 }
 
 variable "region" {
+  type    = string
   default = "eu-west-1"
 }
 
 variable "az_count" {
+  type        = number
   description = "Number of availability zones to cover in a given AWS region"
-  default     = "2"
+  default     = 2
 }
 
 variable "image" {
@@ -24,30 +26,34 @@ variable "port" {
 }
 
 variable "desired_count" {
+  type        = number
   description = "Number of docker containers to run"
-  default     = "2"
+  default     = 2
 }
 
 variable "cpu" {
+  type        = number
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
-  default     = "256"
+  default     = 256
 }
 
 variable "memory" {
+  type        = number
   description = "Fargate instance memory to provision (in MiB)"
-  default     = "512"
+  default     = 512
 }
 
 variable "bucket" {
   default = "aws-github-actions"
+  type    = string
 }
 
 provider "aws" {
   version    = ">= 1.47.0"
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
+  access_key = var.access_key
+  secret_key = var.secret_key
 
-  region = "${var.region}"
+  region = var.region
 }
 
 terraform {
