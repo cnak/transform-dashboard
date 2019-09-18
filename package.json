@@ -7,11 +7,11 @@
     "yarn": "1.13.0"
   },
   "dependencies": {
-    "amazon-cognito-identity-js": "^1.19.0",
     "axios": "^0.16.0",
     "chart.js": "^2.5.0",
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
     "event-stream": "^3.3.4",
     "express": "^4.16.4",
     "googleapis": "27",
@@ -20,13 +20,11 @@
     "node-fetch": "^2.1.2",
     "prop-types": "^15.6.2",
     "react": "^15.4.2",
+    "react-adal": "^0.4.24",
     "react-chartjs-2": "^2.0.5",
-    "react-cognito": "^1.5.0",
     "react-dom": "^15.4.2",
-    "react-redux": "^5.0.7",
     "react-router-dom": "^4.1.2",
-    "react-toastify": "^4.5.2",
-    "redux": "^4.0.0"
+    "react-toastify": "^4.5.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
@@ -57,5 +55,17 @@
     "eject": "react-scripts eject",
     "serve": "node server/server.js",
     "dev-start": "BASE_API_URL=http://localhost:8081 npm run react-start | nodemon server/server.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
