@@ -55,7 +55,7 @@ class Dashboard extends Component {
         break;
       case 'Manchester':
         locationBasedComponent = (
-          <Tram href="http://localhost:8081/transport-manchester/status" />
+          <Tram href={`${BASE_API_URL}/transport-manchester/status`} />
         );
         break;
       default:
