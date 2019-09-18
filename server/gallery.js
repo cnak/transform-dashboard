@@ -26,7 +26,7 @@ router.get('/latest', async (req, res) => {
 
         if (image == undefined) {
             res.json({
-                imageUrl: 'gallery/1.jpg'
+                imageUrl: 'gallery/1.png'
             });
         } else {
             res.json({
