@@ -9,13 +9,13 @@ import App from './App';
 const DO_NOT_LOGIN = false;
 
 runWithAdal(
-    authContext,
-    () => {
-        ReactDOM.render(
-            <App />,
-            // eslint-disable-next-line no-undef
-            document.getElementById('root')
-        );
-    },
-    DO_NOT_LOGIN
+  authContext,
+  () => {
+    ReactDOM.render(
+      <App />,
+      // eslint-disable-next-line no-undef
+      document.getElementById('root')
+    );
+  },
+  DO_NOT_LOGIN
 );
