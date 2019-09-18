@@ -7,8 +7,8 @@ app.use(cors());
 app.use(require('./controller'));
 
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
 });
 
 app.listen(PORT);

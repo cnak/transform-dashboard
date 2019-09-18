@@ -135,19 +135,10 @@ const retrieveAllTeamNews = async auth => {
                 if (rows.length) {
                     rows.map(row => {
                         if (row[0] !== 'heading') {
-                            const startDateTime = moment(
-                                row[2] + row[3],
-                                'DD-MM-YYYY HH:mm'
-                            ).toDate();
-                            const endDateTime = moment(
-                                row[4] + row[5],
-                                'DD-MM-YYYY HH:mm'
-                            ).toDate();
+                            const startDateTime = moment(row[2] + row[3], 'DD-MM-YYYY HH:mm').toDate();
+                            const endDateTime = moment(row[4] + row[5], 'DD-MM-YYYY HH:mm').toDate();
 
-                            if (
-                                isPassEndDateOrCurrentDate(endDateTime) &&
-                                isInThePastOrCurrentDate(startDateTime)
-                            ) {
+                            if (isPassEndDateOrCurrentDate(endDateTime) && isInThePastOrCurrentDate(startDateTime)) {
                                 teamNews.push({
                                     heading: row[0],
                                     content: row[1],
@@ -200,19 +191,10 @@ const retrieveAllReminders = async auth => {
                 if (rows.length) {
                     rows.map(row => {
                         if (row[0] !== 'heading') {
-                            const startDateTime = moment(
-                                row[2] + row[3],
-                                'DD-MM-YYYY HH:mm'
-                            ).toDate();
-                            const endDateTime = moment(
-                                row[4] + row[5],
-                                'DD-MM-YYYY HH:mm'
-                            ).toDate();
+                            const startDateTime = moment(row[2] + row[3], 'DD-MM-YYYY HH:mm').toDate();
+                            const endDateTime = moment(row[4] + row[5], 'DD-MM-YYYY HH:mm').toDate();
 
-                            if (
-                                isPassEndDateOrCurrentDate(endDateTime) &&
-                                isInThePastOrCurrentDate(startDateTime)
-                            ) {
+                            if (isPassEndDateOrCurrentDate(endDateTime) && isInThePastOrCurrentDate(startDateTime)) {
                                 reminders.push({
                                     heading: row[0],
                                     content: row[1],
