@@ -1,10 +1,8 @@
-/public/images
 node_modules/
 /build
 .DS_STORE
 .vscode
 /src/config.json
-/public/gallery
 .env
 
 # Elastic Beanstalk Files
