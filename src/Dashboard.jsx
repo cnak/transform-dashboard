@@ -53,7 +53,7 @@ class Dashboard extends Component {
                 locationBasedComponent = <Tube />;
                 break;
             case 'Manchester':
-                locationBasedComponent = <Tram href="http://localhost:8081/transport-manchester/status" />;
+                locationBasedComponent = <Tram href={`${BASE_API_URL}/transport-manchester/status`} />;
                 break;
             default:
                 locationBasedComponent = null;
@@ -63,25 +63,33 @@ class Dashboard extends Component {
             <div>
                 <Header />
                 <div className="App">
-                    <Widget>
-                        <GalleryWidgetContainer href={`${BASE_API_URL}/gallery/latest`} />
-                    </Widget>
-                    <Widget heading="">
-                        <ListWidgetContainer href={`${BASE_API_URL}/team-news/all`} heading="Team news" rowspan={3} />
-                    </Widget>
-                    <Widget>{locationBasedComponent}</Widget>
-                    <Widget heading="">
-                        <RemindersWidgetContainer href={`${BASE_API_URL}/reminders/all`} />
-                    </Widget>
-                    <Widget>
-                        <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
-                    </Widget>
-                    <Widget>
-                        <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
-                    </Widget>
-                    <Widget>
-                        <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/current`} />
-                    </Widget>
+                    <div className="content-wrapper">
+                        <Widget>
+                            <GalleryWidgetContainer href={`${BASE_API_URL}/gallery/latest`} />
+                        </Widget>
+                        <Widget heading="">
+                            <ListWidgetContainer
+                                href={`${BASE_API_URL}/team-news/all`}
+                                heading="Team news"
+                                rowspan={3}
+                            />
+                        </Widget>
+                        <Widget>
+                            <OverheardWidgetContainer href={`${BASE_API_URL}/overheard/current`} />
+                        </Widget>
+                        <Widget heading="">
+                            <RemindersWidgetContainer href={`${BASE_API_URL}/reminders/all`} />
+                        </Widget>
+                        <Widget>
+                            <WeatherWidgetContainer href={`${BASE_API_URL}/weather/current`} />
+                        </Widget>
+                        <Widget>
+                            <WifiPasswordContainer href={`${BASE_API_URL}/wifi-passwords/latest`} />
+                        </Widget>
+                    </div>
+                    <div className="side">
+                        <Widget>{locationBasedComponent}</Widget>
+                    </div>
                 </div>
                 <Footer />
             </div>

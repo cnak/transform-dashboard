@@ -45,16 +45,13 @@ class Tram extends Component {
         this.state = {
             loading: true,
             tramStatuses: [],
-            currentTramStatuses: [],
             lastUpdatedTime: ''
         };
-        this.rotateTramStatuses = this.rotateTramStatuses.bind(this);
         this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
         this.getData();
-        this.timer = setInterval(() => this.rotateTramStatuses(), 10000);
         this.setGetDataInterval();
     }
 
@@ -94,7 +91,6 @@ class Tram extends Component {
             this.setState({
                 loading: false,
                 tramStatuses,
-                currentTramStatuses: tramStatuses.slice(0, tramStatuses.length / 2),
                 lastUpdatedTime: `TRAM STATUS @ ${lastUpdateTime}`
             });
         }
@@ -124,31 +120,8 @@ class Tram extends Component {
         ));
     };
 
-    tramStatusesCompare = (tramStatus, tramStatusToCompare) => {
-        return JSON.stringify(tramStatus) === JSON.stringify(tramStatusToCompare);
-    };
-
-    async rotateTramStatuses() {
-        const { tramStatuses, currentTramStatuses } = this.state;
-
-        const upTo = Math.floor(tramStatuses.length / 2);
-
-        const firstGroup = tramStatuses.slice(0, upTo);
-        const secondGroup = tramStatuses.slice(upTo, tramStatuses.length);
-
-        if (this.tramStatusesCompare(firstGroup, currentTramStatuses)) {
-            this.setState({
-                currentTramStatuses: secondGroup
-            });
-        } else {
-            this.setState({
-                currentTramStatuses: firstGroup
-            });
-        }
-    }
-
     render() {
-        const { loading, currentTramStatuses, lastUpdatedTime } = this.state;
+        const { loading, tramStatuses, lastUpdatedTime } = this.state;
 
         const headingProps = {
             headingTitle: '',
@@ -162,7 +135,7 @@ class Tram extends Component {
         }
         return (
             <Widget heading={headingProps}>
-                <div className="tram-wrapper">{this.showStatusCard(currentTramStatuses)}</div>
+                <div className="tram-wrapper">{this.showStatusCard(tramStatuses)}</div>
             </Widget>
         );
     }
