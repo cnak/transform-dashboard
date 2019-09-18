@@ -42,7 +42,6 @@
     "jest": "^24.7.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.10",
-    "prettier": "^1.16.4",
     "react-scripts": "0.9.5",
     "sass-loader": "^7.1.0"
   },

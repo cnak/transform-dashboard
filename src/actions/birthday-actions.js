@@ -5,22 +5,22 @@ export const UPDATE_DATE = 'UPDATE_DATE';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 
 export const isLoading = () => {
-    return {
-        type: IS_LOADING,
-        switch: true
-    };
+  return {
+    type: IS_LOADING,
+    switch: true
+  };
 };
 
 export const isntLoading = () => {
-    return {
-        type: ISNT_LOADING,
-        switch: false
-    };
+  return {
+    type: ISNT_LOADING,
+    switch: false
+  };
 };
 
 export const update = (item, data) => {
-    return {
-        type: item,
-        data
-    };
+  return {
+    type: item,
+    data
+  };
 };

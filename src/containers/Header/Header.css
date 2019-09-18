@@ -3,14 +3,13 @@ header.app-header {
   width: 100%;
   justify-content: space-between;
   height: 1.5em;
-  animation: pulse 3s ease infinite alternate,
+  animation: pulse 3s ease infinite alternate;
 }
 
 img.left-logo {
   height: 3em;
-  border-radius: 0 0px .5em;
+  border-radius: 0 0px 0.5em;
   animation: pulse 2s infinite;
-
 }
 
 .right-logo {
