@@ -7,55 +7,60 @@ import Progress from '../../elements/Progress';
 import './NumberWidget.css';
 
 class NumberWidget extends Component {
-    showWidget() {
-        const { value, max } = this.props;
-        if (value === undefined) {
-            return <p>Loading...</p>;
-        }
-
-        return (
-            <div className="NumberWidget">
-                <NumberDisplay max={max} value={value} />
-                {this.showProgress()}
-            </div>
-        );
+  showWidget() {
+    const { value, max } = this.props;
+    if (value === undefined) {
+      return <p>Loading...</p>;
     }
 
-    showProgress() {
-        const { min, max, value } = this.props;
-        if (min !== undefined && max !== undefined && value !== undefined) {
-            return <Progress min={min} max={max} value={value} />;
-        }
-        return null;
-    }
+    return (
+      <div className="NumberWidget">
+        <NumberDisplay max={max} value={value} />
+        {this.showProgress()}
+      </div>
+    );
+  }
 
-    render() {
-        const { heading, colspan, rowspan, loading } = this.props;
-        return (
-            <Widget heading={heading} colspan={colspan} rowspan={rowspan} loading={loading}>
-                {this.showWidget()}
-            </Widget>
-        );
+  showProgress() {
+    const { min, max, value } = this.props;
+    if (min !== undefined && max !== undefined && value !== undefined) {
+      return <Progress min={min} max={max} value={value} />;
     }
+    return null;
+  }
+
+  render() {
+    const { heading, colspan, rowspan, loading } = this.props;
+    return (
+      <Widget
+        heading={heading}
+        colspan={colspan}
+        rowspan={rowspan}
+        loading={loading}
+      >
+        {this.showWidget()}
+      </Widget>
+    );
+  }
 }
 
 NumberWidget.defaultProps = {
-    heading: '',
-    colspan: 0,
-    rowspan: 0,
-    min: 0,
-    max: 0,
-    value: 0
+  heading: '',
+  colspan: 0,
+  rowspan: 0,
+  min: 0,
+  max: 0,
+  value: 0
 };
 
 NumberWidget.propTypes = {
-    heading: PropTypes.string,
-    colspan: PropTypes.number,
-    rowspan: PropTypes.number,
-    loading: PropTypes.bool.isRequired,
-    min: PropTypes.number,
-    max: PropTypes.number,
-    value: PropTypes.number
+  heading: PropTypes.string,
+  colspan: PropTypes.number,
+  rowspan: PropTypes.number,
+  loading: PropTypes.bool.isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  value: PropTypes.number
 };
 
 export default NumberWidget;

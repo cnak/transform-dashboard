@@ -74,7 +74,9 @@ class Tube extends Component {
         key={item.id}
         name={item.name}
         status={item.lineStatuses[0].statusSeverityDescription}
-        reason={item.lineStatuses[0].reason ? item.lineStatuses[0].reason : null}
+        reason={
+          item.lineStatuses[0].reason ? item.lineStatuses[0].reason : null
+        }
         severity={item.lineStatuses[0].statusSeverity}
       />
     ));
@@ -123,7 +125,9 @@ class Tube extends Component {
     }
     return (
       <Widget heading={headingProps}>
-        <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>
+        <div className="tube-wrapper">
+          {this.showStatusCard(currentTubeLines)}
+        </div>
       </Widget>
     );
   }
