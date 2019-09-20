@@ -4,7 +4,7 @@ $font_family_1: 'Lato', sans-serif;
 $background_color_1: white;
 $background_color_2: transparent;
 
-@import "http://fonts.googleapis.com/css?family=Lato:100, 300, 400, 700, 900";
+@import url("http://fonts.googleapis.com/css?family=Lato");
 
 @keyframes "light" {
   from {
