@@ -4,7 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 import 'react-toastify/dist/ReactToastify.css';
-import './Reminders.css';
+import './Reminders.scss';
 
 class RemindersWidgetContainer extends Component {
   constructor(props) {

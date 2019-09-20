@@ -3,7 +3,7 @@ import { runWithAdal } from 'react-adal';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { authContext } from './adalConfig';
-import './index.css';
+import './index.scss';
 import App from './App';
 
 const DO_NOT_LOGIN = false;

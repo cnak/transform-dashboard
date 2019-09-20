@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './NumberDisplay.css';
+import './NumberDisplay.scss';
 
 const NumberDisplay = ({ value }) => {
   let max = null;

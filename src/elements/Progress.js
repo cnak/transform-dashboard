@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Progress.css';
+import '../styles/Progress.scss';
 
 const Progress = props => {
   let { value } = props;

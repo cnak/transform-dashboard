@@ -1,5 +1,5 @@
 import React from 'react';
-import './WifiLogo.css';
+import './WifiLogo.scss';
 
 export default function WifiLogo() {
   return (

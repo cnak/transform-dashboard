@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Tram.css';
+import './Tram.scss';
 import axios from 'axios';
 import Widget from '../../../components/Widget';
 import StatusCard from '../StatusCard/StatusCard';

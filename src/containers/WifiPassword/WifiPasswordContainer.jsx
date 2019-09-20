@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Widget from '../../components/Widget';
-import './WifiPassword.css';
+import './WifiPassword.scss';
 import WifiLogo from '../../components/WifiLogo';
 
 class WifiPasswordContainer extends Component {

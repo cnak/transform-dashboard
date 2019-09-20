@@ -1,5 +1,5 @@
 import React from 'react';
-import './GalleryWidget.css';
+import './GalleryWidget.scss';
 
 const GalleryWidget = ({ imageUrl }) => {
   return (
