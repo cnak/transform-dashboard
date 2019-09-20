@@ -8,7 +8,7 @@ function randomIntBetween(min, max) {
 
 const Polaroid = ({ data }) => {
   const rotation = randomIntBetween(5, -5);
-  if (data.photoUrl) {
+  if (data.photoUrl !== null) {
     // has a photo
     return (
       <div className="polaroid-container">

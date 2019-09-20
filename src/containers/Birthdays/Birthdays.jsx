@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { tenSeconds, twelveHours } from '../../helper/DateUtils';
 import Widget from '../../components/Widget';
 import Polaroid from './Polaroid/Polaroid';
-import './Birthdays.css';
+import './Birthdays.scss';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 class Birthdays extends Component {
@@ -27,23 +28,12 @@ class Birthdays extends Component {
 
   async getData() {
     const { href } = this.props;
-    const { birthdays } = this.state;
 
-    // TODO Add once api endpoint is done
-    //
-    // await axios.get(href).then(response => {
-    //   this.setState({ birthdays: response.data });
-    // });
-
-    const response = [
-      { name: 'Alex Baeza', photoUrl: undefined },
-      { name: 'Chris Mills', photoUrl: undefined },
-      { name: 'Lewis Williams', photoUrl: undefined },
-      { name: 'Martin McFly', photoUrl: undefined }
-    ];
-    this.setState({
-      loading: false,
-      birthdays: response
+    await axios.get(href).then(response => {
+      this.setState({
+        loading: false,
+        birthdays: response.data.birthdays
+      });
     });
   }
 
@@ -69,14 +59,26 @@ class Birthdays extends Component {
 
     const currentIndex = birthdays.indexOf(found);
     if (currentIndex === birthdays.length - 1) {
-      return this.setState({ currentPerson: birthdays[0] });
+      return this.setState({
+        currentPerson: {
+          name: birthdays[0].name,
+          date: birthdays[0].date,
+          photoUrl: birthdays[0].photoUrl
+        }
+      });
     }
-    return this.setState({ currentPerson: birthdays[currentIndex + 1] });
+    const data = birthdays[currentIndex + 1];
+    return this.setState({
+      currentPerson: {
+        name: data.name,
+        date: data.date,
+        photoUrl: data.photoUrl
+      }
+    });
   }
 
   render() {
     const { loading, currentPerson } = this.state;
-
     const headingProps = {
       headingTitle: "Today's Birthdays",
       headingTitleColor: '#6dc5e8',
