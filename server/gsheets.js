@@ -258,15 +258,10 @@ const retrieveAllBirthdays = async auth => {
         const rows = res.data.values;
 
         if (rows.length) {
-          rows.map(row => {
-            //filter to make sure that only people with consent to "Other communication"
-            if (row[4].toUpperCase() === 'YES') {
-              birthdays.push({
-                name: row[0],
-                date: row[1]
-              });
-            }
-          });
+          //filter to make sure that only people with consent to "Other communication"
+          rows
+            .filter(row => row[4].toUpperCase() === 'YES')
+            .map(row => birthdays.push({ name: row[0], date: row[1] }));
         } else {
           console.log('No Birthdays found.');
         }
