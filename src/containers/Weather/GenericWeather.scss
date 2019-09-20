@@ -6,7 +6,7 @@ $background_color_2: transparent;
 
 @import "http://fonts.googleapis.com/css?family=Lato:100, 300, 400, 700, 900";
 
-@keyframes "light" {
+@keyframes light {
   from {
     box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 10px;
   }
@@ -15,7 +15,7 @@ $background_color_2: transparent;
   }
 }
 
-@keyframes "rain" {
+@keyframes rain {
   from {
     box-shadow: #2092a9 8px 0px, #2092a9 32px -6px, #2092a9 20px 0px;
   }
@@ -24,13 +24,13 @@ $background_color_2: transparent;
   }
 }
 
-@keyframes "weather-icon-move" {
+@keyframes weather-icon-move {
   50% {
     transform: translateY(-8px);
   }
 }
 
-@keyframes "appear" {
+@keyframes appear {
   0% {
     transform: scale(0);
   }
@@ -45,7 +45,7 @@ $background_color_2: transparent;
   }
 }
 
-@keyframes "title-appear" {
+@keyframes title-appear {
   from {
     opacity: 0;
     transform: translateX(150px);

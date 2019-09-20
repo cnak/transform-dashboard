@@ -1,5 +1,5 @@
 import React from 'react';
-import './Polaroid.css';
+import './Polaroid.scss';
 import defaultPhoto from '../assets/avatar.png';
 
 function randomIntBetween(min, max) {
