@@ -1,32 +1,16 @@
 .App {
-  display: block;
-  -webkit-font-smoothing: antialiased;
-}
-
-.App>*+* {
-  margin-top: 1rem;
-}
-
-/* autoprefixer: off */
-@supports(display:grid) {
-  .App {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 98%;
-    margin: 0 auto;
-  }
-
-  .App>*+* {
-    margin-top: 0;
-  }
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 75% 25%;
+    grid-template-areas: "content side" "content side" ". .";
 }
 
-@media(max-width: 600px) {
-  .App {
-    display: block;
-  }
+.content-wrapper {
+    display: grid;
+    grid-area: content;
+    grid-template-columns: repeat(3, 1fr);
 
-  .App>*+* {
-    margin-top: 1rem;
-  }
+}
+.side {
+    grid-area: side;
 }

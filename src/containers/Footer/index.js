@@ -30,20 +30,7 @@ class Footer extends Component {
         const date = currentDate.getDate();
         const month = currentDate.getMonth();
 
-        const monthNames = [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'June',
-            'July',
-            'Aug',
-            'Sept',
-            'Oct',
-            'Nov',
-            'Dec'
-        ];
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         const dateWithFullMonthName = `${monthNames[month]} ${pad(date)}`;
         const weekday = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
 
