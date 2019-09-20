@@ -63,7 +63,6 @@ class Birthdays extends Component {
   };
 
   async rotateCurrentPerson() {
-    console.info('rotateCurrentPerson');
     const { birthdays, currentPerson } = this.state;
 
     const found = birthdays.find(bday => bday.name === currentPerson.name);
@@ -92,7 +91,6 @@ class Birthdays extends Component {
       );
     }
 
-    console.info('invoked');
     return (
       <Widget heading={headingProps}>
         <div className="birthday-wrapper">{this.showCard(currentPerson)}</div>

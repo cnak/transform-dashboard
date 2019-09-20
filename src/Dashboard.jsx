@@ -91,14 +91,12 @@ class Dashboard extends Component {
               <WeatherWidgetContainer
                 href={`${BASE_API_URL}/weather/current`}
               />
+              <Birthdays href={`${BASE_API_URL}/birthdays/current`} />
             </Widget>
             <Widget>
               <WifiPasswordContainer
                 href={`${BASE_API_URL}/wifi-passwords/latest`}
               />
-            </Widget>
-            <Widget>
-              <Birthdays href={`${BASE_API_URL}/birthdays/current`} />
             </Widget>
           </div>
           <div className="side">
