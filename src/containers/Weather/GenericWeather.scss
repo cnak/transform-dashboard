@@ -5,6 +5,7 @@ $background_color_1: white;
 $background_color_2: transparent;
 
 @import "http://fonts.googleapis.com/css?family=Lato:100, 300, 400, 700, 900";
+
 @keyframes "light" {
   from {
     box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 10px;
@@ -13,6 +14,7 @@ $background_color_2: transparent;
     box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 17px;
   }
 }
+
 @keyframes "rain" {
   from {
     box-shadow: #2092a9 8px 0px, #2092a9 32px -6px, #2092a9 20px 0px;
@@ -21,11 +23,13 @@ $background_color_2: transparent;
     box-shadow: #2092a9 8px 6px, #2092a9 32px 0px, #2092a9 20px 6px;
   }
 }
+
 @keyframes "weather-icon-move" {
   50% {
     transform: translateY(-8px);
   }
 }
+
 @keyframes "appear" {
   0% {
     transform: scale(0);
@@ -40,6 +44,7 @@ $background_color_2: transparent;
     transform: scale(1);
   }
 }
+
 @keyframes "title-appear" {
   from {
     opacity: 0;
@@ -59,6 +64,7 @@ $background_color_2: transparent;
 		box-sizing: border-box;
 	}
 }
+
 .weather-card {
 	margin: 0.5em 5px;
 	position: relative;
@@ -85,9 +91,11 @@ $background_color_2: transparent;
 		text-transform: capitalize;
 	}
 }
+
 .weather-content {
 	margin: 1em;
 }
+
 .weather-icon {
 	position: relative;
 	width: 50px;
@@ -97,6 +105,7 @@ $background_color_2: transparent;
 	margin: 40px 40px 0 0;
 	animation: weather-icon-move 2s ease-in-out infinite;
 }
+
 .clear {
 	margin-right: 60px;
 	background: #b6cede;
@@ -105,12 +114,14 @@ $background_color_2: transparent;
 	height: 25px;
 	box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
+
 .sun {
 	background: #ffcd41;
 	border-radius: 50%;
 	box-shadow: rgba(255, 255, 0, 0.1) 0 0 0 4px;
 	animation: light 800ms ease-in-out infinite alternate, weather-icon-move 2s ease-in-out infinite;
 }
+
 .clouds {
 	margin-right: 60px;
 	background: #b6cede;
@@ -119,6 +130,7 @@ $background_color_2: transparent;
 	height: 25px;
 	box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
+
 .rain {
 	margin-right: 60px;
 	background: #b6cede;
@@ -127,6 +139,7 @@ $background_color_2: transparent;
 	height: 25px;
 	box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
+
 .thunderstorm {
 	margin-right: 60px;
 	background: #b6cede;
@@ -147,6 +160,7 @@ $background_color_2: transparent;
 		animation: rain 300ms ease-in-out infinite alternate;
 	}
 }
+
 .rainy {
 	&:after {
 		content: '';
