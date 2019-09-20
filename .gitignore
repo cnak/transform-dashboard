@@ -1,11 +1,9 @@
 # Misc
-/public/images
 node_modules/
 /build
 .DS_STORE
 .vscode
 /src/config.json
-/public/gallery
 .terraform/
 terraform.tfstate.backup
 .env

@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.status-card {
+  display: flex;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+}
+
+.status-card p {
+  color: white;
+  margin-left: 1em;
+  text-align: center;
+}
+
+.status-card p.line-name {
+  width: 60%;
+  height: 2em;
+  text-align: center;
+}
+
+.reason p {
+  color: white;
+  margin-left: 1em;
+}

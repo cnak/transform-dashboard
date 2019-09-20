@@ -24,12 +24,9 @@ class Tube extends Component {
     this.state = {
       loading: true,
       tubeLines: [],
-      currentTubeLines: [],
       lastUpdatedTime: ''
     };
 
-    this.rotateTubeLines = this.rotateTubeLines.bind(this);
-    this.interval = setInterval(this.rotateTubeLines, 10000);
     this.getData = this.getData.bind(this);
     this.getData();
     this.setGetDataInterval();
@@ -58,7 +55,6 @@ class Tube extends Component {
           this.setState({
             loading: false,
             tubeLines,
-            currentTubeLines: tubeLines.slice(0, tubeLines.length / 2),
             lastUpdatedTime: `TUBE STATUS @ ${lastUpdateTime}`
           });
         }
@@ -74,42 +70,16 @@ class Tube extends Component {
         key={item.id}
         name={item.name}
         status={item.lineStatuses[0].statusSeverityDescription}
-        reason={item.lineStatuses[0].reason ? item.lineStatuses[0].reason : null}
+        reason={
+          item.lineStatuses[0].reason ? item.lineStatuses[0].reason : null
+        }
         severity={item.lineStatuses[0].statusSeverity}
       />
     ));
   };
 
-  tubeLinesCompare = (tubeLine, tubeLineToCompare) => {
-    if (tubeLine.length !== tubeLineToCompare.length) return false;
-    for (let i = tubeLine.length; i--; ) {
-      if (tubeLine[i].name !== tubeLineToCompare[i].name) return false;
-    }
-
-    return true;
-  };
-
-  async rotateTubeLines() {
-    const { tubeLines, currentTubeLines } = this.state;
-
-    const upTo = Math.floor(tubeLines.length / 2);
-
-    const firstGroup = tubeLines.slice(0, upTo);
-    const secondGroup = tubeLines.slice(upTo, tubeLines.length);
-
-    if (this.tubeLinesCompare(firstGroup, currentTubeLines)) {
-      this.setState({
-        currentTubeLines: secondGroup
-      });
-    } else {
-      this.setState({
-        currentTubeLines: firstGroup
-      });
-    }
-  }
-
   render() {
-    const { loading, currentTubeLines, lastUpdatedTime } = this.state;
+    const { loading, tubeLines, lastUpdatedTime } = this.state;
 
     const headingProps = {
       headingTitle: '',
@@ -123,7 +93,7 @@ class Tube extends Component {
     }
     return (
       <Widget heading={headingProps}>
-        <div className="tube-wrapper">{this.showStatusCard(currentTubeLines)}</div>
+        <div className="tube-wrapper">{this.showStatusCard(tubeLines)}</div>
       </Widget>
     );
   }
