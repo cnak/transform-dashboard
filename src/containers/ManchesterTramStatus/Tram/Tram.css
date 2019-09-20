@@ -1,0 +1,9 @@
+.tram-wrapper {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #FFDD43;
+  background-image: url("../assets/tram.png");
+  min-height: 16em;
+}
