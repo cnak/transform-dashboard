@@ -64,6 +64,7 @@ class Footer extends Component {
     const currentFullDate = (
       <div className="date">
         {weekday}
+        {', '}
         {dateWithFullMonthName}
       </div>
     );
