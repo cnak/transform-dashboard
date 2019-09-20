@@ -80,7 +80,7 @@ class Birthdays extends Component {
   render() {
     const { loading, currentPerson } = this.state;
     const headingProps = {
-      headingTitle: "Today's Birthdays",
+      headingTitle: "This Weeks's Birthdays",
       headingTitleColor: '#6dc5e8',
       headingBackgroundColor: 'white'
     };
