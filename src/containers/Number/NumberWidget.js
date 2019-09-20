@@ -4,7 +4,7 @@ import Widget from '../../components/Widget';
 import NumberDisplay from './NumberDisplay';
 import Progress from '../../elements/Progress';
 
-import './NumberWidget.css';
+import './NumberWidget.scss';
 
 class NumberWidget extends Component {
   showWidget() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import './GenericWeather.css';
+import './GenericWeather.scss';
 
 function GenericWeather({ description, temp, status }) {
   const cls = cx('weather-icon', status.toLowerCase());

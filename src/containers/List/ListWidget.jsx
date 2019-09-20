@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import ListDisplay from './ListDisplay';
 import ListItem from './ListItem';
-import './ListWidget.css';
+import './ListWidget.scss';
 import Heading from '../../components/Heading';
 
 class ListWidget extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import StatusCard from '../StatusCard/StatusCard';
-import './Tube.css';
+import './Tube.scss';
 import Widget from '../../../components/Widget';
 import { currentTime } from '../../../helper/DateUtils';
 

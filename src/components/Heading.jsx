@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LastUpdatedStatus from './LastUpdatedStatus';
-import './Heading.css';
+import './Heading.scss';
 
 const displayHeading = (headingText, headingTitleColor, lastUpdatedStatusTime) => {
   if (headingText && lastUpdatedStatusTime) {

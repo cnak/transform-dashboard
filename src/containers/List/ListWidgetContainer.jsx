@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import ListWidget from './ListWidget';
-import './ListWidget.css';
+import './ListWidget.scss';
 
 class ListWidgetContainer extends Component {
   constructor() {

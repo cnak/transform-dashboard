@@ -1,5 +1,5 @@
 import React from 'react';
-import './LastUpdatedStatus.css';
+import './LastUpdatedStatus.scss';
 
 export default function LastUpdatedStatus(props) {
   const { lastUpdatedStatusTime, backgroundColor, textColor } = props;
