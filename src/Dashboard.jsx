@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './styles/App.css';
+import './styles/App.scss';
 import axios from 'axios';
 import Tube from './containers/TubeStatus/Tube/Tube';
 import Tram from './containers/ManchesterTramStatus/Tram/Tram';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './Header.scss';
 import engineLogo from '../../assets/engine-logo.png';
 import etDashLogo from '../../assets/et-dash-logo.png';
 

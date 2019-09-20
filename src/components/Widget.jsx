@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Loading from '../elements/Loading';
 import Heading from './Heading';
 
-import '../styles/Widget.css';
+import '../styles/Widget.scss';
 
 class Widget extends Component {
     constructor(props) {

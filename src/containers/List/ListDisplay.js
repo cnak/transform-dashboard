@@ -1,5 +1,5 @@
 import React from 'react';
-import './ListDisplay.css';
+import './ListDisplay.scss';
 
 const ListDisplay = ({ children }) => {
   return <ul className="ListDisplay">{children}</ul>;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Progress from '../../elements/Progress';
-import './ListItem.css';
+import './ListItem.scss';
 
 const ListItem = ({ value, max, min, label, imageUrl }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Widget from '../../components/Widget';
-import './Overheard.css';
+import './Overheard.scss';
 
 class OverheardWidgetContainer extends Component {
   constructor() {

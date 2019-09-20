@@ -1,5 +1,5 @@
 import React from 'react';
-import './StatusCard.css';
+import './StatusCard.scss';
 import lines from './tube-lines.json';
 
 const getBackgroundColor = name => {
