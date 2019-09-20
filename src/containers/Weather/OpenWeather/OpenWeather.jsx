@@ -38,7 +38,14 @@ class OpenWeather extends React.Component {
   render() {
     const { name, temp, description, status } = this.state;
 
-    return <GenericWeather city={name} temp={temp} description={description} status={status} />;
+    return (
+      <GenericWeather
+        city={name}
+        temp={temp}
+        description={description}
+        status={status}
+      />
+    );
   }
 }
 

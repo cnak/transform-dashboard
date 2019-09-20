@@ -33,7 +33,10 @@ class ListWidgetContainer extends Component {
       try {
         const response = await axios.get(href);
         if (response.data.length === 0) {
-          this.setState({ loading: false, values: [{ content: 'No Team News at the moment' }] });
+          this.setState({
+            loading: false,
+            values: [{ content: 'No Team News at the moment' }]
+          });
         } else {
           this.setState({ loading: false, values: response.data });
         }

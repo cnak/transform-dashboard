@@ -1,5 +1,5 @@
 const express = require('express'),
-    router = express.Router();
+  router = express.Router();
 
 const path = require('path');
 const dir = path.join(__dirname, 'public/gallery');

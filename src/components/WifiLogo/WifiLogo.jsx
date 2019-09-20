@@ -4,7 +4,11 @@ import './WifiLogo.css';
 export default function WifiLogo() {
   return (
     <div className="internet">
-      <svg className="u-hidden" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg
+        className="u-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
         <symbol id="wifi" viewBox="0 0 633 633">
           <path
             className="wifi__path"

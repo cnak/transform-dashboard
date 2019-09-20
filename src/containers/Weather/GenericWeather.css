@@ -1,4 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+@import url(
+  http://fonts.googleapis.com/css?family=Lato:100,
+  300,
+  400,
+  700,
+  900
+);
 
 *,
 *:before,
@@ -7,7 +13,7 @@
 }
 
 .weather-card {
-  margin:.5em 5px;
+  margin: 0.5em 5px;
   position: relative;
   overflow: hidden;
   background-color: white;
@@ -16,7 +22,7 @@
 }
 
 .weather-content {
-    margin: 1em;
+  margin: 1em;
 }
 
 .weather-card h1 {
@@ -36,7 +42,7 @@
   color: grey;
   bottom: 0;
   text-align: center;
-  text-transform: capitalize
+  text-transform: capitalize;
 }
 
 .weather-icon {
@@ -55,14 +61,16 @@
   border-radius: 20px;
   width: 25px;
   height: 25px;
-  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px,
+    #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
 
 .sun {
   background: #ffcd41;
   border-radius: 50%;
   box-shadow: rgba(255, 255, 0, 0.1) 0 0 0 4px;
-  animation: light 800ms ease-in-out infinite alternate, weather-icon-move 2s ease-in-out infinite;
+  animation: light 800ms ease-in-out infinite alternate,
+    weather-icon-move 2s ease-in-out infinite;
 }
 
 .clouds {
@@ -71,7 +79,8 @@
   border-radius: 20px;
   width: 25px;
   height: 25px;
-  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px,
+    #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
 
 .rain {
@@ -80,20 +89,22 @@
   border-radius: 20px;
   width: 25px;
   height: 25px;
-  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px,
+    #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
 
 .thunderstorm {
-   margin-right: 60px;
+  margin-right: 60px;
   background: #b6cede;
   border-radius: 20px;
   width: 25px;
   height: 25px;
-  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+  box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px,
+    #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
 }
 
 .thunderstorm:after {
-  content: "";
+  content: '';
   position: absolute;
   border-radius: 10px;
   background-color: transparent;
@@ -106,7 +117,7 @@
 }
 
 .rainy:after {
-  content: "";
+  content: '';
   position: absolute;
   border-radius: 10px;
   background-color: transparent;
