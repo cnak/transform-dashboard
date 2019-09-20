@@ -11,6 +11,7 @@ import Tube from './containers/TubeStatus/Tube/Tube';
 import OverheardWidgetContainer from './containers/Overheard';
 import RemindersWidgetContainer from './containers/Reminders';
 import WifiPasswordContainer from './containers/WifiPassword';
+import Birthdays from './containers/Birthdays';
 
 const Dashboard = () => {
   const BASE_API_URL =
@@ -48,6 +49,9 @@ const Dashboard = () => {
           <OverheardWidgetContainer
             href={`${BASE_API_URL}/overheard/current`}
           />
+        </Widget>
+        <Widget>
+          <Birthdays href={`${BASE_API_URL}/birthdays/current`} />
         </Widget>
       </div>
       <Footer />
